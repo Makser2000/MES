@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="MaintenanceOperation_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Presentation" Width="892" />
+        <ColumnInfo Id="SummaOperations" Width="152" />
+        <ColumnInfo Id="SummaMaterials" Width="152" />
+      </Columns>
+    </ListView>
+    <ListView Id="Personnel_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Presentation" SortIndex="-1" SortOrder="None" Index="1" />
+      </Columns>
+    </ListView>
+    <ListView Id="ProcessingCardOperation_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Presentation" Width="1756" />
+        <ColumnInfo Id="Order" Width="613" />
+      </Columns>
+    </ListView>
+    <ListView Id="WorkPlaceResourceMaintenance_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="Presentation" SortIndex="-1" SortOrder="None" />
+      </Columns>
+    </ListView>
+  </Views>
+</Application>

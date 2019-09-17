@@ -1,0 +1,3096 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.Localization.XafariResourceLocalizer`2">
+            <summary>
+            Base localizer type.
+            Places localized strings to node Localization/Xafari/thisLocalizerName.
+            </summary>
+            <typeparam name="TLocalizer">Must be specified by itself.</typeparam>
+            <example>
+               public class FeatureCenterLocalizer : XafariResourceLocalizer&lt;FeatureCenterLocalizer, FeatureCenterItemsStringId&gt;
+               {
+                   public override string ResourceName
+                   {
+                       get { return "Xafari.FeatureCenter.Localization.Resources.FeatureCenterResources"; }
+                   }
+               }
+               public enum FeatureCenterItemsStringId
+               {
+                   Error,
+                   Info,
+                   Success,
+                   Warning
+               }
+               
+               // Usage: 
+               // localizedString = FeatureCenterLocalizer.Active.GetLocalizedString(FeatureCenterItemsStringId.Info)
+            </example>
+        </member>
+        <member name="T:Xafari.Localization.XafariResourceLocalizer`1">
+            <summary>
+            Base localizer type.
+            Places localized strings to node Localization/Xafari/thisLocalizerName
+            </summary>
+            <typeparam name="EnumType"></typeparam>
+        </member>
+        <member name="M:Xafari.Localization.XafariResourceLocalizer`1.GetLocalizedString``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object[])">
+            <summary>
+            Gets localized string for specified <paramref name="property"/> and <paramref name="args"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="TValue"></typeparam>
+            <param name="property"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Localization.XafariResourceLocalizer`1.GetLocalizedString(System.Type,System.String,System.Object[])">
+            <summary>
+            Gets localized string for specified <paramref name="propertyName"/> and <paramref name="args"/>.
+            </summary>
+            <param name="type"></param>
+            <param name="propertyName"></param>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Localization.XafariResourceLocalizer`1.ResourceName">
+            <summary>
+            Contains assembly resources path
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.XafariResourceLocalizer`1.ModelGroupNames">
+            <summary>
+            Ordered group names to locate localized strings from resource.
+            By default, contains "Xafari/{localizername}" groups.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.XafariResourceLocalizer`2.Active">
+            <summary>
+            Gets active localizer instance.
+            </summary>
+        </member>
+        <member name="T:Xafari.Localization.PeriodStructStrings">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.DateNotSet">
+            <summary>
+              Looks up a localized string similar to ....
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.PeriodIsNotSet">
+            <summary>
+              Looks up a localized string similar to not set.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.PeriodSet">
+            <summary>
+              Looks up a localized string similar to set.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.Quarter">
+            <summary>
+              Looks up a localized string similar to Quarter.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.PeriodStructStrings.YearPostfix">
+            <summary>
+              Looks up a localized string similar to  year.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.XafariModuleBase">
+            <summary>
+            Base module class to use Xafari Framework Business components.
+            </summary>
+        </member>
+        <member name="M:Xafari.IXafariModule.OnApplicationSettingUp(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Called just for not shared <see cref="T:DevExpress.ExpressApp.XafApplication"/>.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.IXafariModule.OnApplicationSetupComplete(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Called just for not shared <see cref="T:DevExpress.ExpressApp.XafApplication"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.IXafariModule.OnXafTypesInfoSetupComplete(DevExpress.ExpressApp.DC.ITypesInfo)">
+            <summary>
+            Called before <see cref="M:Xafari.IXafariModule.OnApplicationSetupComplete(DevExpress.ExpressApp.XafApplication)"/> to modify <see cref="T:DevExpress.Xpo.Metadata.XPClassInfo"/>.
+            Called just for not shared <see cref="T:DevExpress.ExpressApp.XafApplication"/>.
+            </summary>
+            <param name="typesInfo"></param>
+            <remarks>
+            Unlike <see cref="M:DevExpress.ExpressApp.XafApplication.CustomizeTypesInfo"/> in this case DCAssembly already exists and all generated classes already available.
+            </remarks>
+        </member>
+        <member name="M:Xafari.IXafariModule.RegisterServices(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Regsiter Xafari Services derived from <see cref="!:Xafari.BC.Services.XafariCommonService"/>.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.IXafariModule.OnServicesSettingUp">
+            <summary>
+            Used to additional setup for <see cref="!:Xafari.BC.Services.XafariCommonService"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IApplicationProvider">
+            <summary>
+            Provides access to member <see cref="P:Xafari.Base.IApplicationProvider.Application"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.XafariModuleBase.OnXafTypesInfoSetupComplete(DevExpress.ExpressApp.DC.ITypesInfo)">
+            <summary>
+            Use to modify <see cref="T:DevExpress.ExpressApp.XafTypesInfo"/>. DCAssembly already enabled.
+            </summary>
+            <param name="typesInfo"></param>
+            <remarks>
+            Executed after <see cref="T:DevExpress.ExpressApp.XafTypesInfo"/> created.
+            </remarks>
+        </member>
+        <member name="T:Xafari.Actions.AggregatedAction">
+            <summary>
+            SingleChoiceAction which supports a hierarchy of elements
+            </summary>
+        </member>
+        <member name="F:Xafari.Actions.AggregatedAction.m_MenuActions">
+            <summary>
+            Key is a real Action; Value is a collection of the AggregatedAction elements (since there may be several) for the real Action.
+            </summary>
+        </member>
+        <member name="F:Xafari.Actions.AggregatedAction.m_MenuChoiceActionItems">
+            <summary>
+            Key is a real ChoiceActionItem; Value is a a collection of the AggregatedAction elements (since there may be several) for the real ChoiceActionItem.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.BuildItems">
+            <summary>
+            Creates AggregatedAction based on the Model node.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.BuildCategoryItemAndChildrenItems(Xafari.Model.IModelCategoryLink,DevExpress.ExpressApp.Actions.ChoiceActionItemCollection)">
+            <summary>
+            Builds a menu for the category and the child elements of category.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.BuildCategoryChildrenItems(Xafari.Model.IModelCategoryLink,DevExpress.ExpressApp.Actions.ChoiceActionItemCollection)">
+            <summary>
+            Builds a menu for the child elements of category.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.AddActionMenuItem(DevExpress.ExpressApp.Actions.ActionBase,DevExpress.ExpressApp.Actions.ChoiceActionItemCollection)">
+            <summary>
+            Adds a menu item based on Action.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.AddSingleChoiceActionItemsMenuItems(System.Collections.Generic.IEnumerable{DevExpress.ExpressApp.Actions.ChoiceActionItem},DevExpress.ExpressApp.Actions.ChoiceActionItem)">
+            <summary>
+            Adds a menu item based on ChoiceActionItem.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.AddRelationRealActionAndChoiceActionItem(DevExpress.ExpressApp.Actions.ActionBase,DevExpress.ExpressApp.Actions.ChoiceActionItem)">
+            <summary>
+            Adds a menu item to the collection with real Action as Key.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.AddRelationRealChoiceActionItemnAndChoiceActionItem(DevExpress.ExpressApp.Actions.ChoiceActionItem,DevExpress.ExpressApp.Actions.ChoiceActionItem)">
+            <summary>
+            Adds a menu item to the collection with real ChoiceActionItem as Key.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.AssignAction(DevExpress.ExpressApp.Actions.ChoiceActionItem,DevExpress.ExpressApp.Actions.ActionBase)">
+            <summary>
+            Updates the settings for the menu item in accordance with action.
+            </summary>
+            <param name="aggActionChoiceActionItem"></param>
+            <param name="action"></param>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.ClearMenuActions">
+            <summary>
+            Clears the collection and unsubscribes from events.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.action_Changed(System.Object,DevExpress.ExpressApp.Actions.ActionChangedEventArgs)">
+            <summary>
+            Changing the properties of the real action
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.FindRealAction(System.String)">
+            <summary>
+            Returns real actions by name of the category.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.FindContainer(System.String)">
+            <summary>
+            Returns the model of the category.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedAction.FindAction(System.String)">
+            <summary>
+            Returns the model of the action.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Actions.AggregatedAction.RootCategory">
+            <summary>
+            The category which elements are displayed at the first level
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedActionsController.GetAggregatedSingleChoiceActions(DevExpress.ExpressApp.Controller)">
+            <summary>
+            Returns the collection of AggregatedActions contained in the controller.
+            </summary>
+            <param name="controller"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Xafari.Actions.AggregatedActionsController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedActionsController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Actions.AggregatedActionsController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Actions.WizardAction">
+            <summary>
+            Represents a wizard show action
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.WizardAction.#ctor">
+            <summary>
+            Creates an instance of the <see cref="T:Xafari.Actions.WizardAction"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.WizardAction.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Creates an instance of the <see cref="T:Xafari.Actions.WizardAction"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.WizardAction.#ctor(DevExpress.ExpressApp.Controller,System.String,DevExpress.Persistent.Base.PredefinedCategory)">
+            <summary>
+            Creates a new instance of the WizardAction class and initializes its properties.
+            </summary>
+            <param name="owner">A <see cref="T:DevExpress.ExpressApp.Controller"/> object that represents a Controller to which the created WizardActionn is added. This object is assigned to the <see cref="P:DevExpress.ExpressApp.Actions.ActionBase.Controller"/> property.</param>
+            <param name="id">A string value representing the created WizardAction Action's identifier. This value is assigned to the <see cref="P:DevExpress.ExpressApp.Actions.ActionBase.ID"/> property.</param>
+            <param name="category">A <b>PredifinedCategory</b> enumeration value that represents a category of the created WizardAction. This value is assigned to the <see cref="P:DevExpress.ExpressApp.Actions.ActionBase.Category"/> property and used to map this Action to the appropriate Action Container.</param>
+        </member>
+        <member name="M:Xafari.Actions.WizardAction.#ctor(DevExpress.ExpressApp.Controller,System.String,System.String)">
+            <summary>
+            Creates a new instance of the WizardAction class and initializes its properties.
+            </summary>
+            <param name="owner">A <see cref="T:DevExpress.ExpressApp.Controller"/> object that represents a Controller to which the created WizardActionn is added. This object is assigned to the <see cref="P:DevExpress.ExpressApp.Actions.ActionBase.Controller"/> property.</param>
+            <param name="id">A string value representing the created WizardAction Action's identifier. This value is assigned to the <see cref="P:DevExpress.ExpressApp.Actions.ActionBase.ID"/> property.</param>
+            <param name="category">A string value that represents a category of the created WizardAction. This value is assigned to the <see cref="P:DevExpress.ExpressApp.Actions.ActionBase.Category"/> property and used to map this Action to the appropriate Action Container.</param>
+        </member>
+        <member name="E:Xafari.Actions.WizardAction.CreateWizardObject">
+            <summary>
+            Occurs when initializing popup window parameters for creting wizard object.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.WizardAction.ModelWizard">
+            <summary>
+            Returns a model node for wizard
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.WizardAction.ShowDefaultWelcomeView">
+            <summary>
+            Indicates whether wizard contains "welcome" step.
+            Default value, <b>true</b>.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.WizardAction.ShowDefaultGoodbyeView">
+            <summary>
+            Indicates whether wizard contains "goodbye" step.
+            Default value, <b>false</b>.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.WizardAction.ObjectType">
+            <summary>
+            Specifies the wizard object type.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.WizardAction.TemplateContext">
+            <summary>
+            Specifies the template context using by wizard.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.WizardAction.StepsCount">
+            <summary>
+            Specifies the steps count for wizard not given "welcome" and "goodbye" steps.
+            Default value <b>1</b>.
+            </summary>
+        </member>
+        <member name="T:Xafari.Actions.CreateWizardObjectEventArgs">
+            <summary>
+            Arguments passed to WizardAction's <see cref="E:Xafari.Actions.WizardAction.CreateWizardObject"/> event.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.CreateWizardObjectEventArgs.ObjectSpace">
+            <summary>
+            Returns <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> instance to create wizard object.
+            </summary>
+        </member>
+        <member name="P:Xafari.Actions.CreateWizardObjectEventArgs.Object">
+            <summary>
+            Represents a wizard object.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.DcRegistrator">
+            <summary>
+            Intended to assist in registration of Domain Components decorated with <see cref="T:Xafari.DC.RegisterEntityAttribute"/> attribute.
+            </summary>
+        </member>
+        <member name="M:Xafari.DC.DcRegistrator.#cctor">
+            <summary>
+            Initializes static fileds of <see cref="T:Xafari.DC.DcRegistrator"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.Encryption.XafariEncrypter">
+            <summary>
+            Class for data encryption.
+            </summary>
+        </member>
+        <member name="M:Xafari.Encryption.XafariEncrypter.Encrypt(System.String,System.String,System.String)">
+            <summary>
+            Encrypt text.
+            </summary>
+            <param name="text">Text.</param>
+            <param name="key">Key string.</param>
+            <param name="salt">Salt string.</param>
+            <returns>Encrypted text.</returns>
+        </member>
+        <member name="M:Xafari.Encryption.XafariEncrypter.Decrypt(System.String,System.String,System.String)">
+            <summary>
+            Decrypt encrypted text.
+            </summary>
+            <param name="cipherText">Encrypted text.</param>
+            <param name="key">Key string.</param>
+            <param name="salt">Salt string.</param>
+            <returns>Decrypted text.</returns>
+        </member>
+        <member name="M:Xafari.Encryption.XafariEncrypter.GetConnectionString(System.String,System.Int32)">
+            <summary>
+            Get decrypted connection string from Xafari Encryption Service.
+            </summary>
+            <param name="url">Service url.</param>
+            <param name="algId">Algoritm to decrypt.</param>
+            <returns>Decrypted connection string.</returns>
+        </member>
+        <member name="M:Xafari.Helpers.INotifyPropertyChangedHelper.RaisePropertyChanged(System.ComponentModel.PropertyChangedEventArgs)">
+            <summary>
+            Raise <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/> event with specified arguments.
+            </summary>
+            <param name="eventArgs"></param>
+        </member>
+        <member name="T:Xafari.AdditionalModuleAttribute">
+            <summary>
+            Used to declare additional modules for current module.
+            </summary>
+            <remarks>
+            Supports multiple usage for <see cref="T:System.Type"/>.
+            </remarks>
+        </member>
+        <member name="P:Xafari.AdditionalModuleAttribute.Filter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Xafari.AppModules.AppModuleBase.CreateObjectSpaceProviders(DevExpress.ExpressApp.CreateCustomObjectSpaceProviderEventArgs)">
+            <summary>
+            Creates instances of <see cref="T:DevExpress.ExpressApp.IObjectSpaceProvider"/> to be used by the application.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Xafari.AppModules.AppModuleBase.InitializeApplication(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Initialize application instance.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="P:Xafari.AppModules.AppModuleBase.UseEncryptedConnectionString">
+            <summary>
+            Indicates whether an encrypted connection string will be used in application.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.ActionInfo">
+            <summary>
+            Information about executor and execution date of action.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.ActionInfo.ActionExecutor">
+            <summary>
+            Action executor.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.ActionInfo.Date">
+            <summary>
+            Execution date of action.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.GeoPoint">
+            <summary>
+            GeoPoint is describing a marker on the map.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.INameSupport">
+            <summary>
+            This interface declares the use Name.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.INameSupport.Name">
+            <summary>
+            Gets and sets a name of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IDescriptionSupport">
+            <summary>
+            This interface declares the use Description.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IDescriptionSupport.Description">
+            <summary>
+            Gets and sets a description of object.
+            </summary>
+        </member>
+        <member name="M:Xafari.Base.GeoPoint.ToString">
+            <summary>
+            Thish method is describing the text format for storing <see cref="T:Xafari.Base.GeoPoint"/> in DB in one field. Need for GeoPointConverter.
+            </summary>
+            <returns><see cref="T:Xafari.Base.GeoPoint"/> in text format</returns>
+        </member>
+        <member name="M:Xafari.Base.GeoPoint.Parse(System.Object)">
+            <summary>
+            This method is parsing data stored in DB in one field in specific format. Need for GeoPointConverter.
+            </summary>
+            <param name="value">string in cpecific format</param>
+            <returns><see cref="T:Xafari.Base.GeoPoint"/> created from string from DB</returns>
+        </member>
+        <member name="P:Xafari.Base.GeoPoint.Latitude">
+            <summary>
+            The latitude of the marker.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.GeoPoint.Longitude">
+            <summary>
+            The longitude of the marker.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.GeoPoint.Name">
+            <summary>
+            The name of the marker.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.GeoPoint.Description">
+            <summary>
+            The description of the marker.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.RegisterEntityAttribute">
+            <summary>
+            Indicates that enitity must be registered and specifies register entity parameters.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.RegisterEntityAttribute.Namespace">
+            <summary>
+            Specifies namespace for entity table.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.RegisterEntityAttribute.BaseType">
+            <summary>
+            Specifies base type for generated persistent class.
+            </summary>
+            <remarks>
+            The <see cref="E:Xafari.Helpers.ITypesInfoHelper.CustomizeDefaultDcBaseObjectType"/> event can be used to specify default base persistent class.
+            </remarks>
+        </member>
+        <member name="P:Xafari.DC.RegisterEntityAttribute.EntityName">
+            <summary>
+            Specifies entity table name. Type name is used by default.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.DC.IMemberInfo)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.ExpressApp.DC.IMemberInfo"/> to operate with specified <paramref name="memberInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.ExpressApp.XafApplication"/> to operate with specified <paramref name="application"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.Xpo.Metadata.XPMemberInfo)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.Xpo.Metadata.XPMemberInfo"/> to operate with specified <paramref name="memberInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.ActiveScope(Xafari.Base.IActiveProvider,System.Boolean,System.String)">
+            <summary>
+            Creates <see cref="M:Xafari.XafariExtensions.ActiveScope(Xafari.Base.IActiveProvider,System.Boolean,System.String)"/> instance for specified <paramref name="activeProvider"/> and specified active value.
+            </summary>
+            <param name="activeProvider"></param>
+            <param name="active"></param>
+            <param name="name"></param>
+            <remarks>
+            This method uses for temporary switch on/off <see cref="P:Xafari.Base.IActiveProvider.Active"/> value. 
+            Use it with <i>using()</i> operator to restore <see cref="P:Xafari.Base.IActiveProvider.Active"/> state.
+            <example>
+            This sample show how to temparary deactivate <see cref="!:DataAccessor"/> service.
+            <code>
+            using (DataAccessor.Instance.ActiveScope(false))
+            {
+            	// any code
+            }
+            </code>
+            </example>
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.DC.ITypesInfo)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.ExpressApp.DC.ITypesInfo"/> to operate with specified <paramref name="typesInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(System.Type)">
+            <summary>
+            Supplies additional methods for <see cref="T:System.Type"/> to operate with specified <paramref name="type"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.DC.ITypeInfo)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.ExpressApp.DC.ITypeInfo"/> to operate with specified <paramref name="typeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.ViewController)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.ExpressApp.ViewController"/> to operate with specified <paramref name="viewController"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.Layout.LayoutManager)">
+            <summary>
+            Supplies additional methods for <see cref="T:DevExpress.ExpressApp.Layout.LayoutManager"/> to operate with specified <paramref name="layoutManager"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Helper``1(``0)">
+            <summary>
+            Supplies additional methods for <typeparamref name="T"/> instance to operate with specified <paramref name="obj"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.Updating.DatabaseUpdater)">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.Xafari(DevExpress.ExpressApp.Updating.DatabaseSchemaUpdater)">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariExtensions.EndListCriteriaOperator(DevExpress.Data.Filtering.GroupOperator)">
+            <summary>
+            Generates GroupOperator only from binary operations and having an equal sign in OperatorType.
+            </summary>
+            <param name="thisGroupCriteria"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.DC.GuidWeakReferenceStruct">
+            <summary>
+            Struct for persisting reference to persistent object (or persistent domain component) with Guid as Oid
+            If works with XPO only (i.e. EF and other ORM are not supported)
+            </summary>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.#ctor(DevExpress.Xpo.Session,System.Object)">
+            <summary>
+            Constructor for WeakReferenceStruct
+            </summary>
+            <param name="currentSession">currentSession must be valid XPO Session or null and can be different from target object session</param>
+            <param name="target">target object should be valid persistent xpo object which can be casted to ISessionProvider or null</param>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.GetObject(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Get object from WeakReferenceStruct
+            </summary>
+            <param name="objectSpace">valid XPObjectSpace</param>
+            <returns>object by week reference or null if reference is bad</returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.GetObject``1(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Get object from WeakReferenceStruct
+            </summary>
+            <param name="objectSpace">valid XPObjectSpace</param>
+            <returns>object by week reference or null if reference is bad</returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.GetObject``1(DevExpress.Xpo.Session)">
+            <summary>
+            Get object from WeakReferenceStruct
+            </summary>
+            <param name="session">valid XPO session</param>
+            <returns>object by week reference or null if reference is bad</returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.GetObject(DevExpress.Xpo.Session)">
+            <summary>
+            Get object from WeakReferenceStruct
+            </summary>
+            <param name="session">valid XPO session</param>
+            <returns>object by week reference or null if reference is bad</returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.GetObject(DevExpress.ExpressApp.IObjectSpace,System.Boolean,System.Boolean)">
+            <summary>
+            Get object from WeakReferenceStruct
+            </summary>
+            <param name="objectSpace">valid XPObjectSpace</param>
+            <param name="returnNullOnBadReference"></param>
+            <param name="alwaysGetFromDb"></param>
+            <exception cref="T:System.Data.ObjectNotFoundException">if returnNullOnBadReference=false Throws exception if object is not found by stored key</exception>
+            <exception cref="T:System.Exception">Throws exception if any other inconsistencies are found (bad session, no type info, connection errors, no object with this key, incorrect type etc.)</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.GetObject(DevExpress.Xpo.Session,System.Boolean,System.Boolean)">
+            <summary>
+            Get object from WeakReferenceStruct
+            </summary>
+            <param name="session"></param>
+            <param name="returnNullOnBadReference"></param>
+            <param name="alwaysGetFromDb"></param>
+            <exception cref="T:System.Data.ObjectNotFoundException">if returnNullOnBadReference=false Throws exception if object is not found by stored key</exception>
+            <exception cref="T:System.Exception">Throws exception if any other inconsistencies are found (bad session, no type info, connection errors, no object with this key, incorrect type etc.)</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.SetObject(System.Object,DevExpress.Xpo.Session)">
+            <summary>
+            Create WeakReferenceStruct for persistent object
+            </summary>
+            <param name="value">target object</param>
+            <param name="currentSession">currentSession must be valid XPO Session but can be different from object session</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.DC.GuidWeakReferenceStruct.SetObject(System.Object,DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Create WeakReferenceStruct for persistent object
+            </summary>
+            <param name="value"></param>
+            <param name="currentObjectSpace">currentObjectSpace must be valid XPObjectspace but  can be different from object session</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.DC.GuidWeakReferenceStruct.TypeId">
+            <summary>
+            Id for TargetXPObjectType persistance of target persistent object
+            i.e. TargetType=TargetXPObjectType.Oid or 0 (if TargetXPObjectType==null);
+            Column name was not changed for compatiblity with older DBs
+            To obtain XPObjectType please use explicit extension methods TargetType.GetXPObjectType(session) or TargetType=XPObjectType.SafeGetId() declared in Xafari.Internal")]
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.GuidWeakReferenceStruct.Id">
+            <summary>
+            Key of target persistent object
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.WeakAssociationAttribute">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.WeakListAttribute">
+            <summary>
+            Uses to define nonpersitent list property which implemented by <see cref="!:DomainLogicBase&lt;T&gt;.GetWeakList&lt;TDetails&gt;"/>.
+            </summary>
+            <example>
+            This default style nonpersistent collection definition 
+            <code>
+            [NonPersistentDc]
+            [DevExpress.ExpressApp.DC.Aggregated]
+            [BackReferenceProperty("Master1")]
+            IList&lt;Details&gt; Details { get; }
+            </code>
+            
+            This new style nonpersistent collection definition 
+            <code>
+            [DevExpress.ExpressApp.DC.Aggregated]
+            [WeakList(BackReferenceProperty = "Master")]
+            IList&lt;Details&gt; Details { get; }
+            </code>
+            </example>
+        </member>
+        <member name="P:Xafari.DC.WeakListAttribute.BackReferenceProperty">
+            <summary>
+            Sets or gets back reference property name. Used instead the <see cref="T:DevExpress.ExpressApp.DC.BackReferencePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.Base.XafariValueManager.GetInstance``1(System.String)">
+            <summary>
+            Creates value manager <see name="IValueManager{T}"/> instance with specified <paramref name="name"/> and returns <typeparamref name="T"/> instance.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Base.XafariValueManager.SetInstance``1(System.String,``0)">
+            <summary>
+            Creates value manager <see name="IValueManager{T}"/> instance with specified <paramref name="name"/> and sets specified <paramref name="instance"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="name"></param>
+            <param name="instance"></param>
+        </member>
+        <member name="T:Xafari.DC.XPWeakCollection`1">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.XPWeakCollectionHelper`1">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.IWeakIntermediateObject">
+            <summary>
+            Uses to identify general intermediate object with weak references as back reference
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.XafariDCIntermediateObject">
+            <summary>
+            Base class for many-to-many intermediate object.
+            Used by weak lists.
+            </summary>
+        </member>
+        <member name="F:Xafari.DC.XafariDCIntermediateObject.LeftObjectTerm">
+            <summary>
+            Specifies term name for left object in many-to-many intermediate object
+            </summary>
+        </member>
+        <member name="F:Xafari.DC.XafariDCIntermediateObject.RightObjectTerm">
+            <summary>
+            Specifies term name for right object in many-to-many intermediate object
+            </summary>
+        </member>
+        <member name="M:Xafari.DC.XafariDCIntermediateObject.SetLeftObject(System.Object)">
+            <summary>
+            Initializes left object.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xafari.DC.XafariDCIntermediateObject.SetRightObject(System.Object)">
+            <summary>
+            Initializes right object.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xafari.DC.XPWeakManyToMany.CustomizeTypesInfo(DevExpress.ExpressApp.DC.ITypesInfo,System.Type)">
+            <summary>
+            Modifies Xaf metadata for many-to-many relations.
+            </summary>
+            <param name="typesInfo"></param>
+            <param name="type"></param>
+        </member>
+        <member name="T:Xafari.DC.GuidWeakManyToManyBase">
+            <summary>
+            Default general intermediate object type.
+            Use <see cref="T:Xafari.DC.GuidWeakReferenceStruct"/> as back references.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.GuidWeakManyToManyBase.Left">
+            <summary>
+            Used to store left object.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.GuidWeakManyToManyBase.Right">
+            <summary>
+            Used to store right object.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.GuidWeakManyToMany">
+            <summary>
+            General universal persistent object to store many-to-many relations.
+            Used by default if related classes have <see cref="T:System.Guid"/> as key.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.XPWeakManyToManyAliasList">
+            <summary>
+            For internal use.
+            Implements many to many nonpersistent collections.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAliasList.Owner">
+            <summary>
+            Owner of this list.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAliasList.AliasedList">
+            <summary>
+            Persistent collection of intermediate objects.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAliasList.LinkToThisObjectMemberInfo">
+            <summary>
+            Member of intermediate class, which contains link to owner of this list.
+            </summary>
+            <remarks>
+            Used to get and set operations.
+            </remarks>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAliasList.SetObjectMemberInfo">
+            <summary>
+            Persistent member of intermediate class, which contains link to associated object.
+            Used to set value.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAliasList.GetObjectMemberInfo">
+            <summary>
+            Calculated member of intermediate class, which contains link to associated object.
+            Used to get value.
+            </summary>
+        </member>
+        <member name="T:Xafari.DC.XPWeakManyToManyAttribute">
+            <summary>
+            Uses to declare Many-To-Many relation for non-persistent objects or for calculated members	
+            </summary>
+        </member>
+        <member name="M:Xafari.DC.XPWeakManyToManyAttribute.#ctor(System.String)">
+            <summary>
+            Declare Many-To-Many relation for non-persistent objects or for calculated members with specified <paramref name="relationName"/>.
+            Uses <see cref="T:Xafari.DC.GuidWeakManyToMany"/> as intermediate object.
+            </summary>
+            <param name="relationName"></param>
+            <remarks>
+            Use <see cref="M:Xafari.DC.XPWeakManyToManyAttribute.#ctor(System.Type,System.String)"/> to define typed intermediate object.
+            </remarks>
+        </member>
+        <member name="M:Xafari.DC.XPWeakManyToManyAttribute.#ctor(System.Type,System.String)">
+            <summary>
+            Declare Many-To-Many relation for non-persistent objects or for calculated members with specified <paramref name="relationName"/>.
+            Uses <paramref name="intermediateType"/> as intermediate object.
+            </summary>
+            <param name="intermediateType">Type of intermediate object.</param>
+            <param name="relationName"></param>
+            <remarks>
+            Use <see cref="M:Xafari.DC.XPWeakManyToManyAttribute.#ctor(System.String)"/> to use general <see cref="T:Xafari.DC.GuidWeakManyToMany"/> intermediate object.
+            </remarks>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAttribute.RelationName">
+            <summary>
+            Specifies the relation name and uses for general intermediate type.
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAttribute.IntermediateType">
+            <summary>
+            Specifies <see cref="T:System.Type"/> of intermediate objects.
+            </summary>
+            <remarks>
+            By default, uses <see cref="T:Xafari.DC.GuidWeakManyToMany"/>.
+            </remarks>
+        </member>
+        <member name="P:Xafari.DC.XPWeakManyToManyAttribute.IsOldSpecification">
+            <summary>
+            For internal use.
+            Specifies that roles were used to declare Many-To-Many relation.
+            </summary>
+        </member>
+        <member name="T:Xafari.DeveloperLicense.DeveloperLicense">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.DeveloperLicense.DeveloperLicense.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.DeveloperLicense.DeveloperLicense.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xafari.DeveloperLicense.DeveloperLicense.LicenseDoesNotMatchContextException">
+            <summary>
+              Looks up a localized string similar to Bad license. This license does not match current context (Host and/or User). Please use activation answer for request generated right here or ask activation again..
+            </summary>
+        </member>
+        <member name="P:Xafari.DeveloperLicense.DeveloperLicense.ProductIsNotXafariException">
+            <summary>
+              Looks up a localized string similar to Bad license. Product is not &apos;Xafari&apos;. Please use activation answer for proper request or ask activation again..
+            </summary>
+        </member>
+        <member name="P:Xafari.DeveloperLicense.DeveloperLicense.ProductVersionMismatchCurrentException">
+            <summary>
+              Looks up a localized string similar to Bad license. Xafari ProductVersion in license ({0}) does not match currently used ({1}). Please use activation answer for proper request or ask activation again..
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoHelper.GetValue(System.Object)">
+            <summary>
+            Get value by IMemberInfo according to weak references.
+            </summary>
+            <param name="obj">Object that contains member described by IMemberInfo.</param>
+            <returns>Member value.</returns>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoHelper.GetCriteriaEqualsTo(System.Object,System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Data.Filtering.CriteriaOperator"/> instance to get objects where current <see cref="T:DevExpress.ExpressApp.DC.IMemberInfo"/> equals to specified <paramref name="target"/>.
+            </summary>
+            <param name="target"></param>
+            <param name="pathToMemberOwner"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Helpers.IMemberInfoHelper.AssociatedMemberInfo">
+            <summary>
+            if is null, additionally check <see cref="T:Xafari.DC.XPWeakManyToManyAttribute"/> and try to calculate value
+            by serach a <see cref="P:DevExpress.ExpressApp.DC.BackReferencePropertyAttribute.PropertyName"/> in <see cref="P:DevExpress.ExpressApp.DC.IMemberInfo.ListElementTypeInfo"/>
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoXPWeakReferenceHelper.GetValue(System.Object)">
+            <summary>
+            Get value by IMemberInfo according to weak references.
+            </summary>
+            <param name="obj">Object that contains member described by IMemberInfo.</param>
+            <returns>Member value.</returns>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoXPWeakReferenceHelper.GetCriteriaEqualsTo(System.Object,System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Data.Filtering.CriteriaOperator"/> instance to get objects where current <see cref="T:DevExpress.ExpressApp.DC.IMemberInfo"/> equals to specified <paramref name="target"/>.
+            </summary>
+            <param name="target"></param>
+            <param name="pathToMemberOwner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoGuidWeakReferenceStructHelper.GetValue(System.Object)">
+            <summary>
+            Get value by IMemberInfo according to weak references.
+            </summary>
+            <param name="instance">Object that contains member described by IMemberInfo.</param>
+            <returns>Member value.</returns>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoGuidWeakReferenceStructHelper.GetCriteriaEqualsTo(System.Object,System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Data.Filtering.CriteriaOperator"/> instance to get objects where current <see cref="T:DevExpress.ExpressApp.DC.IMemberInfo"/> equals to specified <paramref name="target"/>.
+            </summary>
+            <param name="target"></param>
+            <param name="pathToMemberOwner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoXPWeakReferenceStructHelper.GetValue(System.Object)">
+            <summary>
+            Get value by IMemberInfo according to weak references.
+            </summary>
+            <param name="instance">Object that contains member described by IMemberInfo.</param>
+            <returns>Member value.</returns>
+        </member>
+        <member name="M:Xafari.Helpers.IMemberInfoXPWeakReferenceStructHelper.GetCriteriaEqualsTo(System.Object,System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Data.Filtering.CriteriaOperator"/> instance to get objects where current <see cref="T:DevExpress.ExpressApp.DC.IMemberInfo"/> equals to specified <paramref name="target"/>.
+            </summary>
+            <param name="target"></param>
+            <param name="pathToMemberOwner"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.ITypeInfoHelper.FindMember(System.String,System.Boolean)">
+            <summary>
+            Additionally raise <see cref="T:System.InvalidOperationException"/> if member is not found.
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.ITypesInfoHelper.RegisterEntity``1(System.String,System.Type,System.String)">
+            <summary>
+            Registers a specific Domain Component in the application if <typeparamref name="T"/> is persistent.
+            Registers a specific Domain Component as entity factory.
+            </summary>
+            <typeparam name="T">A <see cref="T:System.Type"/> representing a Domain Component.</typeparam>
+            <param name="entityName">Specifies entity table name.</param>
+            <param name="nameSpace">Specifies namespace for entity table</param>
+            <param name="baseType">A <see cref="T:System.Type"/> object representing a type used as the generated class' ancestor.</param>
+            <remarks>
+            Check <typeparamref name="T"/> is persistent type
+            <para>If <paramref name="baseType"/> is null, used default base class <see cref="T:DevExpress.ExpressApp.DC.DCBaseObject"/>.</para>
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.ITypesInfoHelper.RegisterEntity(System.Type,System.String,System.Type,System.String)">
+            <summary>
+            Registers a specific Domain Component in the application if <paramref name="entityType"/> is persistent.
+            Registers a specific Domain Component as entity factory.
+            </summary>
+            <param name="entityType">A <see cref="T:System.Type"/> representing a Domain Component.</param>
+            <param name="entityName">Specifies entity table name.</param>
+            <param name="nameSpace">Specifies namespace for entity table</param>
+            <param name="baseType">A <see cref="T:System.Type"/> object representing a type used as the generated class' ancestor.</param>
+            <remarks>
+            Check <paramref name="entityType"/> is persistent type
+            <para>If <paramref name="baseType"/> is null, used default base class <see cref="T:DevExpress.ExpressApp.DC.DCBaseObject"/>.</para>
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.ITypesInfoHelper.RegisterEntity``2(System.String,System.String)">
+            <summary>
+            Registers a specific Domain Component with specified base type in the application and entity factory.
+            </summary>
+            <typeparam name="T">A <see cref="T:System.Type"/> representing a Domain Component.</typeparam>
+            <typeparam name="TBaseType">A <see cref="T:System.Type"/> object representing a type used as the generated class' ancestor.</typeparam>
+            <param name="entityName">Specifies entity table name.</param>
+            <param name="nameSpace">Specifies namespace for entity table</param>
+        </member>
+        <member name="E:Xafari.Helpers.ITypesInfoHelper.CustomizeDefaultDcBaseObjectType">
+            <summary>
+            The event is designed to provide a <see cref="T:System.Type"/> object representing a type used as the generated class' ancestor in Domain Components.
+            </summary>
+        </member>
+        <member name="T:Xafari.Helpers.CustomizeDefaultDcBaseObjectTypeEventArgs">
+            <summary>
+            Arguments passed to the <see cref="E:Xafari.Helpers.ITypesInfoHelper.CustomizeDefaultDcBaseObjectType"/> event.
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.MemberPathInfoHelper.GetPathForCriteria">
+            <summary>
+            Calculate path for criteria to use correct upcasting for DC.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.ModelNodeHelper.FindChildNodeByPath(System.String)">
+            <summary>
+            Looks for model node with specified path. If such node is not found then the method returns null.
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.ModelNodeHelper.OperateLayer(DevExpress.ExpressApp.Model.Core.ModelApplicationBase,System.Action{DevExpress.ExpressApp.Model.Core.ModelNode,DevExpress.ExpressApp.Model.Core.ModelApplicationBase})">
+            <summary>
+            Operate <paramref name="target"/> layer with <paramref name="action"/>. Used when <paramref name="target"/> layer must be modified.
+            </summary>
+            <param name="target"></param>
+            <param name="action"></param>
+            <summary>
+            Remove all last layers in this node until <paramref name="target"/>, execute <paramref name="action"/> and restore removed this.
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.ModelNodeHelper.SetState(System.Object,System.Boolean)">
+            <summary>
+            Set state model node.
+            </summary>
+            <param name="state">Use fields from <see cref="T:Xafari.Helpers.ModelNodeStateHelper"/>.</param>
+            <param name="value">New value for specified state.</param>
+        </member>
+        <member name="T:Xafari.Helpers.ObjectHelper`1">
+            <summary>
+            Implements additional methods for <typeparamref name="T"/> object.
+            </summary>
+            <typeparam name="T">Target object type.</typeparam>
+        </member>
+        <member name="M:Xafari.Helpers.ObjectHelper`1.FindMember(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Supplies metadata on the current type's member with specified lambda expression.
+            </summary>
+            <param name="expression">Expression to specify member name.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.ObjectHelper`1.FindMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Supplies metadata on the current type's member with specified lambda expression.
+            </summary>
+            <param name="expression">Expression to specify member name.</param>
+            <returns></returns>
+            <remarks>
+            Lambda expression must be of the form like 'x => x.Member' (access to a member).
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.ObjectHelper`1.GetSession(System.Boolean)">
+            <summary>
+            Returns <see cref="T:DevExpress.Xpo.Session"/> for specified object.
+            </summary>
+            <param name="forceException"></param>
+            <returns></returns>
+            <exception cref="T:System.InvalidOperationException">If <see cref="P:Xafari.Utils.XafariHelperBase`1.Instance"/> does not implement <see cref="T:DevExpress.Xpo.Helpers.ISessionProvider"/>.</exception>
+            <remarks>
+            Lambda expression must be of the form like 'x =&gt; x.Member' (access to a member).
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.ObjectHelper`1.SetValue(System.String,System.Object)">
+            <summary>
+            Sets <paramref name="value"/> for specified <paramref name="memberName"/>.
+            </summary>
+            <param name="memberName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Xafari.Helpers.ObjectHelper`1.GetValue(System.String)">
+            <summary>
+            Gets value for specified <paramref name="memberName"/>.
+            </summary>
+            <param name="memberName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.ObjectHelper`1.GetValue``1(System.String)">
+            <summary>
+            Gets value for specified <paramref name="memberName"/>.
+            </summary>
+            <typeparam name="TValue"></typeparam>
+            <param name="memberName"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Helpers.ObjectHelper`1.TypeHelper2">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.ObjectHelper`1.TypeInfo">
+            <summary>
+            Supplies metadata on the current object type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Helpers.ObjectHelper`1.KeyValue">
+            <summary>
+            Gets key value for current object.
+            </summary>
+            <remarks>
+            Returns <b>null</b> if key member is not found.
+            </remarks>
+        </member>
+        <member name="T:Xafari.Helpers.ProxyCollectionHelper">
+            <summary>
+            Helper implements additional methods for <see cref="T:DevExpress.ExpressApp.ProxyCollection"/> object.
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.ProxyCollectionHelper.InitProxyList">
+            <summary>
+            Method allows to call private method "InitProxyList()" of <see cref="T:DevExpress.ExpressApp.ProxyCollection"/> instance.
+            </summary>
+        </member>
+        <member name="T:Xafari.Helpers.DatabaseUpdaterHelper">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="T:Xafari.Helpers.DatabaseSchemaUpdaterHelper">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.TypeHelper.TypeInfo">
+            <summary>
+            Returns <see cref="T:DevExpress.ExpressApp.DC.ITypeInfo"/> for <see cref="P:Xafari.Utils.XafariHelperBase`1.Instance"/> from <see cref="P:DevExpress.ExpressApp.XafTypesInfo.Instance"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Helpers.TypeHelper.GeneratedEntityType">
+            <summary>
+            Gets generated type for this domain component type.
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.TypeHelper.ClassInfo">
+            <summary>
+            Gets <see cref="T:DevExpress.Xpo.Metadata.XPClassInfo"/> for current <see cref="T:System.Type"/>;
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.TypeHelper.EntityName">
+            <summary>
+            Gets entity name for specified <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.TypeHelper`1.FindMember(System.Linq.Expressions.Expression{System.Func{`0,System.Object}})">
+            <summary>
+            Supplies metadata on the current type's member with specified lambda expression.
+            </summary>
+            <param name="expression">Expression to specify member name.</param>
+            <returns></returns>
+            <remarks>
+            Lambda expression must be of the form like 'x => x.Member' (access to a member).
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.TypeHelper`1.FindMember``1(System.Linq.Expressions.Expression{System.Func{`0,``0}})">
+            <summary>
+            Supplies metadata on the current type's member with specified lambda expression.
+            </summary>
+            <param name="expression">Expression to specify member name.</param>
+            <returns></returns>
+            <remarks>
+            Lambda expression must be of the form like 'x => x.Member' (access to a member).
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.TypeInfoHelper.UpdateSortedImplementedInterfaces">
+            <summary>
+            Fix ticket https://www.devexpress.com/Support/Center/Question/Details/T386896
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.TypeInfoHelper.FindMember(System.String,System.Boolean)">
+            <summary>
+            Additionally raise <see cref="T:System.InvalidOperationException"/> if member is not found.
+            </summary>
+            <param name="propertyName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.Helpers.XafApplicationHelper">
+            <summary>
+            Contains addtional members for <see cref="T:DevExpress.ExpressApp.XafApplication"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.IsActualModulesVersionInfo(System.Collections.Generic.List{System.String})">
+            <summary>
+            method is taken from DevExpress.ExpressApp.XafApplication.IsActualModulesVersionInfo() 
+            </summary>
+            <param name="assembliesNotIncluded"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.IsSharedApplication">
+            <summary>
+            Checks specified this.Instance instance to shared this.Instance.
+            https://documentation.devexpress.com/#Xaf/DevExpressExpressAppWebWebApplication_SetSharedtopic
+            </summary>
+            <param name="this.Instance"></param>
+            <returns></returns>
+            <remarks>
+            WebApplication supports Shared Model to improve performance.
+            When Shared Model intilize ValueManager has inavalid state.
+            And if you use ValueManager operations inside Setup module method you have to check on this.Instance is Shared or not.
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.CanLoadTypesInfo">
+            <summary>
+            Indicates that <see cref="T:DevExpress.ExpressApp.DC.ITypesInfo"/> must be loaded and customized.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.CreateSession">
+            <summary>
+            Creates new <see cref="T:DevExpress.Xpo.Session"/> instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.CreateRuntimeModel(System.String)">
+            <summary>
+            Creates new <see cref="T:DevExpress.ExpressApp.Model.Core.ModelApplicationBase"/> instance with specified <paramref name="id"/>.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+            <remarks>
+            By default, creates root model layer and two child layers: Generator layer and After generator layer.
+            Generator layer used by <see cref="T:DevExpress.ExpressApp.Model.Core.ModelNode"/> generators.
+            After generator layer used to protect Generator layer from modifications.
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.CreateUnitOfWork(System.IDisposable[])">
+            <summary>
+            Creates new <see cref="T:DevExpress.Xpo.UnitOfWork"/> instance.
+            </summary>
+            <param name="disposeOnDisconnect"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.Initialize(Xafari.XafariApplicationContext[])">
+            <summary>
+            Performs default initialization for application by Xafari standard.
+            </summary>
+            <param name="filter">
+            Specified collection of filter values. 
+            Specifies context of application usage.
+            </param>
+            <remarks>
+            Default Xafari initilization of <see cref="T:DevExpress.ExpressApp.XafApplication"/> contains several stages:
+            <list type="number">
+            <listheader></listheader>
+            <item>
+            <term>AppModule</term>
+            <description>
+            Try to find <i>AppModule</i> value in <see cref="P:System.Configuration.ConfigurationManager.AppSettings"/> section of .config-file.
+            Create instance of <see cref="T:Xafari.AppModules.AppModuleBase"/> from specified module, add it to <see cref="P:DevExpress.ExpressApp.XafApplication.Modules"/> collection
+            and initialize <see cref="T:DevExpress.ExpressApp.XafApplication"/> instance by this AppModule properties values.
+            
+            </description>
+            </item>
+            <item>
+            <term>ConnectionString</term>
+            <description>
+            if <see cref="P:DevExpress.ExpressApp.XafApplication.ConnectionString"/> has <b>null</b> then
+            try to find <i>ConnectionString</i> value in <see cref="P:System.Configuration.ConfigurationManager.ConnectionStrings"/> section of .config-file 
+            and set founded value to <see cref="P:DevExpress.ExpressApp.XafApplication.ConnectionString"/>.
+            </description>
+            </item>
+            <item>Additional modules by filter</item>
+            <description>
+            if <paramref name="filter"/> collection is not empty, select all modules in <see cref="P:DevExpress.ExpressApp.XafApplication.Modules"/>
+            which has any <see cref="T:Xafari.AdditionalModuleAttribute"/> with specified <paramref name="filter"/>.
+            Then try to load specified by <see cref="!:AdditionalModuleAttribute.TypeName"/> module 
+            and add it to <see cref="P:DevExpress.ExpressApp.XafApplication.Modules"/> collection.
+            </description>
+            </list>
+            <para>
+            By default, following usage context use <paramref name="filter"/>
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.Initialize(System.Configuration.Configuration,Xafari.XafariApplicationContext[])">
+            <summary>
+            For internal use.
+            </summary>
+            <param name="configuration"></param>
+            <param name="filter"></param>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.Setup(Xafari.XafariApplicationHost)">
+            <summary>
+            Additioinally invoke <see cref="M:Xafari.Helpers.XafApplicationHelper.Initialize(Xafari.XafariApplicationContext[])"/> method.
+            </summary>
+            <param name="host"></param>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.OnSetupStarted(System.Action)">
+            <summary>
+            Raise <see cref="E:Xafari.Helpers.XafApplicationHelper.SetupStarted"/> event.
+            </summary>
+            <param name="baseMethod"></param>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.OnCustomizeDcAssemblyFilePath(Xafari.Helpers.CustomizeFilePathEventArgs)">
+            <summary>
+            For internal use.
+            </summary>
+            <param name="baseMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.GetDcAssemblyFilePath(System.Func{System.String})">
+            <summary>
+            For internal use.
+            </summary>
+            <param name="baseMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.OnCustomizeModelAssemblyFilePath(Xafari.Helpers.CustomizeFilePathEventArgs)">
+            <summary>
+            For internal use.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.GetModelAssemblyFilePath(System.Func{System.String})">
+            <summary>
+            For internal use.
+            </summary>
+            <param name="baseMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.OnCustomizeModulesVersionInfoFilePath(Xafari.Helpers.CustomizeFilePathEventArgs)">
+            <summary>
+            For internal use.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XafApplicationHelper.GetModulesVersionInfoFilePath(System.Func{System.String})">
+            <summary>
+            For internal use.
+            </summary>
+            <param name="baseMethod"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.Helpers.XafApplicationHelper.AfterSetupLayer">
+            <summary>
+            Gets application model layer 'After setup'.
+            </summary>
+        </member>
+        <member name="E:Xafari.Helpers.XafApplicationHelper.UnitOfWorkCreated">
+            <summary>
+            Occurs when new <see cref="T:DevExpress.Xpo.UnitOfWork"/> instance is cretead by calling <see cref="M:Xafari.Helpers.XafApplicationHelper.CreateUnitOfWork(System.IDisposable[])"/> method.
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.XafApplicationHelper.IsSetupComplete">
+            <summary>
+            Indicates that <see cref="T:DevExpress.ExpressApp.XafApplication"/> setup is complete.
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.XafApplicationHelper.Configuration">
+            <summary>
+            Allow to set custom <see cref="P:Xafari.Helpers.XafApplicationHelper.Configuration"/> for application.
+            </summary>
+        </member>
+        <member name="T:Xafari.Helpers.UnitOfWorkCreatedEventArgs">
+            <summary>
+            Event arguments for <see cref="E:Xafari.Helpers.XafApplicationHelper.UnitOfWorkCreated"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.Helpers.UnitOfWorkCreatedEventArgs.UnitOfWork">
+            <summary>
+            Gets created <see cref="P:Xafari.Helpers.UnitOfWorkCreatedEventArgs.UnitOfWork"/> instance.
+            </summary>
+        </member>
+        <member name="T:Xafari.Helpers.XafariApplicationModelLayersHelper">
+            <summary>
+            Implements API to operate with Xafari business model layers
+            </summary>
+        </member>
+        <member name="M:Xafari.Helpers.XPMemberInfoHelper.IsWeakAssociation">
+            <summary>
+            Checks than <paramref name="XafariHelperBase{XPMemberInfo}.Instance"/> has <see cref="T:Xafari.DC.WeakListAttribute"/>. Analogue for <see cref="P:DevExpress.Xpo.Metadata.XPMemberInfo.IsAssociation"/>.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Helpers.XPMemberInfoHelper.ProcessWeakAssociationRefChange(DevExpress.Xpo.Session,System.Object,System.Object,System.Object,System.Boolean)">
+            <summary>
+            Add <paramref name="newValue"/> object into associated weak collection. Analogue for <see cref="M:DevExpress.Xpo.Metadata.XPMemberInfo.ProcessAssociationRefChange(DevExpress.Xpo.Session,System.Object,System.Object,System.Object)"/>.
+            </summary>
+            <param name="session"></param>
+            <param name="referenceMemberOwner"></param>
+            <param name="oldValue"></param>
+            <param name="newValue"></param>
+            <param name="skipNonLoadedCollections"></param>
+            <remarks>
+            By default used by <see cref="!:XafariDCBaseObject"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.Internal.XafariTypesManagerHelper.SafeGetId(DevExpress.Xpo.XPObjectType)">
+            <summary>
+            Safe get Id from XPObjectType reference
+            </summary>
+            <param name="XPObjectType">null or XPObjectType</param>
+            <returns>XPObjectType == null ? null : XPObjectType.Oid</returns>
+        </member>
+        <member name="M:Xafari.Internal.XafariTypesManagerHelper.GetXPObjectType(System.Nullable{System.Int32},DevExpress.Xpo.Session)">
+            <summary>
+            Get XPObjectType by nullable with caching by default
+            </summary>
+            <param name="XPObjectTypeIdNullable"></param>
+            <param name="session">valid xpo Session</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.ITypesProvider`1">
+            <summary>
+            Specifies that the implementor is able to return derived types from the specified type
+            </summary>
+        </member>
+        <member name="T:Xafari.Localization.UserVisibleExceptions">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.UserVisibleExceptions.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.UserVisibleExceptions.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.UserVisibleExceptions.CannotFindApplicationContext">
+             <summary>
+               Looks up a localized string similar to Cannot find a XafariApplicationContextAttribute or a descendant of the XafariApplicationHost class to detect settings of your application in the following folder(s):
+            {0}
+            For a Windows Forms application, this folder(s) must contain your application executable file.
+            For an ASP.NET application, this folder(s) must contain the assembly containing your WebApplication descendant.
+            Internal exception:
+            {1}
+            .
+             </summary>
+        </member>
+        <member name="T:Xafari.Localization.SystemExceptions">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.SystemExceptions.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Localization.SystemExceptions.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Xafari.RuntimeLicensing.CheckLicenseCustomFunction">
+            <summary>
+            Custom function to checking license. Available for criterias and expressions.
+            </summary>
+        </member>
+        <member name="F:Xafari.DeveloperLicense.TrialRunTime.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.DeveloperLicense.TrialRunTime.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.DeveloperLicense.TrialRunTime.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Model.IModelActionContainerXafari">
+            <summary>
+            The advanced actions container.
+            </summary>
+        </member>
+        <member name="P:Xafari.Model.IModelActionContainerXafari.Category">
+            <summary>
+            Specifies localizable category name.
+            </summary>
+        </member>
+        <member name="T:Xafari.NotAuditedAttribute">
+            <summary>
+            Attribute that indicates that current field, property, interface or class should not be audited.
+            </summary>
+        </member>
+        <member name="T:Xafari.RuntimeLicensing.XafariLicenseAttributeNames">
+            <summary>
+            Attributes for runtime license check 
+            </summary>
+        </member>
+        <member name="T:Xafari.RuntimeLicensing.RuntimeLicensingHelper">
+            <summary>
+            Xafari runtime licensing main helper class 
+            It implements XafApplication extension methods for runtime license check 
+            </summary>
+        </member>
+        <member name="M:Xafari.RuntimeLicensing.RuntimeLicensingHelper.IsOK(System.String)">
+            <summary>
+            Check that string value can be interpreted as OK (i.e. true, yes, ok, 1, positive integer)
+            </summary>
+            <param name="strvalue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.RuntimeLicensing.RuntimeLicensingHelper.CheckRuntimeLicense(DevExpress.ExpressApp.XafApplication,System.String)">
+            <summary>
+            Throw LicenseException if there are no runtime license for LicenseAttributeName
+            </summary>
+            <param name="xafApplication">XafApplication</param>
+            <param name="licenseAttributeName">
+            Xafari supported values are defined as constants in Xafari.RuntimeLicensing.XafariLicenseAttributeNames class
+            </param>
+        </member>
+        <member name="M:Xafari.RuntimeLicensing.RuntimeLicensingHelper.IsRuntimeLicenseValid(DevExpress.ExpressApp.XafApplication,System.String)">
+            <summary>
+            Check runtime license for LicenseAttributeName and returns:
+                true  - if license checking is not implemented by application or
+                        if license is valid 
+                false - if license checking is implemented by application and license is not valid
+                throws LicenseException - if some hacks are discovered
+            </summary>
+            <param name="xafApplication">XafApplication</param>
+            <param name="licenseAttributeName">
+            Xafari supported values are defined as constants in Xafari.RuntimeLicensing.XafariLicenseAttributeNames class
+            </param>
+        </member>
+        <member name="M:Xafari.RuntimeLicensing.RuntimeLicensingHelper.GetRuntimeLicenseAttribute(DevExpress.ExpressApp.XafApplication,System.String)">
+            <summary>
+            Get runtime license attribute value if it is provided by application or null
+            throws LicenseException - if some hacks are discovered
+            </summary>
+            <param name="xafApplication">XafApplication</param>
+            <param name="licenseAttributeName">
+            Xafari supported values are defined as constants in Xafari.RuntimeLicensing.XafariLicenseAttributeNames class
+            </param>
+        </member>
+        <member name="P:Xafari.RuntimeLicensing.RuntimeLicensingHelper.HideUnlicensedFunctionality">
+            <summary>
+            If true, then Xafari will try to hide its unlisensed functionality from end user
+            i.e. arms, menu items, context menu items, actions etc.
+            </summary>
+        </member>
+        <member name="T:Xafari.RuntimeLicensing.IRuntimeLicenseInfo">
+            <summary>
+            Single module in XAF application can implement this interface to Applic
+            </summary>
+        </member>
+        <member name="M:Xafari.RuntimeLicensing.IRuntimeLicenseInfo.GetLicenseAttribute(System.String)">
+            <summary>
+            Method which have to return license attribute value or null
+            </summary>
+            <param name="licenseAttributeName">
+              Xafari supported values are defined as constants in Xafari.RuntimeLicensing.XafariLicenseAttributeNames class
+            </param>
+            <returns>
+            null, string.Empty, "false" - some functionality is not licensed
+            "1" - some functionality is licensed
+            some string value - interpreted as paramenter specific to module
+            </returns>
+        </member>
+        <member name="P:Xafari.Security.XafariServerPermissionRequestProcessor.SecurityExcludedTypes">
+            <summary>
+            Set of types which are ignored by the security system.
+            </summary>
+        </member>
+        <member name="T:Xafari.Utils.CurrentUserNameOperator">
+            <summary>
+            Criteria language operator CurrentUserName. Returns the login name of the current user.
+            </summary>
+        </member>
+        <member name="M:Xafari.Utils.VersionHelper.GetXafariVersion(System.Version)">
+            <summary>
+            Gets Xafari version from <see cref="T:System.Version"/> instance.
+            </summary>
+            <returns>Xafari version number</returns>
+        </member>
+        <member name="T:Xafari.Utils.XafariCaptionHelper">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:Xafari.Utils.XafariCaptionHelper.GetFullMemberCaption(DevExpress.ExpressApp.DC.ITypeInfo,System.String)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="typeInfo"></param>
+            <param name="memberName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.XafariApplicationHost">
+            <summary>
+            Application host for Xaf applications.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.Setup">
+            <summary>
+            Executes setting up for environment for current application host.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.SetupCore">
+            <summary>
+            Override this method to customize enviroment setting up.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.CreateApplication``1">
+            <summary>
+            Create an <typeparamref name="TApplication"/> instance.
+            </summary>
+            <typeparam name="TApplication"></typeparam>
+            <returns></returns>
+            <remarks>
+            The created application instance is initialized with <see cref="M:Xafari.XafariApplicationHost.InitializeApplicationCore(DevExpress.ExpressApp.XafApplication,System.Configuration.Configuration)"/> method.
+            </remarks>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.InitializeApplicationCore(DevExpress.ExpressApp.XafApplication,System.Configuration.Configuration)">
+            <summary>
+            Initializes the specified application instance.
+            </summary>
+            <param name="application">Application instance</param>
+            <param name="configuration">Configuration of the specified application. Can be null.</param>
+            <remarks>
+            To initialize the application the <see cref="M:Xafari.Helpers.XafApplicationHelper.Initialize(Xafari.XafariApplicationHost,System.Configuration.Configuration)"/> method is used.
+            </remarks>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.OnApplicationCreated(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationCreated"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.OnApplicationInitialized(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationInitialized"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost.OnApplicationStarted(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationStarted"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.Arguments">
+            <summary>
+            Sets or gets arguments list for started process.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.IsEasyTest">
+            <summary>
+            Indicates than Easy Tests is used.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.ApplicationContext">
+            <summary>
+            Sets or gets <see cref="T:Xafari.XafariApplicationContext"/> for current application host.
+            </summary>
+            <remarks>
+            Used on XafApplication initializing by <see cref="!:XafApplicationHalper.Initialize()"/> method.
+            </remarks>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.TracingLogName">
+            <summary>
+            Sets or gets <see cref="T:DevExpress.Persistent.Base.Tracing"/> log name.
+            Use <see cref="P:Xafari.XafariApplicationHost.Name"/> by default.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.IsSetupComplete">
+            <summary>
+            Indicates than setup is completed.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.Name">
+            <summary>
+            Sets or gets application host name.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationHost.ResultCode">
+            <summary>
+            Gets or sets execution result code
+            </summary>
+        </member>
+        <member name="E:Xafari.XafariApplicationHost.ApplicationCreated">
+            <summary>
+            Occurs when application instance is created.
+            </summary>
+        </member>
+        <member name="E:Xafari.XafariApplicationHost.ApplicationInitialized">
+            <summary>
+            Occurs when application instance is initialized.
+            </summary>
+        </member>
+        <member name="E:Xafari.XafariApplicationHost.ApplicationStarted">
+            <summary>
+            Occurs when application instance is initialized.
+            </summary>
+        </member>
+        <member name="T:Xafari.XafariApplicationHost`1">
+            <summary>
+            Application host for Xaf applications.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.CreateApplication">
+            <summary>
+            Create an <typeparamref name="TApplication"/> instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.OnApplicationCreated(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationCreated"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.OnApplicationCreated(`0)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationCreated"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.OnApplicationInitialized(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationInitialized"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.OnApplicationInitialized(`0)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationInitialized"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.OnApplicationStarted(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationStarted"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.OnApplicationStarted(`0)">
+            <summary>
+            Raise <see cref="E:Xafari.XafariApplicationHost.ApplicationStarted"/> event.
+            </summary>
+            <param name="application"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationHost`1.Setup">
+            <summary>
+            Executes setting up for environment for current application host.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.XafariMultiThreadValueManager`1">
+            <summary>
+            Value manager for XafariServer. Use only for dedicated mode.
+            </summary>
+            <typeparam name="T">Value type</typeparam>
+            <remarks>It works for <see cref="T:DevExpress.ExpressApp.Security.ISecurityStrategyBase"/> type like a <see cref="T:DevExpress.Persistent.Base.MultiThreadValueManager`1"/>,
+            for other types it works like a <see cref="T:DevExpress.Persistent.Base.SimpleValueManager`1"/>.</remarks>
+        </member>
+        <member name="T:Xafari.Utils.ReflectionHelperEx">
+            <summary>
+            Набор статических методов, используемых при чтении security configuration.
+            </summary>
+        </member>
+        <member name="M:Xafari.Utils.ReflectionHelperEx.SetObjectProperties(System.Object,System.Collections.Generic.IEnumerable{Xafari.Utils.IClassProperty})">
+            <summary>
+            Устанавливает свойства указанного объекта в заданные значения.
+            </summary>
+            <param name="theObject">Объект, свойства которого устанавливаются.</param>
+            <param name="properties">Перечень свойств. Для всех элементов перечисления должен быть реализован IClassProperty.</param>
+        </member>
+        <member name="M:Xafari.Utils.ReflectionHelperEx.GetMemberType(System.Object,System.String)">
+            <summary>
+            Возвращает тип указанного поля объекта произвольного класса
+            </summary>
+            <param name="theObject">Объект произвольного класса.</param>
+            <param name="propertyName">Строковое наименование произвольного свойства объекта.</param>
+            <returns>Если свойство найдено - возвращается его тип, в противном случае null.</returns>
+        </member>
+        <member name="T:Xafari.Utils.IClassProperty">
+            <summary>
+            Определяет атрибуты, описывающие инициализируемые свойства объекта.
+            </summary>
+        </member>
+        <member name="P:Xafari.Utils.IClassProperty.Name">
+            <summary>
+            Строковое наименование свойства.
+            </summary>
+        </member>
+        <member name="P:Xafari.Utils.IClassProperty.Value">
+            <summary>
+            Значение свойства в виде строки.
+            </summary>
+        </member>
+        <member name="T:Xafari.Utils.SecurityConfiguration">
+            <summary>
+            Представляет секцию конфигурирования подсистемы безопасности в конфигурационном файле приложения
+            </summary>
+        </member>
+        <member name="P:Xafari.Utils.LogonParametersClassElement.TypeName">
+            <summary>
+            Имя типа класса аутентификации
+            </summary>
+        </member>
+        <member name="P:Xafari.Utils.LogonParametersClassElement.InitializedProperties">
+            <summary>
+            Коллекция инициализируемых свойств класса аутентификации
+            </summary>
+        </member>
+        <member name="T:Xafari.Utils.AuthenctiationClassElement">
+            <summary>
+            Элемент конфигурации, описывающий класс аутенентификации и параметры его инициализации.
+            </summary>
+        </member>
+        <member name="P:Xafari.Utils.AuthenctiationClassElement.TypeName">
+            <summary>
+            Имя типа класса аутентификации
+            </summary>
+        </member>
+        <member name="P:Xafari.Utils.AuthenctiationClassElement.InitializedProperties">
+            <summary>
+            Коллекция инициализируемых свойств класса аутентификации
+            </summary>
+        </member>
+        <member name="T:Xafari.XafariApplicationContext">
+            <summary>
+            Defines Xafari application context usage.
+            </summary>
+            <remarks>
+            Used by declaring additional modules by <see cref="T:Xafari.AdditionalModuleAttribute"/>.
+            Used by Xafari application initialization <see cref="M:Xafari.Helpers.XafApplicationHelper.Initialize(Xafari.XafariApplicationContext[])"/>.
+            </remarks>
+            <example>
+            Code below shows how to define additional modules for module <i>MyModule</i>.
+            <code>
+            [AdditionalModule(XafariApplicationContext.WinContextName)]
+            [AdditionalModule(XafariApplicationContext.WebContextName)]
+            public class MyModule : ModuleBase {}
+            </code>
+            </example>
+        </member>
+        <member name="M:Xafari.XafariApplicationContext.RegisterSuffix(Xafari.XafariApplicationContext,System.String)">
+            <summary>
+            Register assembly name suffix for specified <paramref name="context"/>.
+            </summary>
+            <param name="context"></param>
+            <param name="suffix"></param>
+        </member>
+        <member name="M:Xafari.XafariApplicationContext.GetAssemblyName(System.Reflection.Assembly)">
+            <summary>
+            Gets <see cref="T:System.Reflection.AssemblyName"/> with registered suffix for specified <paramref name="assembly"/>.
+            </summary>
+            <param name="assembly"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Win">
+            <summary>
+            WinForms application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Web">
+            <summary>
+            WebForms application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Cfg">
+            <summary>
+            Configurator application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Mvc">
+            <summary>
+            Mvc application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.MvcMVCx">
+            <summary>
+            MVCx application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Console">
+            <summary>
+            Console application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.WindowsService">
+            <summary>
+            Windows service application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Xpo">
+            <summary>
+            Xpo usage application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.DC">
+            <summary>
+            Domain components usage application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.EF">
+            <summary>
+            Entity Framework usage application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Wcf">
+            <summary>
+            Wcf service application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Mobile">
+            <summary>
+            Mobile application context.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Name">
+            <summary>
+            Gets the context name.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariApplicationContext.Suffix">
+            <summary>
+            Gets assembly name suffix for current context.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.XafariApplicationContextAttribute">
+            <summary>
+            Uses to specify <see cref="T:Xafari.XafariApplicationContext"/> for application container assembly.
+            </summary>
+            <remarks>
+            Model Editor utility tries to find this attribute to detect application context usage.
+            </remarks>
+        </member>
+        <member name="M:Xafari.XafariApplicationContextAttribute.#ctor(System.String)">
+            <summary>
+            Uses to specify <see cref="T:Xafari.XafariApplicationContext"/> for application container assembly.
+            </summary>
+        </member>
+        <member name="T:Xafari.XafariNonPersistentObjectSpace">
+            <summary>
+            An <see href="https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument113707">Object Space</see> used to manage <see href="https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument116516">non-persistent</see> objects.
+            </summary>
+            <remarks>
+            Unlike the <see cref="T:DevExpress.ExpressApp.NonPersistentObjectSpace"/> the <see cref="T:Xafari.XafariNonPersistentObjectSpace"/> is able to create Nested Object Spaces of type <see cref="T:Xafari.XafariNestedNonPersistentObjectSpace"/>.
+            Nested Object Space is used in UI to support aggregated collections and object property editors. Non persistent objects can also use this behavior.
+            See <see href="https://documentation.devexpress.com/#eXpressAppFramework/DevExpressExpressAppXpoXPObjectSpace_CreateNestedObjectSpacetopic"/> for more details.
+            </remarks>
+        </member>
+        <member name="T:Xafari.XafariNonPersistentObjectSpaceProvider">
+            <summary>
+            Creates the <see cref="T:Xafari.XafariNonPersistentObjectSpace"/> Object Space.
+            </summary>
+            <remarks>
+            To enable the use of <see cref="T:Xafari.XafariNonPersistentObjectSpace"/>, the following code should be added to the overridden <see cref="M:DevExpress.ExpressApp.XafApplication.CreateDefaultObjectSpaceProvider(DevExpress.ExpressApp.CreateCustomObjectSpaceProviderEventArgs)"/> method located in the WinApplication.cs (WinApplication.vb) and/or WebApplication.cs (WebApplication.vb) file (in addition to the existing XPObjectSpaceProvider or EFObjectSpaceProvider).
+            <para>
+            <code>
+            protected override void CreateDefaultObjectSpaceProvider(CreateCustomObjectSpaceProviderEventArgs args) {
+              ... 
+              args.ObjectSpaceProviders.Add(new XafariNonPersistentObjectSpaceProvider(TypesInfo, null));
+            }
+            </code>
+            </para>
+            Instead of overriding of the method <see cref="M:DevExpress.ExpressApp.XafApplication.CreateDefaultObjectSpaceProvider(DevExpress.ExpressApp.CreateCustomObjectSpaceProviderEventArgs)"/> the <see cref="E:DevExpress.ExpressApp.XafApplication.CreateCustomObjectSpaceProvider"/> event could be used.
+            </remarks>
+        </member>
+        <member name="F:Xafari.S38161.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.S38161.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.S38161.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafApplicationExtensions.IsActualModulesVersionInfo(DevExpress.ExpressApp.XafApplication,System.Collections.Generic.List{System.String})">
+            <summary>
+            method is taken from DevExpress.ExpressApp.XafApplication.IsActualModulesVersionInfo() 
+            </summary>
+            <param name="application"></param>
+            <param name="assembliesNotIncluded"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.XafApplicationExtensions.IsSharedApplication(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Checks specified application instance to shared application.
+            https://documentation.devexpress.com/#Xaf/DevExpressExpressAppWebWebApplication_SetSharedtopic
+            </summary>
+            <param name="application"></param>
+            <returns></returns>
+            <remarks>
+            WebApplication supports Shared Model to improve performance.
+            When Shared Model intilize ValueManager has inavalid state.
+            And if you use ValueManager operations inside Setup module method you have to check on application is Shared or not.
+            </remarks>
+        </member>
+        <member name="T:Xafari.DC.XPWeakReferenceStruct">
+            <summary>
+            Struct for persisting reference to persistent object (or persistent domain component)
+            If works with XPO only (i.e. EF and other ORM are not supported)
+            </summary>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Serialization constructor
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.#ctor(DevExpress.Xpo.Session,System.Object)">
+            <summary>
+            Constructor for XPWeakReferenceStruct
+            </summary>
+            <param name="currentSession">currentSession must be valid XPO Session or null and can be different from target object session</param>
+            <param name="target">target object should be valid persistent xpo object which can be casted to ISessionProvider or null</param>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.GetTargetObject(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Get object from XPWeakReferenceStruct
+            </summary>
+            <param name="objectSpace">valid XPObjectSpace</param>
+            <returns>object by week reference or null if reference is bad</returns>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.GetTargetObject(DevExpress.Xpo.Session)">
+            <summary>
+            Get object from XPWeakReferenceStruct
+            </summary>
+            <param name="session">valid XPO session</param>
+            <returns>object by week reference or null if reference is bad</returns>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.GetTargetObject(DevExpress.ExpressApp.IObjectSpace,System.Boolean,System.Boolean)">
+            <summary>
+            Get object from XPWeakReferenceStruct
+            </summary>
+            <param name="objectSpace">valid XPObjectSpace</param>
+            <param name="returnNullOnBadReference"></param>
+            <param name="alwaysGetFromDb"></param>
+            <exception cref="T:System.Data.ObjectNotFoundException">if returnNullOnBadReference=false Throws exception if object is not found by stored key</exception>
+            <exception cref="T:System.Exception">Throws exception if any other inconsistencies are found (bad session, no type info, connection errors, no object with this key, incorrect type etc.)</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.GetTargetObject(DevExpress.Xpo.Session,System.Boolean,System.Boolean)">
+            <summary>
+            Get object from XPWeakReferenceStruct
+            </summary>
+            <param name="session"></param>
+            <param name="returnNullOnBadReference"></param>
+            <param name="alwaysGetFromDb"></param>
+            <exception cref="T:System.Data.ObjectNotFoundException">if returnNullOnBadReference=false Throws exception if object is not found by stored key</exception>
+            <exception cref="T:System.Exception">Throws exception if any other inconsistencies are found (bad session, no type info, connection errors, no object with this key, incorrect type etc.)</exception>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.SetTargetObject(System.Object,DevExpress.Xpo.Session)">
+            <summary>
+            Create XPWeakReferenceStruct for persistent object
+            </summary>
+            <param name="value">target object</param>
+            <param name="currentSession">currentSession must be valid XPO Session but can be different from object session</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.DC.XPWeakReferenceStruct.SetTargetObject(System.Object,DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Create XPWeakReferenceStruct for persistent object
+            </summary>
+            <param name="value"></param>
+            <param name="currentObjectSpace">currentObjectSpace must be valid XPObjectspace but  can be different from object session</param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.DC.XPWeakReferenceStruct.TargetType">
+            <summary>
+            Id for TargetXPObjectType persistance of target persistent object
+            i.e. TargetType=TargetXPObjectType.Oid or 0 (if TargetXPObjectType==null);
+            Column name was not changed for compatiblity with older DBs
+            To obtain XPObjectType please use explicit extension methods TargetType.GetXPObjectType(session) or TargetType=XPObjectType.SafeGetId() declared in Xafari.Internal")]
+            </summary>
+        </member>
+        <member name="P:Xafari.DC.XPWeakReferenceStruct.TargetKey">
+            <summary>
+            Key of target persistent object
+            </summary>
+        </member>
+        <member name="T:Xafari.EventSet">
+            <summary>
+            Collection of events.
+            </summary>
+        </member>
+        <member name="M:Xafari.EventSet.Add(System.String,System.Delegate)">
+            <summary>
+            Adds event handler of specified event to the collection.
+            </summary>
+            <param name="eventKey">Event's id.</param>
+            <param name="handler">Event's handler.</param>
+        </member>
+        <member name="M:Xafari.EventSet.Remove(System.String,System.Delegate)">
+            <summary>
+            Removes event handler of specified event from the collection.
+            </summary>
+            <param name="eventKey">Event's id.</param>
+            <param name="handler">Event's handler.</param>
+        </member>
+        <member name="M:Xafari.EventSet.Raise(System.String,System.Object,System.EventArgs)">
+            <summary>
+            Raises specified event.
+            </summary>
+            <param name="eventKey">Event's id.</param>
+            <param name="sender">Source of the event.</param>
+            <param name="e">Event's arguments.</param>
+        </member>
+        <member name="M:Xafari.Controllers.ListViewCriteriaObjectCreatingController.GetGroupCriteriaOperator">
+            <summary>
+            Combines criteria from Model and CollectionSource of corresponding ListView.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Controllers.ListViewCriteriaObjectCreatingController.GetModelColumns">
+            <summary>
+            Allow to get model coumns with needed option.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Xafari.Controllers.ListViewCriteriaObjectCreatingController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.ListViewCriteriaObjectCreatingController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Controllers.ListViewCriteriaObjectCreatingController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.Xafari_ExpiredR">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.Xafari_TrialR">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.XafariLicensingText1">
+            <summary>
+              Looks up a localized string similar to Application uses trial Xafari Framework components.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.XafariLicensingText2">
+            <summary>
+              Looks up a localized string similar to The evaluation period will expire.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.XafariLicensingText3">
+            <summary>
+              Looks up a localized string similar to Please contact the application vendor to obtain fully functional one.
+            </summary>
+        </member>
+        <member name="P:Xafari.Properties.Resources.XafariLicensingText4">
+            <summary>
+              Looks up a localized string similar to The evaluation period Xafari expired.
+            </summary>
+        </member>
+        <member name="T:Xafari.Templates.INotifyUserVisibilityChanged">
+            <summary>
+            The interface is used to check the visibility of the object to the user.
+            Not to be confused with Control.Visible.
+            </summary>
+        </member>
+        <member name="T:Xafari.Core.XafariUrlManager">
+            <summary>
+            Contains metods to build URLs based on shortcuts.
+            </summary>
+            <remarks>
+            This class is not intended to directly create instances. It serves as the base class for platform-specific implementations.
+            </remarks>
+        </member>
+        <member name="M:Xafari.Core.XafariUrlManager.#ctor">
+            <summary>
+            This class is not intended to directly create instances. It serves as the base class for platform-specific implementations.
+            </summary>
+        </member>
+        <member name="M:Xafari.Core.XafariUrlManager.SetInstance(Xafari.Core.XafariUrlManager)">
+            <summary>
+            Initialization of the <see cref="T:Xafari.Core.XafariUrlManager"/> with platform-specific implementation.
+            </summary>
+            <param name="urlManager">Instance of platform-specific implementation of <see cref="T:Xafari.Core.XafariUrlManager"/>.</param>
+        </member>
+        <member name="M:Xafari.Core.XafariUrlManager.BuildUrl(DevExpress.ExpressApp.ViewShortcut)">
+            <summary>
+            Creates URL based on passed shortcut.
+            </summary>
+            <param name="shortcut">Instance of <see cref="T:DevExpress.ExpressApp.ViewShortcut"/>.</param>
+            <returns>URL string.</returns>
+        </member>
+        <member name="M:Xafari.Core.XafariUrlManager.BuildUrlCore(DevExpress.ExpressApp.ViewShortcut)">
+            <summary>
+            This method must be overriten in platform-specific implementations of class.
+            </summary>
+            <param name="shortcut">Instance of <see cref="T:DevExpress.ExpressApp.ViewShortcut"/>.</param>
+            <returns>URL string.</returns>
+        </member>
+        <member name="P:Xafari.Core.XafariUrlManager.Application">
+            <summary>
+            Return instance of the current applicatiton.
+            </summary>
+        </member>
+        <member name="P:Xafari.Core.XafariUrlManager.Instance">
+            <summary>
+            Return instance of <see cref="T:Xafari.Core.XafariUrlManager"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IAuditSupport">
+            <summary>
+            Base interface for audit.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IHistoryInfo">
+            <summary>
+            Fields for managing history info.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IHistoryInfo.HistoryCreate">
+            <summary>
+            Object created.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IHistoryInfo.HistoryModify">
+            <summary>
+            Object modified.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IAuditSupport.TransactionId">
+            <summary>
+            Helps to modify base table of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.ITitleSupport">
+            <summary>
+            This interface declares the use a Title.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.ITitleSupport.Title">
+            <summary>
+            Gets and sets a header of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IIsServiceSupport">
+            <summary>
+            This interface declares the use a Title.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IIsServiceSupport.IsService">
+            <summary>
+            Gets and sets the value indicating if current object contains special service information.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.ICodeSupport">
+            <summary>
+            This interface declares the use a Code.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.ICodeSupport.Code">
+            <summary>
+            Gets and sets a code of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IFullNameSupport">
+            <summary>
+            This interface declares the use a FullName.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IFullNameSupport.FullName">
+            <summary>
+            Gets and sets a code of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IDisplayNameSupport">
+            <summary>
+            This interface declares the use a DisplayName.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IDisplayNameSupport.DisplayName">
+            <summary>
+            Gets and sets object DisplayName.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.INameSupportExt">
+            <summary>
+            This interface declares the use Name.
+            </summary>
+        </member>
+        <member name="M:Xafari.Base.INameSupportExt.SetName(System.String)">
+            <summary>
+            Gets and sets a name of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IIndexSupport">
+            <summary>
+            This interface declares the use Index.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IIndexSupport.Index">
+            <summary>
+            Gets and sets object index.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IOwnerSupport">
+            <summary>
+            This interface declares Owner property.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IOwnerSupport.Owner">
+            <summary>
+            Gets and sets object owner.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IShortNameSupport">
+            <summary>
+            This interface declares the use Short Name.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IShortNameSupport.ShortName">
+            <summary>
+            Gets and sets a short name of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.INumberSupport">
+            <summary>
+            This interface declares the use Number.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.INumberSupport.Number">
+            <summary>
+            Gets and sets a number of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IPeriodDateSupport">
+            <summary>
+            This interface declares the period.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IPeriodDateSupport.StartDate">
+            <summary>
+            Period start date.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IPeriodDateSupport.EndDate">
+            <summary>
+            Period end date.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.INameSupportList`1">
+            <summary>
+            Named objects collection.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Xafari.Base.INameReadOnlySupport">
+            <summary>
+            This interface declares the use readonly Name.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.INameReadOnlySupport.Name">
+            <summary>
+            Gets a name of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IModifyDateSupport">
+            <summary>
+            This interface declares the use modify Date.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IModifyDateSupport.ModifyDate">
+            <summary>
+            Gets and sets a modify date of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IImageNameSupport">
+            <summary>
+            This interface declares the use Image Name.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IImageNameSupport.ImageName">
+            <summary>
+            Gets and sets an image name of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IOwnerTypeSupport">
+            <summary>
+            This interface declares the use an Owner Type.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IOwnerTypeSupport.OwnerType">
+            <summary>
+            Gets an owner type of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.ITagsSupport">
+            <summary>
+            This interface declares the use Tags.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.ITagsSupport.Tags">
+            <summary>
+            Gets and sets tags of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IAsStringSupport">
+            <summary>
+            This interface declares the use an As String.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.IAsStringSupport.AsString">
+            <summary>
+            Gets and sets  a string representation of object.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.IThisObjectSupport">
+            <summary>
+            Provides access to member <see cref="P:Xafari.Base.IThisObjectSupport.ThisObject"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.Base.ICurrentHierarchyProvider">
+            <summary>
+            Provides support of multiple hierarchies of class.
+            </summary>
+        </member>
+        <member name="P:Xafari.Base.ICurrentHierarchyProvider.CurrentHierarchyName">
+            <summary>
+            Gets and sets the current object hierarchy.
+            </summary>
+            <remarks>
+            Used when switching hierarchies in <see cref="T:DevExpress.ExpressApp.ListView"/>.
+            </remarks>
+        </member>
+        <member name="T:Xafari.Base.IActiveProvider">
+            <summary>
+            Provides access to member <see cref="P:Xafari.Base.IActiveProvider.Active"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.Actions.HideActionsViewController">
+            <summary>
+            Resolves this issue http://www.devexpress.com/Support/Center/p/B130364.aspx
+            </summary>
+        </member>
+        <member name="F:Xafari.Actions.HideActionsViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.HideActionsViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Actions.HideActionsViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Xafari.Actions.PopupContainerShowAction.RegisterWindow(DevExpress.ExpressApp.Window)">
+            <summary>
+            Saving the frame to the collection.
+            </summary>
+            <param name="window"></param>
+        </member>
+        <member name="M:Xafari.Actions.PopupContainerShowAction.UnregisterWindow">
+            <summary>
+            Cleaning of the collection.
+            </summary>
+        </member>
+        <member name="F:Xafari.Controllers.AutoRefreshViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.AutoRefreshViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Controllers.AutoRefreshViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Controllers.DefaultValueViewController">
+            <summary>
+            The controller implements the possibility of using the last values
+             entered by the user in detail view when the view is reopened.
+            </summary>
+            <remarks>
+            The controller is activated if allowed in the application model.
+            <para>
+            The controller activity is managed by <b>UseDefaultValue</b> attribute in 
+            <b>DetailView</b> model node. The same attribute is used in <b>PropertyEditor</b> node.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.LoadDefaultValues(DevExpress.ExpressApp.Model.IModelDetailView)">
+            <summary>
+            Loads the default values and sets them to properties.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.LoadDefaultValue(Xafari.Model.IModelPropertyEditorXafari,System.Object)">
+            <summary>
+            Loads the default value of the <i>item</i> and sets the properties for the object <i>obj</i>.
+            </summary>
+            <param name="item">Model node of property editor.</param>
+            <param name="obj">Edited object.</param>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.SaveDefaultValues(DevExpress.ExpressApp.Model.IModelDetailView)">
+            <summary>
+            Saves current values as default values.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.SaveDefaultValue(Xafari.Model.IModelPropertyEditorXafari,System.Object)">
+            <summary>
+            Saves current value of <i>item</i> property for <i>obj</i> object.
+            </summary>
+            <param name="item">Model node of property editor.</param>
+            <param name="obj">Edited object.</param>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.SetDefaultValue(DevExpress.ExpressApp.DetailView,System.String,System.Object)">
+            <summary>
+            Sets <i>value</i> as default for <i>propertyName</i> property
+            of <i>view</i>.
+            </summary>
+            <param name="view"></param>
+            <param name="propertyName"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Xafari.Controllers.DefaultValueViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Controllers.DefaultValueViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Model.ModelNodeFormatter">
+            <summary>
+             The formatter is used to create the context help file name.
+            </summary>
+             <remarks>
+             Handles the format of the Application Model node in the form of {0:ID}.
+             </remarks>
+        </member>
+        <member name="M:Xafari.Model.ModelNodeFormatter.#ctor">
+            <summary>
+             Creates the <see cref="T:Xafari.Model.ModelNodeFormatter"/> object.
+            </summary>
+        </member>
+        <member name="M:Xafari.Model.ModelNodeFormatter.GetFormat(System.Type)">
+            <summary>
+            Gets an object that provides formatting services for the specified type.
+            </summary>
+            
+            <returns>
+            The current instance, if formatType is the same type as the current instance; otherwise, null.
+            </returns>
+            
+            <param name="formatType">An object that specifies the type of format object to get. </param><filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Xafari.Model.ModelNodeFormatter.Format(System.String,System.Object,System.IFormatProvider)">
+            <summary>
+            Converts the value of a specified object to an equivalent string representation using specified format and culture-specific formatting information.
+            </summary>
+            
+            <returns>
+            The string representation of the value of arg, formatted as specified by format and formatProvider.
+            </returns>
+            
+            <param name="arg">An object to format. </param>
+            <param name="format">A format string containing formatting specifications. </param>
+            <param name="formatProvider">An <see cref="T:System.IFormatProvider"></see> object that supplies format information about the current instance. </param><filterpriority>2</filterpriority>
+        </member>
+        <member name="F:Xafari.XafariModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.XafariModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Controllers.MultipleLookupViewController">
+            <summary>
+            The base class for the controller that implements the ability 
+            to select multiple objects with the following processing of the selected objects.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.MultipleLookupViewController.Choice(DevExpress.ExpressApp.Actions.PopupWindowShowActionExecuteEventArgs)">
+            <summary>
+            Fires after selecting from the list.
+            </summary>
+            <param name="args">Contains executing parameters of <see cref="T:DevExpress.ExpressApp.Actions.PopupWindowShowAction"/>.</param>
+        </member>
+        <member name="F:Xafari.Controllers.MultipleLookupViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.MultipleLookupViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Controllers.MultipleLookupViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Xafari.Controllers.MultipleLookupViewController.LookupObjectsAction">
+            <summary>
+            Gets and sets the <see cref="T:DevExpress.ExpressApp.Actions.PopupWindowShowAction"/>, which is used
+            to call the form of multiple choice.
+            </summary>
+        </member>
+        <member name="P:Xafari.Controllers.MultipleLookupViewController.View">
+            <summary>
+            Gets <see cref="T:DevExpress.ExpressApp.ListView"/> of this controller.
+            </summary>
+        </member>
+        <member name="P:Xafari.Controllers.MultipleLookupViewController.LookupObjectType">
+            <summary>
+            Gets and sets <see cref="T:System.Type"/> of objects, which will be selected from the list.
+            </summary>
+        </member>
+        <member name="P:Xafari.Controllers.MultipleLookupViewController.Criteria">
+            <summary>
+            Returns a permanent selection criteria for the list.
+            </summary>
+            <value>By default, returns <b>null</b>.</value>
+            <remarks>
+            Is not used if <see cref="P:Xafari.Controllers.MultipleLookupViewController.CollectionSource"/> is not <b>null</b>.
+            </remarks>
+        </member>
+        <member name="P:Xafari.Controllers.MultipleLookupViewController.CollectionSource">
+            <summary>
+            Returns data for the list.
+            </summary>
+            <value>By default, returns <b>null</b>.</value>
+            <remarks>
+            If this method is overridden in a successor and does not return <b>null</b>, <see cref="P:Xafari.Controllers.MultipleLookupViewController.Criteria"/> property
+            is not applied.
+            </remarks>
+        </member>
+        <member name="F:Xafari.Controllers.WizardDialogController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Controllers.WizardDialogController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Controllers.WizardDialogController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Utils.BoolTree">
+            <summary>
+            Implements the calculation of a Boolean expression.
+            Allows to get a string representation of the list of calculations.
+            </summary>
+            <remarks>
+            Works like <see cref="T:DevExpress.ExpressApp.Utils.BoolList"/>. In addition allows to add Boolean expressions as elements.
+            </remarks>
+        </member>
+        <member name="T:Xafari.Utils.FilteredLocalizedClassInfoTypeConverter`1">
+            <summary>
+            Реализует <see cref="T:System.ComponentModel.TypeConverter"/> для свойств с типом данных <see cref="T:System.Type"/>
+            с фильтрацией по данному базовому типу. В качестве фильтра могут быть использованы как
+            типы, так и интефейсы.
+            </summary>
+            <typeparam name="TTypeFilter">Тип для фильтрации.</typeparam>
+        </member>
+        <member name="T:Xafari.Utils.MessageType">
+            <summary>
+            Тип сообщения
+            </summary>
+        </member>
+        <member name="F:Xafari.Utils.MessageType.Warning">
+            <summary>
+            Предупреждение
+            </summary>
+        </member>
+        <member name="F:Xafari.Utils.MessageType.Error">
+            <summary>
+            Ошибка
+            </summary>
+        </member>
+        <member name="F:Xafari.Utils.MessageType.Info">
+            <summary>
+            Информационное сообщение
+            </summary>
+        </member>
+        <member name="F:Xafari.Utils.MessageType.Success">
+            <summary>
+            Сообщение об удачном исходе события
+            </summary>
+        </member>
+        <member name="T:Xafari.Utils.MessageObject">
+            <summary>
+            Класс, предназначенный для создания сообщений об ошибке, предупреждений, информационных и других сообщений.
+            Использует класс ShowViewParameters и создает простое окно с информационным сообщением.
+            </summary>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessage(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,Xafari.Utils.MessageType)">
+            <summary>
+            Создает DetailView в зависимости от типа сообщения. <see cref="T:Xafari.Utils.MessageType"/>
+            Заполняет параметры для отображения DetailView, и отображает заданную форму с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/> </param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="messageType">тип сообщения <see cref="T:Xafari.Utils.MessageType"/></param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessage``1(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,Xafari.Utils.MessageType)">
+            <summary>
+            Создает DetailView в зависимости от типа сообщения. <see cref="T:Xafari.Utils.MessageType"/>
+            Заполняет параметры для отображения DetailView, и отображает заданную форму с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/> </param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="messageType">тип сообщения <see cref="T:Xafari.Utils.MessageType"/></param>
+            <patypeparam name="DialogControllerType">Контроллер реализует дополнительные кнопки на форме.</patypeparam>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessage(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,Xafari.Utils.MessageType,DevExpress.ExpressApp.SystemModule.DialogController)">
+            <summary>
+            Создает DetailView в зависимости от типа сообщения. <see cref="T:Xafari.Utils.MessageType"/>
+            Заполняет параметры для отображения DetailView, и отображает заданную форму с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/> </param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="messageType">тип сообщения <see cref="T:Xafari.Utils.MessageType"/></param>
+            <param name="actionsController">Контроллер реализует дополнительные кнопки на форме.
+            Должен является наследником <see cref="T:DevExpress.ExpressApp.SystemModule.DialogController"/>.</param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessage(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,Xafari.Utils.MessageType,System.String,System.String,System.Object[])">
+            <summary>
+            Создает DetailView в зависимости от типа сообщения. <see cref="T:Xafari.Utils.MessageType"/>
+            Заполняет параметры для отображения DetailView, и отображает заданную форму с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/> </param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">информационное сообщение</param>
+            <param name="messageType">тип сообщения <see cref="T:Xafari.Utils.MessageType"/></param>
+            <param name="pars">Параметры текста сообщения.</param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessage``1(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,Xafari.Utils.MessageType,System.String,System.String,System.Object[])">
+            <summary>
+            Создает DetailView в зависимости от типа сообщения. <see cref="T:Xafari.Utils.MessageType"/>
+            Заполняет параметры для отображения DetailView, и отображает заданную форму с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/> </param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">информационное сообщение</param>
+            <param name="messageType">тип сообщения <see cref="T:Xafari.Utils.MessageType"/></param>
+            <param name="pars">Параметры текста сообщения.</param>
+            <patypeparam name="DialogControllerType">Контроллер реализует дополнительные кнопки на форме.</patypeparam>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessage(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,Xafari.Utils.MessageType,System.String,System.String,DevExpress.ExpressApp.SystemModule.DialogController,System.Object[])">
+            <summary>
+            Создает DetailView в зависимости от типа сообщения. <see cref="T:Xafari.Utils.MessageType"/>
+            Заполняет параметры для отображения DetailView, и отображает заданную форму с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/> </param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">информационное сообщение</param>
+            <param name="messageType">тип сообщения <see cref="T:Xafari.Utils.MessageType"/></param>
+            <param name="pars">Параметры текста сообщения.</param>
+            <param name="actionsController">Контроллер реализует дополнительные кнопки на форме.
+            Должен является наследником <see cref="T:DevExpress.ExpressApp.SystemModule.DialogController"/>.</param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessageWarning(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,System.String,System.String,System.Object[])">
+            <summary>
+            Создает окно с предупреждающим сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/></param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">предупреждающее сообщение</param>
+            <param name="pars">Параметры текста сообщения.</param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessageInfo(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,System.String,System.String,System.Object[])">
+            <summary>
+            Создает окно с информационным сообщением.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/></param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">информационное сообщение</param>
+            <param name="pars">Параметры текста сообщения.</param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessageSuccess(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,System.String,System.String,System.Object[])">
+            <summary>
+            Создает сообщение об удачном исходе события.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/></param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">сообщение об удачном исходе события</param>
+            <param name="pars">Параметры текста сообщения.</param>
+        </member>
+        <member name="M:Xafari.Utils.MessageObject.CreateMessageError(DevExpress.ExpressApp.ShowViewParameters,DevExpress.ExpressApp.XafApplication,System.String,System.String,System.Object[])">
+            <summary>
+            Создет сообщение об ошибке.
+            </summary>
+            <param name="parameters">параметры для отображения DetailView <see cref="T:DevExpress.ExpressApp.ShowViewParameters"/></param>
+            <param name="application">текущее приложение, необходимо для создания DetailView</param>
+            <param name="caption">заголовок окна</param>
+            <param name="text">текст сообщения об ошибке</param>
+            <param name="pars">Параметры текста сообщения.</param>
+        </member>
+        <member name="T:Xafari.Utils.RuleHelper">
+            <summary>
+            Contains some methods to generate <see cref="T:DevExpress.Persistent.Validation.RuleBase"/> objects for derived types for specified base type.
+            </summary>
+        </member>
+        <member name="M:Xafari.Utils.RuleHelper.CreateRuleUnique``1(System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Persistent.Validation.RuleUniqueValue"/> for derived types of <typeparamref name="TBaseType"/> for property <paramref name="propertyName"/>.
+            </summary>
+            <typeparam name="TBaseType">Base type</typeparam>
+            <param name="propertyName">Unique property name.</param>
+            <returns>
+            Returns list of created <see cref="T:DevExpress.Persistent.Validation.RuleUniqueValue"/> objects.
+            </returns>
+        </member>
+        <member name="M:Xafari.Utils.RuleHelper.CreateRuleUnique(DevExpress.ExpressApp.DC.ITypeInfo,System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Persistent.Validation.RuleUniqueValue"/> for derived types of <paramref name="baseType"/> for property <paramref name="propertyName"/>.
+            </summary>
+            <param name="baseType">Base type info</param>
+            <param name="propertyName">Unique property name.</param>
+            <returns>
+            Returns list of created <see cref="T:DevExpress.Persistent.Validation.RuleUniqueValue"/> objects.
+            </returns>
+        </member>
+        <member name="M:Xafari.Utils.RuleHelper.CreateRule``2(DevExpress.ExpressApp.DC.ITypeInfo,``1,System.String,System.String,System.String)">
+            <summary>
+            Creates <typeparamref name="TRule"/> objects with <typeparamref name="TProperties"/> for derived types of <paramref name="baseType"/>.
+            </summary>
+            <param name="baseType">Base type info</param>
+            <param name="propertiesTemplate">Default rule properties.</param>
+            <param name="idPattern">Id rule pattern.</param>
+            <param name="namePattern">Name rule pattern.</param>
+            <param name="customMessageTemplatePattern">Custom message pattern.</param>
+            <typeparam name="TRule">Created rule type</typeparam>
+            <typeparam name="TProperties">Created rule properties</typeparam>
+            <returns>
+            Returns list of created <see cref="T:DevExpress.Persistent.Validation.RuleUniqueValue"/> objects.
+            </returns>
+        </member>
+        <member name="M:Xafari.Utils.RuleHelper.CreateRulePropertyValue``2(DevExpress.ExpressApp.DC.ITypeInfo,``1,System.String,System.String,System.String)">
+            <summary>
+            Creates <see cref="T:DevExpress.Persistent.Validation.RulePropertyValue"/> objects with <see cref="T:DevExpress.Persistent.Validation.RulePropertyValueProperties"/> for derived types of <paramref name="baseType"/>.
+            </summary>
+            <param name="baseType">Base type info</param>
+            <param name="propertiesTemplate">Default rule properties.</param>
+            <param name="idPattern">Id rule pattern.</param>
+            <param name="namePattern">Name rule pattern.</param>
+            <param name="customMessageTemplatePattern">Custom message pattern.</param>
+            <typeparam name="TRule">Created rule type</typeparam>
+            <typeparam name="TProperties">Created rule properties</typeparam>
+            <returns>
+            Returns list of created <see cref="T:DevExpress.Persistent.Validation.RuleUniqueValue"/> objects.
+            </returns>
+        </member>
+        <member name="M:Xafari.Utils.ViewHelper.SetDetailViewVericalLayout(DevExpress.ExpressApp.Model.IModelDetailView,System.Collections.Generic.IList{DevExpress.ExpressApp.Model.IModelLayoutGroup},DevExpress.ExpressApp.Model.IModelNode,System.Boolean,DevExpress.Utils.Locations,DevExpress.Utils.HorzAlignment)">
+            <summary>
+            Группировка LayoutItems из одного или нескольких узлов LayoutGroup.
+            </summary>
+            <param name="detailViewModel">Модель DetailView</param>
+            <param name="layoutGroupsToUngroup">Группы которые будут расформированы. При значении null будут расформированы все группы входящие в группу Main</param>
+            <param name="toGroupNode">Узел для группировки. Должен быть выше или на одном уровне в иерархии слоёв относительно <b>layoutGroupsToUngroup</b>. При значении null используется группа Main.</param>
+            <param name="categoryIsUsed">При значении true для группировки будут созданы вложенные группы по аттрибутам CategoryAttribute</param>
+        </member>
+        <member name="M:Xafari.Core.ViewsRelation.ObjectSpaceOnObjectReloaded(System.Object,DevExpress.ExpressApp.ObjectManipulatingEventArgs)">
+            <summary>
+            Для синхронизации данных докпанели при изменении в карточной форме объекта. ПИР 102.127074
+            </summary>
+            <param name="sender"></param>
+            <param name="objectManipulatingEventArgs"></param>
+        </member>
+        <member name="T:Xafari.XafariViewShortcut">
+            <summary>
+            Supplies key information on a View.
+            </summary>
+            <seealso cref="T:DevExpress.ExpressApp.ViewShortcut"/>
+        </member>
+        <member name="M:Xafari.XafariViewShortcut.#ctor">
+            <summary>
+            Creates a new <see cref="T:Xafari.XafariViewShortcut"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariViewShortcut.#ctor(System.String,DevExpress.Data.Filtering.CriteriaOperator)">
+            <summary>
+            Creates a new <see cref="T:Xafari.XafariViewShortcut"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariViewShortcut.#ctor(System.Type,DevExpress.Data.Filtering.CriteriaOperator,System.String)">
+            <summary>
+            Creates a new <see cref="T:Xafari.XafariViewShortcut"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariViewShortcut.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new <see cref="T:Xafari.XafariViewShortcut"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariViewShortcut.#ctor(System.Type,System.String,System.String)">
+            <summary>
+            Creates a new <see cref="T:Xafari.XafariViewShortcut"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.XafariViewShortcut.#ctor(System.Type,System.String,System.String,System.Drawing.Point)">
+            <summary>
+            Creates a new <see cref="T:Xafari.XafariViewShortcut"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.XafariViewShortcut.CollectionSourceCriteria">
+            <summary>
+            The CollectionSource criteria which used when ListViews based on <see cref="T:Xafari.XafariViewShortcut"/> are created.
+            </summary>
+        </member>
+        <member name="T:Xafari.ViewShortcutExtension">
+            <summary>
+            Extend the <see cref="T:DevExpress.ExpressApp.ViewShortcut"/> class with method <see cref="M:Xafari.Core.XafariUrlManager.BuildUrl(DevExpress.ExpressApp.ViewShortcut)">BuildUrl</see>.
+            </summary>
+        </member>
+        <member name="F:Xafari.ViewShortcutExtension.CollectionSourceCriteriaParamName">
+            <summary>
+            The key used to specify CollectionSource criteria which used when ListViews based on <see cref="T:Xafari.XafariViewShortcut"/> are created.
+            </summary>
+        </member>
+        <member name="M:Xafari.ViewShortcutExtension.BuildUrl(DevExpress.ExpressApp.ViewShortcut)">
+            <summary>
+            Creates URL based on the shortcut.
+            </summary>
+            <returns>URL string.</returns>
+        </member>
+        <member name="M:Xafari.ViewShortcutExtension.SetCollectionSourceCriteria(DevExpress.ExpressApp.ViewShortcut,DevExpress.Data.Filtering.CriteriaOperator)">
+            <summary>
+            Sets CollectionSource criteria which used when ListViews based on <see cref="T:DevExpress.ExpressApp.ViewShortcut"/> are created.
+            </summary>
+        </member>
+        <member name="M:Xafari.ViewShortcutExtension.GetCollectionSourceCriteria(DevExpress.ExpressApp.ViewShortcut)">
+            <summary>
+            Gets CollectionSource criteria which used when ListViews based on <see cref="T:DevExpress.ExpressApp.ViewShortcut"/> are created.
+            </summary>
+        </member>
+    </members>
+</doc>

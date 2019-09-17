@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.Security.Xpo</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="F:Xafari.Security.Xpo.XafariSecurityXpoModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XafariSecurityXpoModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XafariSecurityXpoModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.Xpo.XpoXafariSecurityManager">
+            <summary>
+            Class helps to work with xafari security objects like roles and permissions
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XpoXafariSecurityManager.InitializeXafariSecurityManager">
+            <summary>
+            Initialize singleton of type <see cref="T:Xafari.Security.Xpo.XpoXafariSecurityManager"/>
+            </summary>
+            <remarks>
+            Don't try call this method if <see cref="P:Xafari.Security.XafariSecurityManager.Instance"/> isn't null, otherwise method throw an <see cref="T:System.InvalidOperationException"/>
+            </remarks>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XpoXafariSecurityManager.SetActionOperationPermission(DevExpress.ExpressApp.Security.ISecurityRole,DevExpress.ExpressApp.IObjectSpace,System.String,System.Boolean)">
+            <summary>
+            This method allows you to add action permission object to role
+            </summary>
+            <param name="role"><see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/> in which action permission must be added</param>
+            <param name="objectSpace">Instance of <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> for create action permission object</param>
+            <param name="actionId">Id of <see cref="T:DevExpress.ExpressApp.Actions.ActionBase"/></param>
+            <param name="allowExecute">False, if you want deny access to execute an action</param>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XpoXafariSecurityManager.SetActionOperationPermission(DevExpress.ExpressApp.Security.ISecurityRole,DevExpress.ExpressApp.IObjectSpace,DevExpress.ExpressApp.Actions.ActionBase,System.Boolean)">
+            <summary>
+            This method allows you to add action permission object to role
+            </summary>
+            <param name="role"><see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/> in which action permission must be added</param>
+            <param name="objectSpace">Instance of <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> for create action permission object</param>
+            <param name="action">Instance of <see cref="T:DevExpress.ExpressApp.Actions.ActionBase"/></param>
+            <param name="allowExecute">False, if you want deny access to execute an action</param>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XpoXafariSecurityManager.CreateAdministratorRole(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Creates new security role with administrative permissions.
+            </summary>
+            <param name="objectSpace">Objectspace in which new role will created.</param>
+            <returns>ISecurityRole object.</returns>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XpoXafariSecurityManager.CreateUsersRole(DevExpress.ExpressApp.IObjectSpace,System.String)">
+            <summary>
+            Creates new security role with user permissions.
+            </summary>
+            <param name="objectSpace">Objectspace in which new role will created.</param>
+            <param name="roleName">Name of new created role.</param>
+            <returns>ISecurityRole object.</returns>
+        </member>
+        <member name="M:Xafari.Security.Xpo.XpoXafariSecurityManager.FindRole(DevExpress.ExpressApp.IObjectSpace,System.String)">
+            <summary>
+            Find role by specified name.
+            </summary>
+            <param name="objectSpace">Object space.</param>
+            <param name="roleName">Role name.</param>
+            <returns>ISecurityRole object.</returns>
+        </member>
+    </members>
+</doc>

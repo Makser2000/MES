@@ -1,0 +1,667 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.BC.Settings</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`1">
+            <summary>
+            Implements default slices hierarchy with single level.
+            </summary>
+            <typeparam name="TSlice1">Type of slice key.</typeparam>
+            <remarks>
+            Used by default in case with not null <see cref="P:DevExpress.ExpressApp.SecuritySystem.Instance"/>.
+            Uses <see cref="P:DevExpress.ExpressApp.SecuritySystem.UserType"/> as <typeparamref name="TSlice1"/>.
+            </remarks>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor">
+            <summary>
+            Provides service to operate application settings.
+            </summary>
+            <summary>
+            Provides service to operate application settings.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.SetupCurrentSlice">
+            <summary>
+            Sets current slice, depending by <see cref="P:DevExpress.ExpressApp.SecuritySystem.CurrentUser"/> value.
+            </summary>
+            <remarks>
+            Called after a successful user logon.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.SetupSliceTypes">
+            <summary>
+            Override this method to setup <see cref="P:Xafari.BC.Settings.SettingsAccessor.SliceTypes"/> property.
+            </summary>
+            <remarks>
+            By default, slice types calculate from <see cref="P:Xafari.BC.Settings.SettingsAccessor.RootSliceType"/> and analyse providers of <see cref="T:Xafari.BC.Settings.Runtime.INextSliceSupport`1"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetGroupCaption(Xafari.BC.Settings.IModelBCSettingsGroup)">
+            <summary>
+            Get localized caption for IModelBCSettingsGroup node.
+            </summary>
+            <param name="modelNode">IModelBCSettingsGroup node.</param>
+            <returns>Localized caption.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetGroupTooltip(Xafari.BC.Settings.IModelBCSettingsGroup)">
+            <summary>
+            Get localized tooltip for IModelBCSettingsGroup node.
+            </summary>
+            <param name="modelNode">IModelBCSettingsGroup node.</param>
+            <returns>Localized tooltip.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetRootCaption">
+            <summary>
+            Get localized caption for root group node.
+            </summary>
+            <returns>Localized caption.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetItemCaption(Xafari.BC.Settings.IModelBCSettingsItem)">
+            <summary>
+            Get localized caption for IModelBCSettingsItem node.
+            </summary>
+            <param name="itemNode">IModelBCSettingsItem node.</param>
+            <returns>Localized caption.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetItemTooltip(Xafari.BC.Settings.IModelBCSettingsItem)">
+            <summary>
+            Get localized tooltip for IModelBCSettingsItem node.
+            </summary>
+            <param name="itemNode">IModelBCSettingsItem node.</param>
+            <returns>Localized tooltip.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetSlice(System.Object[])">
+            <summary>
+            Returns the layer based on the identifier.
+            </summary>
+            <param name="keys">ID layer.</param>
+            <returns>Layer.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetSlice(System.String)">
+            <summary>
+            Returns the layer based on the identifier.
+            </summary>
+            <param name="keys">A string representation of the identifier of the layer.</param>
+            <returns>Layer.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetSlice``1(System.Object[])">
+            <summary>
+             Returns the layer based on the identifier.
+            </summary>
+            <typeparam name="T"> Type layer.</typeparam>
+            <param name="keys">ID layer.</param>
+            <returns>Layer.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.GetRootSettings(Xafari.BC.Settings.Runtime.SettingsValueSlice)">
+            <summary>
+            Returns the root node settings.
+            </summary>
+            <param name="settingValueSlice">Layer.</param>
+            <returns>The root node of the corresponding layer settings.</returns>
+        </member>
+        <member name="E:Xafari.BC.Settings.SettingsAccessor.SettingValueChanging">
+            <summary>
+            Occurs when the value setting has been changing.
+            </summary>
+        </member>
+        <member name="E:Xafari.BC.Settings.SettingsAccessor.SettingValueChanged">
+            <summary>
+            Occurs when the value setting has been changed.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.SliceTypes">
+            <summary>
+            Type layer.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.DefaultResultValue">
+            <summary>
+            A clone of the primary node configuration.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.RootSlice">
+            <summary>
+            Returns root slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.RootSliceType">
+            <summary>
+            Gets <see cref="T:System.Type"/> of root slice.
+            Override this property when implement custom settings accessor.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.CurrentSlice">
+            <summary>
+            The current layer settings.
+            </summary>
+        </member>
+        <member name="E:Xafari.BC.Settings.SettingsAccessor.CurrentSliceChanged">
+            <summary>
+            Occurs when the current layer has been changed.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.ObjectSpace">
+            <summary>
+            Contains a reference to ObjectSpace.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.Root(Xafari.BC.Settings.Runtime.SettingsValueSlice)">
+            <summary>
+            Returns root node settings for <paramref name="slice"/> or for <see cref="P:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.CurrentSlice"/> if <paramref name="slice"/> is null.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.Update">
+            <summary>
+            Performs update for all saved settings by calling <see cref="T:Xafari.BC.Settings.ISettingsNodeUpdater"/> from <see cref="F:Xafari.BC.Settings.SettingsAccessor.Updaters"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.GetSlice(System.Object[])">
+            <summary>
+            Returns the layer based on the identifier.
+            </summary>
+            <param name="keys">ID layer.</param>
+            <returns>Layer.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.GetSlice(System.String)">
+            <summary>
+            Returns the layer based on the identifier.
+            </summary>
+            <param name="keys">A string representation of the identifier of the layer.</param>
+            <returns>Layer.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.GetSlice``1(System.Object[])">
+            <summary>
+             Returns the layer based on the identifier.
+            </summary>
+            <typeparam name="T"> Type layer.</typeparam>
+            <param name="keys">ID layer.</param>
+            <returns>Layer.</returns>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.RootSlice">
+            <summary>
+            The root layer settings.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext.AutoCommitOnSave">
+            <summary>
+            Indicates to execute CommitChanges when settings key is modified.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`1.Root">
+            <summary>
+            Root slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsRootValueSlice`1">
+            <summary>
+            The base class for describing the initial slice in the hierarchy with default values​​.
+            </summary>
+            <typeparam name="TNextSlice">The next slice.</typeparam>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsRootValueSlice">
+            <summary>
+            The base class for describing the initial slice in the hierarchy with default values​​.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsValueSlice.CreateDefaultOwnLayer">
+            <summary>
+            Constructs a default slice.
+            </summary>
+            <returns>The default value of the slice.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsValueSlice.GetParentKey">
+            <summary>
+            Returns the key for the parent slice. If you define an object of the parent slice, then this object is the key for the parent slice.
+            </summary>
+            <returns>Key for the parent slice.</returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsValueSlice.GetChildSlice(System.Object[])">
+            <summary>
+            Returns the child with a slice of suitably identifier.
+            </summary>
+            <param name="key">The ID of the slice.</param>
+            <returns>The child slice.</returns>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.Name">
+            <summary>
+            Slice name used for display slice in the hierarchy of layers.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.Id">
+            <summary>
+            The ID of the slice is used to create the model and the resulting slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.ParentSlice">
+            <summary>
+            Contains a reference to the higher slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.ChildrenSlices">
+            <summary>
+            Contains a list of child layers.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.SlicePath">
+            <summary>
+            Contains the path slice in the hierarchy of layers.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.SliceKey">
+            <summary>
+            The ID of the slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.SliceKeyString">
+            <summary>
+            A string representation of the identifier of the slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.SliceObjectType">
+            <summary>
+            Object type slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.SliceObject">
+            <summary>
+            The object slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.ParentSliceObject">
+            <summary>
+            A persistent object corresponding to the next higher slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.ModelLayer">
+            <summary>
+            For internal usage.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.ResultStorage">
+            <summary>
+            For internal usage.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.RootSettings">
+            <summary>
+            Returns settings root node for this slice.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.Accessor">
+            <summary>
+            Contains a reference to SettingsAccessor.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.DataAccessor">
+            <summary>
+            Contains a reference to <see cref="T:Xafari.BC.DataAccessorService"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice.IsRoot">
+            <summary>
+            Returns <b>true</b> if this is slice is root.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.INextSliceSupport`1">
+            <summary>
+            Provides methods for working with the next slice.
+            </summary>
+            <typeparam name="TNextSlice">Type of the next slice.</typeparam>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`1.Slice1">
+            <summary>
+            First level slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsValueSlice`2">
+            <summary>
+            The base class for the description of the last slice in the hierarchy.
+            </summary>
+            <typeparam name="TKey">Object type slice.</typeparam>
+            <typeparam name="TPrevSlice">The previous slice.</typeparam>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsValueSlice`1">
+            <summary>
+            Base class for describing a slice in the hierarchy.
+            </summary>
+            <typeparam name="TKey">Object type slice.</typeparam>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsValueSlice`1.GetSlices``1(Xafari.BC.Settings.Runtime.SettingsValueSlice,DevExpress.Data.Filtering.CriteriaOperator)">
+            <summary>
+            Gets children slices for specified <paramref name="parentSlice"/>. 
+            Use specified <paramref name="criteria"/> to select key objects of slice <typeparamref name="T"/>.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parentSlice"></param>
+            <param name="criteria"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice`1.SliceObjectType">
+            <summary>
+            Gets slice key object <see cref="T:System.Type"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.Runtime.SettingsValueSlice`1.SliceObject">
+            <summary>
+            Gets key object of this slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.IPrevSliceSupport`1">
+            <summary>
+            Provides methods for working with the previous slice.
+            </summary>
+            <typeparam name="TPrevSlice">Type of the previous slice.</typeparam>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`2">
+            <summary>
+            Implements default slices hierarchy with two levels.
+            </summary>
+            <typeparam name="TSlice1">Type of slice key on first level.</typeparam>
+            <typeparam name="TSlice2">Type of slice key on second level.</typeparam>
+            <remarks>
+            Used in cases when 
+            </remarks>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`2.Root">
+            <summary>
+            Root slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`2.Slice1">
+            <summary>
+            First level slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsValueSlice`3">
+            <summary>
+            Base class for describing the middle slice in the hierarchy.
+            </summary>
+            <typeparam name="TKey">Object type slice.</typeparam>
+            <typeparam name="TPrevSlice">The previous slice.</typeparam>
+            <typeparam name="TNextSlice">The next slice.</typeparam>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingsAccessor`2.Slice2">
+            <summary>
+            Second level slice.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Extensions.AppSettings(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext"/> instance to access application settings properties.
+            </summary>
+            <param name="objectSpace"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Extensions.AppSettings(Xafari.BC.Services.IServiceSpace)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext"/> instance for specified <see cref="T:Xafari.BC.Services.IServiceSpace"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Extensions.AppSettings(Xafari.BC.Helpers.IObjectSpaceHelper)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext"/> instance to access application settings properties.
+            </summary>
+            <param name="objectSpaceHelper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Extensions.AppSettings(Xafari.BC.Helpers.UnitOfWorkHelper)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext"/> instance to access application settings properties.
+            </summary>
+            <param name="unitOfWorkHelper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Extensions.CurrentSlice(Xafari.BC.Settings.SettingsAccessor.ServiceSpaceContext,System.Object[])">
+            <summary>
+            Sets current slice by <paramref name="keys"/>.
+            </summary>
+            <param name="serviceContext"></param>
+            <param name="keys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Helpers.SettingsTypeHelperExtension.GetNextSliceType">
+            <summary>
+            Gets next slice type for specified <see cref="T:System.Type"/>.
+            </summary>
+            <returns></returns>
+            <remarks>
+            Next slice type calculated by find <see cref="T:Xafari.BC.Settings.Runtime.INextSliceSupport`1"/> interface for spcefied <see cref="T:System.Type"/>.
+            Returns generic parameter type if <see cref="T:Xafari.BC.Settings.Runtime.INextSliceSupport`1"/> is found; <b>null</b> otherwise.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Settings.Helpers.SettingsTypeHelperExtension.GetPrevSliceType">
+            <summary>
+            Gets next slice type for specified <see cref="T:System.Type"/>.
+            </summary>
+            <returns></returns>
+            <remarks>
+            Prev slice type calculated by find <see cref="T:Xafari.BC.Settings.Runtime.IPrevSliceSupport`1"/> interface for spcefied <see cref="T:System.Type"/>.
+            Returns generic parameter type if <see cref="T:Xafari.BC.Settings.Runtime.IPrevSliceSupport`1"/> is found; <b>null</b> otherwise.
+            </remarks>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`1">
+            <summary>
+            Default <see cref="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner"/> with one slice <typeparamref name="TKey1"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner">
+            <summary>
+            Use to design slice structure for <see cref="T:Xafari.BC.Settings.SettingsAccessor"/>.
+            </summary>
+            <remarks>
+            To design slices structure you must call methods <see cref="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.First(System.Type,System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice,System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice}},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,DevExpress.Data.Filtering.CriteriaOperator})"/> and <see cref="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.Next``2(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``1},System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0}}},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0},``1},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``1},DevExpress.Data.Filtering.CriteriaOperator})"/>.
+            After design complete you have to call method <see cref="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.CreateSettingsAccessor"/> to create instance of <see cref="T:Xafari.BC.Settings.SettingsAccessor"/> with specified structure.
+            </remarks>
+            <remarks>
+            Use default classes <see cref="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`1"/>, <see cref="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`2"/>, <see cref="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`3"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.SetupCurrentSlice(System.Action{Xafari.BC.Settings.SettingsAccessor})">
+            <summary>
+            Sets implementation for <see cref="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.SetupCurrentSlice(System.Action{Xafari.BC.Settings.SettingsAccessor})"/> method.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.First``1(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0}}},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Adds first slice with specified type object <typeparamref name="TKey"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.First(System.Type,System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice,System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice}},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Adds first slice with specified type object <paramref name="keyType"/>.
+            </summary>
+            <param name="keyType">Type of slice object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.Next``2(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``1},System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0}}},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``0},``1},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{``1},DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Adds new slice with specified type object <typeparamref name="TKey"/> and parent slice type object <typeparamref name="TKeyPrev"/>.
+            </summary>
+            <typeparam name="TKey">Type of slice object.</typeparam>
+            <typeparam name="TKeyPrev">Type of parent slice object.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner.CreateSettingsAccessor">
+            <summary>
+            Creates <see cref="T:Xafari.BC.Settings.SettingsAccessor"/> instance for specified slices structure.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsValueSliceHierarchy`3">
+            <summary>
+            Base class for describing middle hierarchical slice in the hierarchy.
+            </summary>
+            <typeparam name="TKey">Object type slice.</typeparam>
+            <typeparam name="TPrevSlice">The previous slice.</typeparam>
+            <typeparam name="TNextSlice">The next slice.</typeparam>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsValueSliceHierarchy`2">
+            <summary>
+            The base class for the description of the last hierarchical slice in the hierarchy.
+            </summary>
+            <typeparam name="TKey">Object type slice.</typeparam>
+            <typeparam name="TPrevSlice">The previous slice.</typeparam>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`1.Slice1(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0}}},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Initialize first slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`2">
+            <summary>
+            Default <see cref="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner"/> with two slices <typeparamref name="TKey1"/>, <typeparamref name="TKey2"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`2.Slice1(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0}}},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Initialize first slice.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`2.Slice2(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1}}},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1},`0},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Initialize second slice.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`3">
+            <summary>
+            Default <see cref="T:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner"/> with three slices <typeparamref name="TKey1"/>, <typeparamref name="TKey2"/>, <typeparamref name="TKey3"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`3.Slice1(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0}}},System.Func{Xafari.BC.Settings.Runtime.SettingsRootValueSlice,DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Initialize first slice.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`3.Slice2(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1}}},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1},`0},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`0},DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Initialize second slice.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Runtime.SettingsAccessorDesigner`3.Slice3(System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`2},System.String},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1},System.Collections.Generic.IEnumerable{Xafari.BC.Settings.Runtime.SettingsValueSlice{`2}}},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`2},`1},System.Func{Xafari.BC.Settings.Runtime.SettingsValueSlice{`1},DevExpress.Data.Filtering.CriteriaOperator})">
+            <summary>
+            Initialize third slice.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Settings.Controllers.OpenSettingsEditorWindowController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.Controllers.OpenSettingsEditorWindowController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.BC.Settings.Controllers.OpenSettingsEditorWindowController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.SettingsValueSliceStorage.GetStorage(DevExpress.ExpressApp.IObjectSpace,System.String,System.Boolean)">
+            <summary>
+            Returns a configuration storage.
+            </summary>
+            <param name="objectSpace">ObjectSpace.</param>
+            <param name="keyObject">The key layer.</param>
+            <param name="haveToCreated">Indicates that new object have to create, if not existed.</param>
+            <returns>Storage settings.</returns>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsValueSliceStorage.FullName">
+            <summary>
+            Contains full path to slice in the hierarchy of layers
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsValueSliceStorage.Values">
+            <summary>
+            The setting values​​.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsValueSliceStorage.Key">
+            <summary>
+            The key layer.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsValueSliceStorage.Actual">
+            <summary>
+            Determines whether the layer is actual.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.SettingsValueSliceStorage.ModifyDate">
+            <summary>
+            Last modified settings.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.IModelBCSettings">
+            <summary>
+            Базовый интерфейс для узлов "значение - настройки" и "группа - настроек"
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Settings.IModelBCSettings.OwnerSlice">
+            <summary>
+            Gets or sets owner slice for this node.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.IModelBCSettingsGroup">
+            <summary>
+            Интерфейс предоставляющий узел "группа - настроек"
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.IModelBCSettingsItem">
+            <summary>
+            Интерфейс предоставляющий узел "значение - настройки". Описывающий основные свойства узла "значение - настройки".
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.IModelBCSettingsItem`1">
+            <summary>
+            Базовый интерфейс для узла "значение - настройки". Тип настройки  - "тип - значение".
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.IModelBCSettingsObjectItem`1">
+            <summary>
+            Базовый интерфейс для узла "значение - настройки". Тип настройки  - "ссылочный тип". С абстрактным описанием методов конвертирования объектов в строку.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.IModelBCSettingsXPObjectItemLogic`2">
+            <summary>
+            Базовый интерфейс для узла "значение - настройки". Тип настройки  - "ссылочный тип". С описанием методов конвертирования объектов в строку, основываясь на там, что объект персистентный.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Settings.XafariBCSettingsModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Settings.XafariBCSettingsModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.BC.Settings.XafariBCSettingsModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingValueChangedEventArgs">
+            <summary>
+            Provides data for the SettingsAccessor.SettingValueChanged event.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Settings.SettingValueChangingEventArgs">
+            <summary>
+            Provides data for the SettingsAccessor.SettingValueChanging event.
+            </summary>
+        </member>
+    </members>
+</doc>

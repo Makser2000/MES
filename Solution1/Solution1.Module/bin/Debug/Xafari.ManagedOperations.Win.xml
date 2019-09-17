@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.ManagedOperations.Win</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.Win.ManagedOperationStatusEditor">
+            <summary>
+            Property editor for managed operation status.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.Win.ManagedOperationStatusEditor.#ctor(System.Type,DevExpress.ExpressApp.Model.IModelMemberViewItem)">
+            <summary>
+            Initializes new instance of the ManagedOperationStatusEditor class.
+            </summary>
+            <param name="objectType">Type of object</param>
+            <param name="info">ModelInfo for object's ViewItem</param>
+        </member>
+        <member name="F:Xafari.ManagedOperations.Win.XafariManagedOperationsWinModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.Win.XafariManagedOperationsWinModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.Win.XafariManagedOperationsWinModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.Win.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Win.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Win.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Win.Properties.Resources.UnfinishedOperationMessage">
+            <summary>
+              Looks up a localized string similar to Unfinished operation &apos;{0}&apos;is detected.\nAbort operation?.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Win.Properties.Resources.Warning">
+            <summary>
+              Looks up a localized string similar to Warning.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.Win.WinManageOperationsViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.Win.WinManageOperationsViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.Win.WinManageOperationsViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

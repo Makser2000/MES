@@ -1,0 +1,981 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.BC.Numerators</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.CustomNumerator">
+            <summary>
+            Class for user numerators, created in code.
+            </summary>
+            <remarks>
+            Derive this class if you want to implement your own numerator.
+            </remarks>
+        </member>
+        <member name="T:Xafari.BC.Numerators.NumeratorBase">
+            <summary>
+            Base class of numerators.
+            </summary>
+            <remarks>
+            NumeratorBase class provide base logic for numerators.
+            </remarks>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.IndexTemplate">
+            <summary>
+            Identifier of numerator index in template.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultTemplate">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.Template"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultKeyTemplate">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.KeyTemplate"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultStartValue">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.StartValue"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultStep">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.Step"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultUseDeletedNumbers">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.UseDeletedNumbers"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultUseDeletedNumbersMode">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.UseDeletedNumbers"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultThroughNumeration">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorBase.ThroughNumeration"/> default value.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.NumeratorBase.DefaultApplyStrategy">
+            <summary>
+            <see cref="P:Xafari.BC.Numerators.NumeratorLink.ApplyStrategy"/> default value.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.#ctor(Xafari.BC.Numerators.NumeratorManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Xafari.BC.Numerators.NumeratorBase"/> class.
+            </summary>
+            <param name="manager"><see cref="T:Xafari.BC.Numerators.NumeratorManager"/></param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.ApplyNumbering(Xafari.BC.Services.IServiceSpace,System.Object,System.String)">
+            <summary>
+            Apply numbering <paramref name="memberName"/> to object <paramref name="obj"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">Object, to which apply numerator.</param>
+            <param name="memberName">Object which bind numerator with <paramref name="obj"/> property.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="obj"/> or <paramref name="memberName"/> is null.</exception>
+            <remarks>
+            Current <paramref name="obj"/> has been blocked to avoid erorrs when saving.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.SaveDeletedNumber(Xafari.BC.Services.IServiceObjectSpace,System.Object,System.Nullable{System.Int64})">
+            <summary>
+            Saving deleted number.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">Object whose deleted number need to save.</param>
+            <param name="index">Deleted number to save.</param>
+            <remarks>
+            The SaveDeletedNumber method stores deleted number of object.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.GetNumeratorValue(System.Object)">
+            <summary>
+            Gets numerator value for object <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The object for which the current value is used.</param>
+            <returns><see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/> object.</returns>
+            <remarks>
+            Method is looking for a <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/> in database.
+            If <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/> not exist in database, method create new.
+            Thus considered <see cref="P:Xafari.BC.Numerators.NumeratorBase.ThroughNumeration"/> flag.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.GetNumeratorValue(Xafari.BC.Services.IServiceObjectSpace,System.Object)">
+            <summary>
+            Gets numerator value for object <paramref name="obj"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">The object for which the current value is used.</param>
+            <returns><see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/> object.</returns>
+            <remarks>
+            Method is looking for a <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/> in database.
+            If <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/> not exist in database, method create new.
+            Thus considered <see cref="P:Xafari.BC.Numerators.NumeratorBase.ThroughNumeration"/> flag.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.GetKey(System.Object)">
+            <summary>
+            Gets the numerator key value for object <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The object for which the numerator is applying.</param>
+            <returns>A <see cref="T:System.String"/> that represent the numerator key value.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="obj"/> is null.</exception>
+            <remarks>
+            
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.GetNextIndex(System.Object)">
+            <summary>
+            Gets next numerator number (index) for object <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The object for which the numerator is applying.</param>
+            <returns>A <see cref="T:System.Int64"/> that represent the next numerator index for object <paramref name="obj"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="obj"/> is null.</exception>
+            <remarks>
+            The GetNextIndex method read from database the value of the numerator index,
+            then increase on <see cref="P:Xafari.BC.Numerators.NumeratorBase.Step"/> and save new value to database.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.GetNextIndex(Xafari.BC.Services.IServiceObjectSpace,System.Object)">
+            <summary>
+            Gets next numerator number (index) for object <paramref name="obj"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">The object for which the numerator is applying.</param>
+            <returns>A <see cref="T:System.Int64"/> that represent the next numerator index for object <paramref name="obj"/>.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="obj"/> is null.</exception>
+            <remarks>
+            The GetNextIndex method read from database the value of the numerator index,
+            then increase on <see cref="P:Xafari.BC.Numerators.NumeratorBase.Step"/> and save new value to database.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.CreateNumber(System.Object)">
+            <summary>
+            Create new number for object <paramref name="obj"/>.
+            </summary>
+            <param name="obj">The object for which the numerator is applying.</param>
+            <returns>A <see cref="T:System.String"/> that represents a new number.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="obj"/> is null.</exception>
+            <remarks>
+            This method create a <see cref="T:System.String"/> that represents a new number by <see cref="P:Xafari.BC.Numerators.NumeratorBase.Template"/> via <see cref="T:Xafari.BC.Numerators.NumeratorFormatter"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.CreateNumber(Xafari.BC.Services.IServiceSpace,System.Object)">
+            <summary>
+            Create new number for object <paramref name="obj"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">The object for which the numerator is applying.</param>
+            <returns>A <see cref="T:System.String"/> that represents a new number.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="obj"/> is null.</exception>
+            <remarks>
+            This method create a <see cref="T:System.String"/> that represents a new number by <see cref="P:Xafari.BC.Numerators.NumeratorBase.Template"/> via <see cref="T:Xafari.BC.Numerators.NumeratorFormatter"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorBase.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </summary>
+            <returns>
+            A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.Manager">
+            <summary>
+            Gets the instance of the <see cref="T:Xafari.BC.Numerators.NumeratorManager"/> class.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.Id">
+            <summary>
+            Gets the numerator identifier.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.Step">
+            <summary>
+            Gets ot sets the index step of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.KeyTemplate">
+            <summary>
+            Gets or sets the key template of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.Template">
+            <summary>
+            Gets or sets the numerator template
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.StartValue">
+            <summary>
+            Gets or sets the index start value of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.ThroughNumeration">
+            <summary>
+            Gets or sets the flag of through numeration.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.UseDeletedNumbers">
+            <summary>
+            Gets or sets the flag of the usage deleted numbers.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorBase.UseDeletedNumbersMode">
+            <summary>
+            Gets or sets the flag of the usage deleted numbers.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.CustomNumerator.#ctor(Xafari.BC.Numerators.NumeratorManager)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Xafari.BC.Numerators.CustomNumerator"/> class.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.CustomNumerator.#ctor(System.String,Xafari.BC.Numerators.NumeratorManager)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Xafari.BC.Numerators.CustomNumerator"/> class with identifier <i>id</i>.
+            </summary>
+            <param name="manager">Instance of the <see cref="T:Xafari.BC.Numerators.NumeratorManager"/> class, which setup and control your numerator.</param>
+            <param name="id">Identifier of numerator.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="id"/> is null.</exception>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.Id">
+            <summary>
+            Gets the numerator identifier.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.Step">
+            <summary>
+            Gets ot sets the index step of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.KeyTemplate">
+            <summary>
+            Gets or sets the key template of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.Template">
+            <summary>
+            Gets or sets the numerator template
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.StartValue">
+            <summary>
+            Gets or sets the index start value of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.ThroughNumeration">
+            <summary>
+            Gets or sets the flag of through numeration.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.CustomNumerator.UseDeletedNumbersMode">
+            <summary>
+            Gets or sets the mode of the usage deleted numbers.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.DefaultNumerator">
+            <summary>
+            Default numerator class.
+            </summary>
+            <remarks>
+            This class is used for numerators, created in application model.
+            Generally, you don't need to use it.
+            Trying to set one of the properties will raise an exception <see cref="T:System.NotSupportedException"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.DefaultNumerator.#ctor(Xafari.BC.Numerators.Model.IModelServicesNumerator,Xafari.BC.Numerators.NumeratorManager)">
+            <summary>
+             Initializes a new instance of the <see cref="T:Xafari.BC.Numerators.DefaultNumerator"/> class.
+            </summary>
+            <param name="manager">Instance of the <see cref="T:Xafari.BC.Numerators.NumeratorManager"/> class, which setup and control your numerator.</param>
+            <param name="node"><see cref="T:Xafari.BC.Numerators.Model.IModelNumerator"/> node in application model.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown when <paramref name="node"/> is null.</exception>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.Id">
+            <summary>
+            Gets the numerator identifier.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.Step">
+            <summary>
+            Gets ot sets the index step of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.KeyTemplate">
+            <summary>
+            Gets or sets the key template of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.Template">
+            <summary>
+            Gets or sets the numerator template
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.StartValue">
+            <summary>
+            Gets or sets the index start value of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.ThroughNumeration">
+            <summary>
+            Gets or sets the flag of through numeration.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.UseDeletedNumbersMode">
+            <summary>
+            Gets or sets the flag of the usage deleted numbers.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.DefaultNumerator.Info">
+            <summary>
+            Gets the node <see cref="T:Xafari.BC.Numerators.Model.IModelNumerator"/>, which is stored in the Application Model.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.DerivedClass">
+            <summary>
+             DerivedClass class binding property of IModelServicesDerivedClass.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.Numerators(Xafari.BC.Helpers.IObjectSpaceHelper)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext"/> instance for specified <see cref="T:DevExpress.ExpressApp.IObjectSpace"/>.
+            </summary>
+            <param name="objectSpaceHelper"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.Numerators(Xafari.BC.Helpers.UnitOfWorkHelper)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext"/> instance for specified <see cref="T:DevExpress.Xpo.UnitOfWork"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.Numerators(Xafari.BC.Services.IServiceSpace)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext"/> instance for specified <see cref="T:Xafari.BC.Services.IServiceSpace"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.IndexNumerator(Xafari.BC.Helpers.IObjectSpaceHelper)">
+            <summary>
+            Returns an <see cref="T:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext"/> instance for specified <see cref="T:Xafari.BC.Helpers.IObjectSpaceHelper"/>.
+            </summary>
+            <param name="objectSpaceHelper"></param>
+            <returns>IndexNumeratorManager.ServiceContext instance.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.IndexNumerator(Xafari.BC.Helpers.UnitOfWorkHelper)">
+            <summary>
+            Returns an <see cref="T:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext"/> instance for specified <see cref="T:Xafari.BC.Helpers.UnitOfWorkHelper"/>.
+            </summary>
+            <param name="unitOfWorkHelper"></param>
+            <returns>IndexNumeratorManager.ServiceContext instance.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.IndexNumerator(Xafari.BC.Services.IServiceSpace)">
+            <summary>
+            Returns <see cref="T:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext"/> instance for specified <see cref="T:Xafari.BC.Services.IServiceSpace"/>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.ApplyNumerators(Xafari.BC.Services.IServiceObjectSpace,System.Object,Xafari.BC.Numerators.ApplyNumeratorsStrategy)">
+            <summary>
+            Apply all numerators for <paramref name="obj"/> inside <paramref name="serviceSpace"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj"></param>
+            <param name="applyStrategy">Indicates to apply numerators just now, not during commit changes.</param>
+            <seealso cref="!:NumeratorManager.ApplyNumerators(IServiceObjectSpace,object,ApplyNumeratorsStrategy)"/>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.RollbackNumerators(Xafari.BC.Services.IServiceObjectSpace,System.Object)">
+            <summary>
+            Rollback all numerators for <paramref name="objs"/> inside <paramref name="serviceSpace"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="objs"></param>
+            <seealso cref="M:Xafari.BC.Numerators.NumeratorManager.RollbackNumerators(Xafari.BC.Services.IServiceSpace,System.Object[])"/>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.ApplyNumerators(DevExpress.ExpressApp.IObjectSpace,System.Object,Xafari.BC.Numerators.ApplyNumeratorsStrategy)">
+            <summary>
+            Apply all numerators for <paramref name="obj"/> inside <see cref="T:Xafari.BC.Services.IServiceSpace"/> for <paramref name="objectSpace"/>.
+            </summary>
+            <param name="objectSpace"></param>
+            <param name="obj"></param>
+            <param name="applyStrategy">Indicates to apply numerators just now, not during commit changes.</param>
+            <seealso cref="!:NumeratorManager.ApplyNumerators(IServiceObjectSpace,object,ApplyNumeratorsStrategy)"/>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.ApplyNumerators(Xafari.BC.Helpers.IObjectSpaceHelper,System.Object,Xafari.BC.Numerators.ApplyNumeratorsStrategy)">
+            <summary>
+            Apply all numerators for <paramref name="obj"/> inside <see cref="T:Xafari.BC.Services.IServiceSpace"/> for <paramref name="objectSpaceHelper"/>.
+            </summary>
+            <param name="objectSpaceHelper"></param>
+            <param name="obj"></param>
+            <param name="applyStrategy">Indicates to apply numerators just now, not during commit changes.</param>
+            <seealso cref="!:NumeratorManager.ApplyNumerators(IServiceObjectSpace,object,ApplyNumeratorsStrategy)"/>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.RollbackNumerators(DevExpress.ExpressApp.IObjectSpace,System.Object)">
+            <summary>
+            Rollback all numerators for <paramref name="objs"/> inside <see cref="T:Xafari.BC.Services.IServiceSpace"/>.
+            </summary>
+            <param name="objectSpace"></param>
+            <param name="objs"></param>
+            <seealso cref="M:Xafari.BC.Numerators.NumeratorManager.RollbackNumerators(Xafari.BC.Services.IServiceSpace,System.Object[])"/>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.RollbackNumerators(Xafari.BC.Helpers.IObjectSpaceHelper,System.Object)">
+            <summary>
+            Rollback all numerators for <paramref name="objs"/> inside <see cref="T:Xafari.BC.Services.IServiceSpace"/>.
+            </summary>
+            <param name="objectSpaceHelper"></param>
+            <param name="objs"></param>
+            <seealso cref="M:Xafari.BC.Numerators.NumeratorManager.RollbackNumerators(Xafari.BC.Services.IServiceSpace,System.Object[])"/>
+        </member>
+        <member name="M:Xafari.BC.Numerators.Extensions.IndexNumerator(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Returns an IndexNumerator inside <see cref="T:Xafari.BC.Services.IServiceSpace"/>
+            </summary>
+            <param name="objectSpace"></param>
+            <returns>IndexNumeratorManager.ServiceContext instance.</returns>
+        </member>
+        <member name="T:Xafari.BC.Numerators.IDeletedNumbersSupport">
+            <summary>
+            Declares members implemented by classes, where need support the feature of using deleted numbers.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IDeletedNumbersSupport.GetRealIndex(Xafari.BC.Numerators.NumeratorBase,System.String)">
+            <summary>
+            Gets the real index number for <paramref name="numerator"/>, which is applied to the object <paramref name="member"/>.
+            </summary>
+            <param name="numerator"><see cref="T:Xafari.BC.Numerators.NumeratorBase"/> which is applied to the object member.</param>
+            <param name="member">A <see cref="T:System.String"/> that represents the object member.</param>
+            <returns>A <see cref="T:System.Int64"/> that represents the real index of the object <paramref name="member"/> of the current <paramref name="numerator"/>.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IDeletedNumbersSupport.SetRealIndex(Xafari.BC.Numerators.NumeratorBase,System.String,System.Nullable{System.Int64})">
+            <summary>
+            Sets the real index number for <paramref name="numerator"/>, which is applied to the object <paramref name="member"/>.
+            </summary>
+            <param name="numerator"><see cref="T:Xafari.BC.Numerators.NumeratorBase"/> which is applied to the object member.</param>
+            <param name="member">A <see cref="T:System.String"/> that represents the object member.</param>
+            <param name="value">A <see cref="T:System.Int64"/> that represents the real index.</param>
+        </member>
+        <member name="T:Xafari.BC.Numerators.IndexNumeratorManager">
+            <summary>
+            Provides index numbering for objects which implement IIndexNumberSupport interface.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.GetModelIndexNumberProperty(System.Type)">
+            <summary>
+            Get ModelExtender for IIndexProperty object.
+            </summary>
+            <param name="type">Object type.</param>
+            <returns>returns IImodelIndexNumber object.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.Apply(Xafari.BC.Numerators.IIndexNumberSupport[])">
+            <summary>
+            Apply index number to object(s)
+            </summary>
+            <param name="objects">Object with IndexNumber property.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.AdjustByObject(Xafari.BC.Numerators.IIndexNumberSupport,System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            Adjust numbers in collection by one object from that collection.
+            </summary>
+            <param name="obj">Any object from collection.</param>
+            <param name="startValue">Start value.</param>
+            <param name="step">Step.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.AdjustInRangeByObject(Xafari.BC.Numerators.IIndexNumberSupport,System.Int32,System.Int32)">
+            <summary>
+            Adjust numbers in range of collection by one object from that collection.
+            </summary>
+            <param name="obj">Any object from collection.</param>
+            <param name="oldIndex">Old index number.</param>
+            <param name="newIndex">New index number.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.AdjustAfterObject(Xafari.BC.Numerators.IIndexNumberSupport)">
+            <summary>
+            Adjust numbers in collection after object.
+            </summary>
+            <param name="addingObject">Adding object.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.AdjustAfterRemove(Xafari.BC.Numerators.IIndexNumberSupport)">
+            <summary>
+            Adjust numbers in collection after removing.
+            </summary>
+            <param name="removingObject">Removing object.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.MoveToTop(Xafari.BC.Numerators.IIndexNumberSupport)">
+            <summary>
+            Set min index for object and adjust numbers.
+            </summary>
+            <param name="movingObject">Object.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.MoveToLast(Xafari.BC.Numerators.IIndexNumberSupport)">
+            <summary>
+            Set max index for object and adjust numbers.
+            </summary>
+            <param name="movingObject">Object.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.IndexNumeratorManager.ServiceSpaceContext.GetCriteriaByObject(Xafari.BC.Numerators.IIndexNumberSupport)">
+            <summary>
+            Returns criteria for object.
+            </summary>
+            <param name="obj">Object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.BC.Numerators.IMissingNumberSupport">
+            <summary>
+            Declares members implemented by classes, where need support the feature of missing numbers.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.IMissingNumberSupport.NumeratorID">
+            <summary>
+             Gets or sets the identifier of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.IMissingNumberSupport.Key">
+            <summary>
+             Gets or sets the key value of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.IMissingNumberSupport.Index">
+            <summary>
+             Gets or sets index value.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.INumeratorValueSupport">
+            <summary>
+            Declare members implemented by classes, where need support numerator value.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.INumeratorValueSupport.NumeratorID">
+            <summary>
+             Gets or sets the identifier of the numerator.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.INumeratorValueSupport.LastValue">
+            <summary>
+            Gets or sets value of previous index.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.INumeratorValueSupport.Key">
+            <summary>
+            Gets or sets the value of key.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.INumeratorValueSupport.ClassName">
+            <summary>
+            Gets or sets class name of persistent object.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.UseDeletedNumbersModes">
+            <summary>
+            Declares modes for use deleted numbers strategy.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.UseDeletedNumbersModes.None">
+            <summary>
+            Do not use deleted numbers.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.UseDeletedNumbersModes.All">
+            <summary>
+            Use all deleted numbers.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.UseDeletedNumbersModes.Last">
+            <summary>
+            Use last deleted numbers.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.INumeratorPersistenceProvider">
+            <summary>
+            Declare members implemented by classes, which provide access to numerators feature in persistence objects.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.INumeratorPersistenceProvider.CreateMissingNumber">
+            <summary>
+            Create the object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.
+            </summary>
+            <param name="tempObjectSpace">Temporary <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> which used for create the object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</param>
+            <returns>Object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.INumeratorPersistenceProvider.CreateNumeratorValue">
+            <summary>
+            Create the object which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.
+            </summary>
+            <param name="tempObjectSpace">Temporary <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> which used for create the object which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.</param>
+            <returns>Object which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.INumeratorPersistenceProvider.CreateNumeratorValue(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Create the object which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.
+            </summary>
+            <param name="objectSpace"> <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> object which used for create the object which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.</param>
+            <returns>Object which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.INumeratorPersistenceProvider.CreateMissingNumber(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Create the object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.
+            </summary>
+            <param name="objectSpace"> <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> object which used for create the object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</param>
+            <returns>Object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.INumeratorPersistenceProvider.GetNumeratorValueType">
+            <summary>
+            Gets the <see cref="T:DevExpress.ExpressApp.DC.TypeInfo"/> for numerator value.
+            </summary>
+            <returns>A <see cref="T:DevExpress.ExpressApp.DC.TypeInfo"/> that represents a numerator value type.</returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.INumeratorPersistenceProvider.GetMissingNumbers(Xafari.BC.Numerators.NumeratorBase,System.String)">
+            <summary>
+             Gets all of the deleted numbers for numerator <paramref name="numerator"/> and key value <paramref name="key"/>.
+            </summary>
+            <param name="tempObjectSpace">Temporary <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> which used for create the collection of
+             <see cref="T:System.Collections.Generic.IEnumerable`1"/> which be returned.</param>
+            <param name="numerator"><see cref="T:Xafari.BC.Numerators.NumeratorBase"/> which is applied to the object.</param>
+            <param name="key">Value of the key.</param>
+            <returns>A <see cref="T:System.Collections.Generic.IEnumerable`1"/> that represents the collection of missing numbers.</returns>
+        </member>
+        <!-- Некорректный комментарий в формате XML для члена "M:Xafari.BC.Numerators.NumeratorPersistenceProvider.CreateMissingNumber" проигнорирован -->
+        <member name="M:Xafari.BC.Numerators.NumeratorPersistenceProvider.CreateMissingNumber(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Create the object of type <see cref="!:Xafari.BC.Numerators.DC.IDCMissingNumber"/> which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.
+            </summary>
+            <see cref="!:Xafari.BC.Numerators.DC.IDCMissingNumber"/> which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>. 
+            <param name="objectSpace"> <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> object which used for create the object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</param>
+            <returns>Object of type <see cref="!:Xafari.BC.Numerators.DC.IDCMissingNumber"/> which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</returns>
+        </member>
+        <!-- Некорректный комментарий в формате XML для члена "M:Xafari.BC.Numerators.NumeratorPersistenceProvider.CreateNumeratorValue" проигнорирован -->
+        <member name="M:Xafari.BC.Numerators.NumeratorPersistenceProvider.CreateNumeratorValue(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Create the object of type <see cref="!:Xafari.BC.Numerators.DC.IDCNumeratorValue"/> which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.
+            </summary>
+            <see cref="!:Xafari.BC.Numerators.DC.IDCNumeratorValue"/> which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.
+            <param name="objectSpace"> <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> object which used for create the object which implement <see cref="T:Xafari.BC.Numerators.IMissingNumberSupport"/>.</param>
+            <returns>Object of type <see cref="!:Xafari.BC.Numerators.DC.IDCNumeratorValue"/> which implement <see cref="T:Xafari.BC.Numerators.INumeratorValueSupport"/>.</returns>
+        </member>
+        <!-- Некорректный комментарий в формате XML для члена "M:Xafari.BC.Numerators.NumeratorPersistenceProvider.GetMissingNumbers(Xafari.BC.Numerators.NumeratorBase,System.String)" проигнорирован -->
+        <member name="T:Xafari.BC.Numerators.IIndexNumberSupport">
+            <summary>
+            Declares members implemented by classes, where need support the feature of index numbering.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.IIndexNumberSupport.IndexNumber">
+            <summary>
+             Contains the index number.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Numerators.XafariBCNumeratorsModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.XafariBCNumeratorsModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.XafariBCNumeratorsModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.NumeratorFormatter">
+            <summary>
+             Форматер используется при создании номеров нумератора по шаблону.
+            </summary>
+             <remarks>
+             Обрабатывает формат нумератора вида {0:&lt;INDEX&gt;,numericFormat}.
+             </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorFormatter.#ctor(Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext,Xafari.BC.Numerators.NumeratorBase)">
+            <summary>
+             Создает объект <see cref="T:Xafari.BC.Numerators.NumeratorFormatter"/>.
+            </summary>
+            <param name="serviceSpaceContext"></param>
+            <param name="numerator"></param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorFormatter.GetFormat(System.Type)">
+            <summary>
+            Gets an object that provides formatting services for the specified type.
+            </summary>
+            
+            <returns>
+            The current instance, if formatType is the same type as the current instance; otherwise, null.
+            </returns>
+            
+            <param name="formatType">An object that specifies the type of format object to get. </param><filterpriority>1</filterpriority>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorFormatter.Format(System.String,System.Object,System.IFormatProvider)">
+            <summary>
+            Converts the value of a specified object to an equivalent string representation using specified format and culture-specific formatting information.
+            </summary>
+            
+            <returns>
+            The string representation of the value of arg, formatted as specified by format and formatProvider.
+            </returns>
+            
+            <param name="arg">An object to format. </param>
+            <param name="format">A format string containing formatting specifications. </param>
+            <param name="formatProvider">An <see cref="T:System.IFormatProvider"></see> object that supplies format information about the current instance. </param><filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Xafari.BC.Numerators.NumeratorLink">
+            <summary>
+             NumeratorLink class binding property of persistent object to numerator.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorLink.#ctor(Xafari.BC.Numerators.NumeratorBase,System.Type,System.String,System.Nullable{System.Int32},Xafari.BC.Numerators.ApplyNumeratorsStrategy,Xafari.BC.Numerators.Model.DerivedClassBehavior)">
+            <summary>
+             Создает объект <see cref="T:Xafari.BC.Numerators.NumeratorLink"/> для нумератора <i>numerator</i>,
+             персистентного типа <i>persistentType</i>, его свойства <i>propertyName</i> и
+             порядковым номером <i>index</i> и признаком способа применения <i>applyOnCreate</i>.
+            </summary>
+            <param name="numerator">Нумератор.</param>
+            <param name="persistentType">Персистентный тип.</param>
+            <param name="propertyName">Свойства типа.</param>
+            <param name="index">Порядковый номер привязки.</param>
+            <param name="apply">Apply startegy</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorLink.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </summary>
+            
+            <returns>
+            A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorLink.Numerator">
+            <summary>
+             Возвращает нумератор привязки.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorLink.PersistentType">
+            <summary>
+            Возвращает персистентный тип привязки.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorLink.PropertyName">
+            <summary>
+            Возвращает свойство персистентного типа привязки.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorLink.Index">
+            <summary>
+            Возвращает порядковый номер привязки.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorLink.DerivedClassBehavior">
+            <summary>
+            Значение по умолчанию, которое определяет необходимость применять данный нумератов к производным типам
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorLink.Comparer.Compare(Xafari.BC.Numerators.NumeratorLink,Xafari.BC.Numerators.NumeratorLink)">
+            <summary>
+            When overridden in a derived class, performs a comparison of two objects of the same type and returns a value indicating whether one object is less than, equal to, or greater than the other.
+            </summary>
+            
+            <returns>
+            Value Condition Less than zero x is less than y.Zero x equals y.Greater than zero x is greater than y.
+            </returns>
+            
+            <param name="y">The second object to compare.</param>
+            <param name="x">The first object to compare.</param>
+            <exception cref="T:System.ArgumentException">Type T does not implement either the <see cref="T:System.IComparable`1"></see> generic interface or the <see cref="T:System.IComparable"></see> interface.</exception>
+        </member>
+        <member name="T:Xafari.BC.Numerators.NumeratorManager">
+            <summary>
+             Object to controls numerators.
+            </summary>
+             <remarks>
+             For each thread, there is a separate instance of the <see cref="T:Xafari.BC.Numerators.NumeratorManager"/>.
+             </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.InitializeNumerators">
+            <summary>
+            The method initialize numerators.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.ApplyNumerators(System.Object,System.Boolean)">
+            <summary>
+            Creates new objectSpace, apply numerators immediate and commit changes.
+            </summary>
+            <param name="obj"></param>
+            <param name="afterCreate"></param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.SaveDeletedNumbers(Xafari.BC.Services.IServiceObjectSpace,System.Object)">
+            <summary>
+            Save numbers of deleted object <paramref name="obj"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">Deleted object</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.InitializeCore">
+            <summary>
+            The method initialize numerators.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.AddNumerator(Xafari.BC.Numerators.NumeratorBase)">
+            <summary>
+            Add numerator <see cref="T:Xafari.BC.Numerators.NumeratorBase"/> to list of numerators <see cref="P:Xafari.BC.Numerators.NumeratorManager.Numerators"/>.
+            </summary>
+            <param name="numerator">Numerator <see cref="T:Xafari.BC.Numerators.NumeratorBase"/> to be added.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager._updateCalculatedLinks(DevExpress.ExpressApp.DC.ITypeInfo)">
+            <summary>
+            Calculates links cache for specified TypeInfo
+            </summary>
+            <param name="typeInfo"></param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.AddLink(Xafari.BC.Numerators.NumeratorLink)">
+            <summary>
+            Add <see cref="T:Xafari.BC.Numerators.NumeratorLink"/>.
+            </summary>
+            <param name="link"><see cref="T:Xafari.BC.Numerators.NumeratorLink"/> to be added.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.FindLinks(DevExpress.ExpressApp.DC.ITypeInfo)">
+            <summary>
+            Calculates numerator links for specified <paramref name="typeInfo"/>.
+            </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.ApplyNumerators(Xafari.BC.Services.IServiceSpace,System.Object,Xafari.BC.Numerators.ApplyNumeratorsStrategy)">
+            <summary>
+            Applying all numerators to object <paramref name="obj"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">Object, to which apply numerators.</param>
+            <param name="applyStrategy">Select apply numerators strategy for operation.</param>
+            <remarks>
+            Applying only numerators, which value of flag <paramref name="applyStrategy"/> has equals with <see cref="P:Xafari.BC.Numerators.NumeratorLink.ApplyStrategy"/>.
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.RollbackNumerators(Xafari.BC.Services.IServiceSpace,System.Object[])">
+            <summary>
+            Performs rollback operations before delete <paramref name="objs"/>.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="objs">Objects to rollback.</param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.GetRealIndex(System.Object,Xafari.BC.Numerators.NumeratorBase,System.String)">
+            <summary>
+            Gets index value of <paramref name="numerator"/>, which has been used in <paramref name="member"/> of <paramref name="obj"/>.
+            </summary>
+            <param name="obj"></param>
+            <param name="numerator"></param>
+            <param name="member"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.SetRealIndex(System.Object,Xafari.BC.Numerators.NumeratorBase,System.String,System.Int64)">
+            <summary>
+            Устанавливает значение индекса <i>realIndex</i> нумератора <i>numerator</i>, которое было использовано при 
+            нумерации свойства <i>member</i> объекта <i>obj</i>.
+            </summary>
+            <param name="obj"></param>
+            <param name="numerator"></param>
+            <param name="member"></param>
+            <param name="realIndex"></param>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.Clear">
+            <summary>
+            Очищает все настройки сервиса нумераторов.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.HasNumerators(System.Object,System.Nullable{Xafari.BC.Numerators.ApplyNumeratorsStrategy})">
+            <summary>
+            Calculate result for specified <paramref name="obj"/> and <paramref name="applyStrategy"/>.
+            </summary>
+            <param name="obj"></param>
+            <param name="applyStrategy"></param>
+            <returns>
+            <b>true</b> if any numerator link exists for specified <paramref name="obj"/> and all base types.
+            </returns>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.HasNumerators(DevExpress.ExpressApp.DC.ITypeInfo,System.Nullable{Xafari.BC.Numerators.ApplyNumeratorsStrategy})">
+            <summary>
+            Calculate result for specified <paramref name="typeInfo"/> and <paramref name="applyStrategy"/>.
+            </summary>
+            <param name="typeInfo"></param>
+            <param name="applyStrategy"></param>
+            <returns>
+            <b>true</b> if any numerator link exists for specified <paramref name="typeInfo"/> and all base types.
+            </returns>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorManager.AutoApply">
+            <summary>
+            Specifies that numerators aplly/rollback operation apply automatically.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorManager.Model">
+            <summary>
+            Gets the model <see cref="T:Xafari.BC.Numerators.Model.IModelBCNumerators"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorManager.PersistenceProviderType">
+            <summary>
+            Gets the <see cref="T:Xafari.BC.Numerators.INumeratorPersistenceProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorManager.Numerators">
+            <summary>
+            Gets the list of the numerators <see cref="T:Xafari.BC.Numerators.NumeratorBase"/>.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext">
+            <summary>
+            Service context object for <see cref="T:Xafari.BC.Numerators.NumeratorManager">Numerator service</see>.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext.RollbackCore">
+            <summary>
+            Rollback changes for numerator service
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext.CommitChangesCore">
+            <summary>
+            Commit changes for numerator service.
+            First delete numbers.
+            Second apply new numbering.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext.Apply(System.Object,Xafari.BC.Numerators.ApplyNumeratorsStrategy)">
+            <summary>
+            Apply all numerators for specified <paramref name="obj"/> with specified apply strategy.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext.Rollback(System.Object[])">
+            <summary>
+            Rollback all numerators for specified <paramref name="objs"/>.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Numerators.NumeratorManager.ServiceSpaceContext.AutoApply">
+            <summary>
+            Specifies that numerators aplly/rollback operation apply automatically.
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Numerators.SkipNumerator">
+            <summary>
+            Нумератор используется для отмены нумерации, определенной в базовом классе объекта,
+            для которого применяется нумерация.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Numerators.SkipNumerator.ApplyNumbering(Xafari.BC.Services.IServiceSpace,System.Object,System.String)">
+            <summary>
+            Ничего не делает.
+            </summary>
+            <param name="serviceSpace"></param>
+            <param name="obj">Объект, для которого приняется нумератор.</param>
+            <param name="memberName"></param>
+        </member>
+    </members>
+</doc>

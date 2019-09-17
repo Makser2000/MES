@@ -1,0 +1,250 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Solution1.Module</RootNamespace>
+    <AssemblyName>Solution1.Module</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'EasyTest|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\EasyTest\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;EASYTEST</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.ExpressApp.ConditionalAppearance.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Objects.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Reports.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.TreeListEditors.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Validation.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Validation.Win.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Win.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.ExpressApp.Xpo.v17.2">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v17.2.Core">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Data.v17.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.ExpressApp.v17.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.Base.v17.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Persistent.BaseImpl.v17.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v17.2">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v17.2.Extensions, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Galaktika.Common">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.Common.Logger">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.Common.Logger.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.Common.Module">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.Common.Module.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.Common.Resolver">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.Common.Resolver.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.Communication">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.Communication.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.MES.BackgroundJobs.Common">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.MES.BackgroundJobs.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.MES.ClientServerLibrary">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.MES.ClientServerLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.MES.Core">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.MES.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Galaktika.MES.Module">
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.MES.Module.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Xafari, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.Arms, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10" />
+    <Reference Include="Xafari.BC, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.BC.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.BC.BusinessOperations, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.BC.BusinessOperations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.BC.BusinessOperations.Arm, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL" />
+    <Reference Include="Xafari.BC.BusinessOperations.Commands, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL" />
+    <Reference Include="Xafari.BC.Numerators, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.BC.Numerators.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.BC.Numerators.Xpo, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.BC.Numerators.Xpo.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.BC.Settings, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.BC.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.BC.Settings.Win, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.BC.Settings.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.DockPanels, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.DockPanels.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.DockPanels.Win, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.DockPanels.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.Editors, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.Editors.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.Editors.Win, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.Editors.Win.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.Filters, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL" />
+    <Reference Include="Xafari.SmartDesign, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.SmartDesign.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.Utils, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Xafari.Win, Version=17.2.6011.0, Culture=neutral, PublicKeyToken=b5573042f1727a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Xafari.Win.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessObjects\CompleteMaintenanceOrder.cs" />
+    <Compile Include="BusinessObjects\CompleteMaintenanceOrderService.cs" />
+    <Compile Include="BusinessObjects\DefectRegistration.cs" />
+    <Compile Include="BusinessObjects\MaintenanceOperation.cs" />
+    <Compile Include="BusinessObjects\MaintenanceOperationBusinessLogic.cs" />
+    <Compile Include="BusinessObjects\MaintenanceOperationLogicController.cs" />
+    <Compile Include="BusinessObjects\MaintenanceOrder.cs" />
+    <Compile Include="BusinessObjects\MaintenanceOrderExecutor.cs" />
+    <Compile Include="BusinessObjects\MaintenanceRouting.cs" />
+    <Compile Include="BusinessObjects\MaintenanceSchedule.cs" />
+    <Compile Include="BusinessObjects\Material.cs" />
+    <Compile Include="BusinessObjects\MaterialRequirement.cs" />
+    <Compile Include="BusinessObjects\MaterialRequirementBusinessLogic.cs" />
+    <Compile Include="BusinessObjects\StartMaintenanceOrder.cs" />
+    <Compile Include="BusinessObjects\StartMaintenanceOrderService.cs" />
+    <Compile Include="DatabaseUpdate\Updater.cs" />
+    <Compile Include="Module.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Module.Designer.cs">
+      <DependentUpon>Module.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Module.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>Module.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="DatabaseUpdate\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BusinessObjects\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Controllers\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FunctionalTests\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FunctionalTests\sample.ets" />
+    <None Include="Images\ReadMe.txt" />
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FunctionalTests\config.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Welcome.html" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

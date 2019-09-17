@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.DockPanels</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.DockPanels.Model.IModelXafariDocking">
+            <summary>
+            Расширяет все узлы модели, которые наследуют интерфейс IModelXafari, узлом DockPanels
+            </summary>
+        </member>
+        <member name="T:Xafari.DockPanels.Model.IModelClassDocking">
+            <summary>
+            Расширяет все узлы модели, которые наследуют интерфейс IModelClass, узлом DockPanels
+            </summary>
+        </member>
+        <member name="T:Xafari.DockPanels.Model.IModelViewDocking">
+             <summary>
+            Расширяет все узлы модели, которые наследуют интерфейс IModelView, узлом DockPanels
+             </summary>
+        </member>
+        <member name="T:Xafari.DockPanels.Model.IModelDockPanel">
+            <summary>
+            Интерфейс, свойства которого используются для описания плавающей панели
+            </summary>
+        </member>
+        <member name="F:Xafari.DockPanels.Model.ViewsRelationTypes.DetailsCurrentObject">
+            <summary>
+            Используется для <see cref="T:DevExpress.ExpressApp.DetailView"/>. CurrentObject берется из MasterView.CurrentObject.
+            </summary>
+        </member>
+        <member name="F:Xafari.DockPanels.XafariDockPanelsModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.DockPanels.XafariDockPanelsModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.DockPanels.XafariDockPanelsModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Xafari.DockPanels.XafariDockPanelsModule.RelationCriteriaParametersSearchPattern">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="P:Xafari.DockPanels.XafariDockPanelsModule.RelationCriteriaParameterModelNodeIdFormat">
+            <summary>
+            For internal use.
+            </summary>
+        </member>
+        <member name="M:Xafari.DockPanels.ViewsRelation.ObjectSpaceOnObjectReloaded(System.Object,DevExpress.ExpressApp.ObjectManipulatingEventArgs)">
+            <summary>
+            Для синхронизации данных докпанели при изменении в карточной форме объекта. ПИР 102.127074
+            </summary>
+            <param name="sender"></param>
+            <param name="objectManipulatingEventArgs"></param>
+        </member>
+        <member name="F:Xafari.DockPanels.XafariDockingWindowController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.DockPanels.XafariDockingWindowController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.DockPanels.XafariDockingWindowController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Xafari.DockPanels.XafariDockingWindowController.IsInitializing">
+            <summary>
+            Флаг используется, потому что панели регистрируются в DockManager при восстановлении из настроек.
+            </summary>
+        </member>
+        <member name="F:Xafari.DockPanels.S38161.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.DockPanels.S38161.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.DockPanels.S38161.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

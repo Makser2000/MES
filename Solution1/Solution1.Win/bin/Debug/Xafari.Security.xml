@@ -1,0 +1,224 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.Security</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="F:Xafari.Security.Controllers.ActionOperationApplyWindowController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.Controllers.ActionOperationApplyWindowController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Security.Controllers.ActionOperationApplyWindowController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.ActionOperationPermissionRequestProcessor">
+            <summary>
+            Implement <see cref="T:Xafari.Security.ActionOperationPermission"/> request processor.
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.ActionOperationPermissionRequestProcessor.IsGranted(Xafari.Security.ActionOperationPermissionRequest)">
+            <summary>
+            Check is granted permission for specified action in <paramref name="permissionRequest"/>.
+            </summary>
+            <param name="permissionRequest"></param>
+            <remarks>
+            By default, action granted.
+            <see cref="T:DevExpress.ExpressApp.Security.IPermissionDictionary"/> conatains just deny permissions.
+            Action is granted for user if at least one role granted this action for user.
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="T:Xafari.Security.ActionPermissionsExtensions">
+            <summary>
+            Class contains extensions for work with action permissions in <see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/>
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.ActionPermissionsExtensions.SetActionOperationPermission(DevExpress.ExpressApp.Security.ISecurityRole,DevExpress.ExpressApp.IObjectSpace,System.String,System.Boolean)">
+            <summary>
+            This method allows you to add action permission object to role
+            </summary>
+            <param name="role"><see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/> in which action permission must be added</param>
+            <param name="objectSpace">Instance of <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> for create action permission object</param>
+            <param name="actionId">Id of <see cref="T:DevExpress.ExpressApp.Actions.ActionBase"/></param>
+            <param name="allowExecute">False, if you want deny access to execute an action</param>
+            <remarks><see cref="P:Xafari.Security.XafariSecurityManager.Instance"/> must not be empty</remarks>
+        </member>
+        <member name="M:Xafari.Security.ActionPermissionsExtensions.SetActionOperationPermission(DevExpress.ExpressApp.Security.ISecurityRole,DevExpress.ExpressApp.IObjectSpace,DevExpress.ExpressApp.Actions.ActionBase,System.Boolean)">
+            <summary>
+            This method allows you to add action permission object to role
+            </summary>
+            <param name="role"><see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/> in which action permission must be added</param>
+            <param name="objectSpace">Instance of <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> for create action permission object</param>
+            <param name="action">Instance of <see cref="T:DevExpress.ExpressApp.Actions.ActionBase"/></param>
+            <param name="allowExecute">False, if you want deny access to execute an action</param>
+            <returns>True, if action permission object has been added, otherwise false</returns>
+            <remarks><see cref="P:Xafari.Security.XafariSecurityManager.Instance"/> must not be empty</remarks>
+        </member>
+        <member name="T:Xafari.Security.AuthenticationTypes">
+            <summary>
+            Сопособы аутентификации пользователя при входе в приложение.
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.Controllers.ValidatePasswordOnChangeController">
+            <summary>
+            Intended to validate user password on change whend <see cref="T:Xafari.Security.XafariAuthentication"/> is used 
+            to make sure that new password meets the requirements of XafariAuthentication.
+            </summary>
+        </member>
+        <member name="F:Xafari.Security.XafariSecurityModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.XafariAuthenticationActiveDirectory`2">
+            <summary>
+            <para>
+            An Authentication that assumes an automatic logon.
+            The user name is taken from the currently used Windows account or HttpContext or ServiceSecurityContext.
+            </para>
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.XafariAuthenticationActiveDirectory">
+            <summary>
+            <para>
+            An Authentication that assumes an automatic logon.
+            The user name is taken from the currently used Windows account or HttpContext or ServiceSecurityContext.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariAuthenticationActiveDirectory.#ctor(System.Type,System.Type)">
+            <summary>
+            <para>
+            Initializes a new instance of the XafariAuthenticationActiveDirectory class.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariAuthenticationActiveDirectory.GetUserName">
+            <summary>
+            The user name is taken from the currently used Windows account or HttpContext or ServiceSecurityContext.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Security.XafariAuthenticationActiveDirectory.CurrentWindowsUserName">
+            <summary>
+            The user name is taken from the currently used Windows account or HttpContext or ServiceSecurityContext.
+            According allowed contexts.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.Security.XafariAuthenticationActiveDirectory`2.#ctor">
+            <summary>
+            <para>
+            Initializes a new instance of the XafariAuthenticationActiveDirectory&lt;UserType, LogonParametersType&gt; class.
+            </para>
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.XafariAuthentificationActiveDirectory`1">
+            <summary>
+            <para>
+            An Authentication that assumes an automatic logon.
+            The user name is taken from the currently used Windows account or HttpContext or ServiceSecurityContext.
+            </para>
+            </summary>
+        </member>
+        <member name="T:Xafari.Security.XafariSecurityManager">
+            <summary>
+            Class helps to work with xafari security objects like roles and permissions
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityManager.SetActionOperationPermission(DevExpress.ExpressApp.Security.ISecurityRole,DevExpress.ExpressApp.IObjectSpace,System.String,System.Boolean)">
+            <summary>
+            This method allows you to add action permission object to role
+            </summary>
+            <param name="role"><see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/> in which action permission must be added</param>
+            <param name="objectSpace">Instance of <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> for create action permission object</param>
+            <param name="actionId">Id of <see cref="T:DevExpress.ExpressApp.Actions.ActionBase"/></param>
+            <param name="allowExecute">False, if you want deny access to execute an action</param>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityManager.SetActionOperationPermission(DevExpress.ExpressApp.Security.ISecurityRole,DevExpress.ExpressApp.IObjectSpace,DevExpress.ExpressApp.Actions.ActionBase,System.Boolean)">
+            <summary>
+            This method allows you to add action permission object to role
+            </summary>
+            <param name="role"><see cref="T:DevExpress.ExpressApp.Security.ISecurityRole"/> in which action permission must be added</param>
+            <param name="objectSpace">Instance of <see cref="T:DevExpress.ExpressApp.IObjectSpace"/> for create action permission object</param>
+            <param name="action">Instance of <see cref="T:DevExpress.ExpressApp.Actions.ActionBase"/></param>
+            <param name="allowExecute">False, if you want deny access to execute an action</param>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityManager.CreateAdministratorRole(DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Creates new security role with administrative permissions.
+            </summary>
+            <param name="objectSpace">Objectspace in which new role will created.</param>
+            <returns>ISecurityRole object.</returns>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityManager.CreateUsersRole(DevExpress.ExpressApp.IObjectSpace,System.String)">
+            <summary>
+            Creates new security role with user permissions.
+            </summary>
+            <param name="objectSpace">Objectspace in which new role will created.</param>
+            <param name="roleName">Name of new created role.</param>
+            <returns>ISecurityRole object.</returns>
+        </member>
+        <member name="M:Xafari.Security.XafariSecurityManager.FindRole(DevExpress.ExpressApp.IObjectSpace,System.String)">
+            <summary>
+            Find role by specified name.
+            </summary>
+            <param name="objectSpace">Object space.</param>
+            <param name="roleName">Role name.</param>
+            <returns>ISecurityRole object.</returns>
+        </member>
+        <member name="P:Xafari.Security.XafariSecurityManager.Instance">
+            <summary>
+            Gets instance of <see cref="T:Xafari.Security.XafariSecurityManager"/> class
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariSecuritySystem.SynchronizeWithModel(DevExpress.ExpressApp.IObjectSpace,Xafari.Model.IModelXafari)">
+            <summary>
+            Выполняет копирование настроек системы безопасности из модели приложения.
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariSecuritySystem.SynchronizeWithModelIfNecessary(DevExpress.ExpressApp.IObjectSpace,Xafari.Model.IModelXafari)">
+            <summary>
+            Выполняет копирование настроек системы безопасности из модели приложения при необходимости.
+            </summary>
+        </member>
+        <member name="M:Xafari.Security.XafariSecuritySystem.SynchronizeWithModelIfNecessary(System.Func{DevExpress.ExpressApp.IObjectSpace},Xafari.Model.IModelXafari)">
+            <summary>
+            Выполняет копирование настроек системы безопасности из модели приложения при необходимости.
+            </summary>
+        </member>
+        <member name="P:Xafari.Security.XafariSecuritySystem.SyncWithModel">
+            <summary>
+            Возвращает и устанавливает признак необходимости копировать настройки
+            системы безопасности из модели приложения.
+            </summary>
+        </member>
+    </members>
+</doc>

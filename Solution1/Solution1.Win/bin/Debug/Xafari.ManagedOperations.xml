@@ -1,0 +1,1354 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.ManagedOperations</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.CustomizeMessageEventArgs">
+            <summary>
+            Allow to customize managed operations messages.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.CustomizeMessageEventArgs.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="message">Default message.</param>
+        </member>
+        <member name="P:Xafari.ManagedOperations.CustomizeMessageEventArgs.Message">
+            <summary>
+            Message of operation trace.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ClearManagedOperationStoragesHelper">
+            <summary>
+            This class contains methods to clear managed operations storages
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ClearManagedOperationStoragesHelper.ClearManagedOperationsLog(Xafari.ManagedOperations.ClearManagedOperationStorageParameter,DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Clear <see cref="T:Xafari.ManagedOperations.ManagedOperationStorage"/> objects using <see cref="T:Xafari.ManagedOperations.ClearManagedOperationStorageParameter"/> like a filter
+            </summary>
+            <param name="parameter">Parameter for creating criteria</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ClearManagedOperationStoragesHelper.ClearManagedOperationsLog(DevExpress.Data.Filtering.CriteriaOperator,DevExpress.ExpressApp.IObjectSpace)">
+            <summary>
+            Clear <see cref="T:Xafari.ManagedOperations.ManagedOperationStorage"/> objects using criteria
+            </summary>
+            <param name="criteria">Criteria for filtering</param>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ClearManagedOperationStorageParameter">
+            <summary>
+            Non persistent object which help using <see cref="T:Xafari.ManagedOperations.ClearManagedOperationStoragesHelper"/>
+            </summary>
+            <remarks>
+            For example, you can use this for creating detail view to provide UI for input parameters
+            </remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ClearManagedOperationStorageParameter.EndTimeOlderThan">
+            <summary>
+            Managed operation end time.
+            </summary>
+            <remarks>Indicates, when managed operation was stopped, cancelled, suspended or completed.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ClearManagedOperationStorageParameter.UserName">
+            <summary>
+            Gets user name.
+            </summary>
+            <remarks>Name of user which started this operation.</remarks>
+        </member>
+        <member name="T:Xafari.ManagedOperations.IManagedOperation">
+            <summary>
+            Exposes methods and properties for managed operations.
+            </summary>
+            <remarks>Declares members implemented by a ManagedOperationItem class.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IManagedOperation.CreateSubProcess(Xafari.ManagedOperations.ManagedOperationItem,System.Nullable{System.Int32})">
+            <summary>
+            Creates a subprocess for managed operation.
+            </summary>
+            <param name="item">This operation will be running as subprocess.</param>
+            <param name="index">Index of subprocess.</param>
+            <returns>Created subprocess.</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IManagedOperation.Start">
+            <summary>
+            Starts managed operation.
+            </summary>
+            <remarks>Initially, this will check whether the process is unique.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IManagedOperation.NextStep(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,Xafari.ManagedOperations.TraceMessageTypes)">
+            <summary>
+            Report about event during managed operation and set parameters of process.
+            </summary>
+            <param name="message">Message text.</param>
+            <param name="currentStep">The sequence number of the current step.</param>
+            <param name="totalStep">Total number of steps.</param>
+            <param name="details">Detailed description.</param>
+            <param name="messageType">Message type.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IManagedOperation.TraceWarning(System.String,System.String)">
+            <summary>
+            Trace warnings during managed operation.
+            </summary>
+            <param name="message">Warning message.</param>
+            <param name="details">Warning details.</param>
+            <remarks>If operation has warnings, you could trace it with this method.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IManagedOperation.TraceError(System.String,System.String)">
+            <summary>
+            Trace errors during managed operation.
+            </summary>
+            <param name="message">Error message.</param>
+            <param name="details">Error details.</param>
+            <remarks>If operation has errors, you could trace it with this method.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.Name">
+            <summary>
+            Name of the operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.Description">
+            <summary>
+            Descriprion of the operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.SubProcesses">
+            <summary>
+            Managed operation subrocesses.
+            </summary>
+            <remarks>If operation has subrocesses, they will be stored in this collection.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.Status">
+            <summary>
+            Shows managed operation status.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.Message">
+            <summary>
+            Some message during processing operations.
+            </summary>
+            <remarks>If you want to inform user about anything during processing operations, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.TotalStep">
+            <summary>
+            Total number of operation steps.
+            </summary>
+            <remarks>If you want get or set total number of operation steps, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.CurrentStep">
+            <summary>
+            Gets a value indicating on which step is operation.
+            </summary>
+            <remarks>If you want to know on which step is operation, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.Id">
+            <summary>
+            Gets an operation's Id.
+            </summary>
+            <remarks>If you want to know operation's Id, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.HasErrors">
+            <summary>
+            Gets a value indicating whether there are errors in operation.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation has errors.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperation.HasWarnings">
+            <summary>
+            Gets a value indicating whether there are warnings in operation.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation has warnings.</remarks>
+        </member>
+        <member name="T:Xafari.ManagedOperations.IManagedOperationProvider">
+            <summary>
+            Provides access to managed operations.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IManagedOperationProvider.Operation">
+            <summary>
+            Managed operation instance.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.InterruptException">
+            <summary>
+            An exception if the operation is interrupted.
+            </summary>
+            <remarks>The exception that is thrown when operation is interrupted.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.InterruptException.#ctor">
+            <summary>
+            Initializes a new instance of the InterruptException class.
+            </summary>
+            <remarks>Default constructor.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.InterruptException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the InterruptException class with a specified error message.
+            </summary>
+            <param name="message">Error message text.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.InterruptException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the InterruptException class with a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="message">Error message text.</param>
+            <param name="innerException">Inner Exception.</param>
+        </member>
+        <member name="T:Xafari.ManagedOperations.DuplicateManagedOperationIdException">
+            <summary>
+            An exception when running a unique operation if it is performed.
+            </summary>
+            <remarks>The exception that is thrown when unique operation is already running.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.DuplicateManagedOperationIdException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the DuplicateManagedOperationIdException class with an operation name.
+            </summary>
+            <param name="operationName"></param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.DuplicateManagedOperationIdException.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the DuplicateManagedOperationIdException class with an operation name and a specified error message.
+            </summary>
+            <param name="operationName">Running operation name.</param>
+            <param name="message">Error message text.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.DuplicateManagedOperationIdException.#ctor(System.String,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the DuplicateManagedOperationIdException class with an operation name and a specified error message and a reference to the inner exception that is the cause of this exception.
+            </summary>
+            <param name="operationName">Running operation name.</param>
+            <param name="message">Error message text.</param>
+            <param name="innerException">Inner exception.</param>
+        </member>
+        <member name="P:Xafari.ManagedOperations.DuplicateManagedOperationIdException.OperationName">
+            <summary>
+            Running operation name.
+            </summary>
+            <remarks>Name of operation that is already running.</remarks>
+        </member>
+        <member name="T:Xafari.ManagedOperations.IOperationManager">
+            <summary>
+            Declares members for managed operation control.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IOperationManager.Resume">
+            <summary>
+            Resume operation.
+            </summary>
+            <remarks>If operation was suspended, you can resume it.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IOperationManager.Suspend">
+            <summary>
+            Suspend operation.
+            </summary>
+            <remarks>If necessary, you can suspend managed operation.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IOperationManager.Cancel">
+            <summary>
+            Cancel operation.
+            </summary>
+            <remarks>If necessary, you can stop managed operation.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IOperationManager.Start">
+            <summary>
+            Start operation.
+            </summary>
+            <remarks>If necessary to start managed operation, use this method.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IOperationManager.OperationStorageId">
+            <summary>
+            Gets storage Id.
+            </summary>
+            <remarks>Obtains the manager Id which stores the operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IOperationManager.OperationStatus">
+            <summary>
+            Gets managed operation status.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IOperationManager.TotalStep">
+            <summary>
+            Total number of operation steps.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.IOperationManager.CurrentStep">
+            <summary>
+            Gets a value indicating on which step is operation.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.IOperationManagerHelper">
+            <summary>
+            Helper for additional control of managed operations.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.IOperationManagerHelper.IsFinalized(Xafari.ManagedOperations.IOperationManager)">
+            <summary>
+            Gets a value indicating whether the ManagedOperation has been finalized of.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation process is finalized.</remarks>
+            <param name="operationManager">Operation Manager in which runs managed operation.</param>
+            <returns>Return true if operation is finalized.</returns>
+        </member>
+        <member name="T:Xafari.ManagedOperations.LogStorage">
+            <summary>
+            LogStorage class stores information about managed operation.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.LogStorage.#ctor(DevExpress.Xpo.Session)">
+            <summary>
+            Initializes a new instance of LogStorage class.
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="P:Xafari.ManagedOperations.LogStorage.CreateDate">
+            <summary>
+            Date of LogStorage creating.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.LogStorage.OperationTraceItems">
+            <summary>
+            Collection of trace items, which store log information.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManagedOperation">
+            <summary>
+            Defines class for managed operations.
+            </summary>
+            <remarks>Managed operation is the execution of any method with the ability to pause, resume, and interrupts.
+            During the execution of the operation is performed logging and monitoring.</remarks>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManagedOperationItem">
+            <summary>
+            Defines the base class for managed operations.
+            </summary>
+            <remarks>Managed operation is the execution of any method with the ability to pause, resume, and interrupts.
+            During the execution of the operation is performed logging and monitoring.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.#ctor(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Initializes a new instance of the ManagedOperationItem class.
+            </summary>
+            <remarks>Creates new instance of the ManagedOperationItem class in the context of XafApplication</remarks>
+            <param name="application">XafApplication instance in which the operation is performed.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.#ctor(DevExpress.ExpressApp.XafApplication,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ManagedOperationItem class.
+            </summary>
+            <remarks>Creates new instance of the ManagedOperationItem class in the context of XafApplication</remarks>
+            <param name="application">XafApplication instance in which the operation is performed.</param>
+            <param name="useSeparateThread">Start operation in separate thread. 'True' by default. Set 'false' if you need to run operation in current thread.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.Resume">
+            <summary>
+            Set ManagedOperationItem.InternalStatus to "Resuming".
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.Suspend">
+            <summary>
+            Set ManagedOperationItem.InternalStatus to "Suspending".
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.Cancel">
+            <summary>
+            Set ManagedOperationItem.InternalStatus to "Cancelling".
+            </summary>
+            <remarks>If ManagedOperation has subprocesses, their status is also set to "Cancelling".</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.GetRootOperation">
+            <summary>
+            Gets a root operation for this ManagedOperationItem.
+            </summary>
+            <returns>Root operation for this ManagedOperationItem</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.Start">
+            <summary>
+            Starts managed operation.
+            </summary>
+            <remarks>Initially, this will check whether the process is unique.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.CreateSubProcess(Xafari.ManagedOperations.ManagedOperationItem,System.Nullable{System.Int32})">
+            <summary>
+            Creates a subprocess for managed operation.
+            </summary>
+            <param name="item">This operation will be running as subprocess.</param>
+            <param name="index">Index of subprocess.</param>
+            <returns>Created subprocess.</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.CreateSubProcess(System.String,System.Action{Xafari.ManagedOperations.IManagedOperation})">
+            <summary>
+            Creates a subprocess for managed operation.
+            </summary>
+            <param name="name">Name of subprocess.</param>
+            <param name="action">This operation will be running as subprocess.</param>
+            <returns>Created subprocess.</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.CreateSubProcess(System.String,System.Action{Xafari.ManagedOperations.IManagedOperation},System.Int32,System.Nullable{System.Int32})">
+            <summary>
+            Creates a subprocess for managed operation.
+            </summary>
+            <param name="name">Name of subprocess.</param>
+            <param name="action">This operation will be running as subprocess.</param>
+            <param name="total">Total number of operation steps.</param>
+            <param name="index">Index of operation.</param>
+            <returns>Created subprocess.</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.TraceWarning(System.String,System.String)">
+            <summary>
+            Trace warnings during managed operation.
+            </summary>
+            <param name="message">Warning message.</param>
+            <param name="details">Warning details.</param>
+            <remarks>If operation has warnings, you could trace it with this method.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.TraceError(System.String,System.String)">
+            <summary>
+            Trace errors during managed operation.
+            </summary>
+            <param name="message">Error message.</param>
+            <param name="details">Error details.</param>
+            <remarks>If operation has errors, you could trace it with this method.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.TraceError(System.Exception)">
+            <summary>
+            Trace errors during managed operation.
+            </summary>
+            <param name="exception">Show exception as message.</param>
+            <remarks>If operation has errors, you could trace it with this method.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.NeedToLogTraceItemDependingOnManagedOperationTraceLevel(Xafari.ManagedOperations.TraceMessageTypes)">
+            <summary>
+            Проверка, нужно ли писать в лог информацию в зависимости от ее типа 
+            и от уровня логирования самой управляемой операции
+            </summary>
+            <param name="messageType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.NextStep(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String,Xafari.ManagedOperations.TraceMessageTypes)">
+            <summary>
+            Report about event during managed operation and set parameters of process.
+            </summary>
+            <param name="message">Message text.</param>
+            <param name="details">Detailed description.</param>
+            <param name="currentStep">The sequence number of the current step. The numbering of steps starts from 1. So, if the operation has totalStep = 3, then step numbers should be 1,2,3. </param>
+            <param name="totalStep">Total number of steps.</param>
+            <param name="messageType">Message type.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationItem.Dispose">
+            <summary>
+            Freeing resources associated with ManagedOperationItem instance.
+            </summary>
+            <remarks>Use this method to release unmanaged resources associated with ManagedOperationItem instance.</remarks>
+        </member>
+        <member name="E:Xafari.ManagedOperations.ManagedOperationItem.CustomizeStartMessage">
+            <summary>
+            Allow to change operation start message.
+            </summary>
+        </member>
+        <member name="E:Xafari.ManagedOperations.ManagedOperationItem.CustomizeCompleteMessage">
+            <summary>
+            Allow to change operation complete message.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.IsDisposed">
+            <summary>
+            Gets a value indicating whether the ManagedOperation has been disposed of.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation is disposed.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Count">
+            <summary>
+            When 'Split' property is 'true', 'Count' property set limit of messages in one trace item. 
+            By default it set to 1000.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Interval">
+            <summary>
+            Interval in milliseconds in which information will be logged to LogStorage. 
+            If it set to '0', log will updated on each step of managed operation.
+            By default it set to 2000 ms.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Split">
+            <summary>
+            Gets a value indicating whether to split log.
+            If it set to 'true', log will splitted when when the RecordCount 
+            value of OperationTraceItem exceeds 'Count' property value.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation is disposed.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.CheckInterval">
+            <summary>
+            Interval in seconds after which it will be checked whether the operation is canceled.
+            </summary>
+            <remarks>Use this value if you want to set your interval in seconds. By default, it set to 5 seconds.</remarks>
+            <code>
+            var managedOperation = new ManagedOperation(this.Application)
+                    {
+                        CheckInterval = 100;
+                    };
+            </code>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.HasErrors">
+            <summary>
+            Gets a value indicating whether there are errors in operation.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation has errors.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.HasWarnings">
+            <summary>
+            Gets a value indicating whether there are warnings in operation.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation has warnings.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.TraceLevel">
+            <summary>
+            Specifies what messages to log
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.OperationStorageId">
+            <summary>
+            Gets OperationManager.OperationStorageId
+            </summary>
+            <remarks>Obtains the storage Id which stores the operation.</remarks>
+            <returns>Returns storage Id object</returns>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Name">
+            <summary>
+            Name of the operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Description">
+            <summary>
+            Descriprion of the operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.SubProcesses">
+            <summary>
+            Managed operation subrocesses.
+            </summary>
+            <remarks>If operation has subrocesses, they will be stored in this collection.</remarks>
+            <returns>Collection of managed operation subprocesses.</returns>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Status">
+            <summary>
+            Shows managed operation status.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Message">
+            <summary>
+            Some message during processing operations.
+            </summary>
+            <remarks>If you want to inform user about anything during processing operations, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.TotalStep">
+            <summary>
+            Total number of operation steps.
+            </summary>
+            <remarks>If you want get or set total number of operation steps, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.CurrentStep">
+            <summary>
+            Gets a value indicating on which step is operation.
+            </summary>
+            <remarks>If you want to know on which step is operation, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Id">
+            <summary>
+            Gets an operation's Id.
+            </summary>
+            <remarks>If you want to know operation's Id, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.UserFullName">
+            <summary>
+            Gets user full name.
+            </summary>
+            <remarks>Full name of user which started this operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.Application">
+            <summary>
+            Gets an XafApplication instance.
+            </summary>
+            <remarks>Instance of the XafApplication that is running the managed operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.RootOperation">
+            <summary>
+            Gets root operation.
+            </summary>
+            <remarks>If operation is a subprocess, this property returns root operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationItem.IsFinalized">
+            <summary>
+            Gets a value indicating whether the ManagedOperation has been finalized of.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation process is finalized.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.#ctor(DevExpress.ExpressApp.XafApplication,System.Guid)">
+            <summary>
+            Constructor for unique process.
+            </summary>
+            <param name="app">XafApplication instance in which the operation is performed.</param>
+            <param name="id">Operation Id.</param>
+            <remarks>Use this constructor if you want to run this operation as unique process.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.#ctor(DevExpress.ExpressApp.XafApplication,System.Guid,System.Boolean)">
+            <summary>
+            Constructor for unique process.
+            </summary>
+            <param name="app">XafApplication instance in which the operation is performed.</param>
+            <param name="id">Operation Id.</param>
+            <param name="useSeparateThread">Start operation in separate thread. 'True' by default. Set 'false' if you need to run operation in current thread.</param>
+            <remarks>Use this constructor if you want to run this operation as unique process.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.#ctor(DevExpress.ExpressApp.XafApplication)">
+            <summary>
+            Initializes a new instance of the ManagedOperationItem class.
+            </summary>
+            <remarks>Creates new instance of the ManagedOperation class in the context of XafApplication</remarks>
+            <param name="app">XafApplication instance in which the operation is performed.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.#ctor(DevExpress.ExpressApp.XafApplication,System.Boolean)">
+            <summary>
+            Initializes a new instance of the ManagedOperationItem class.
+            </summary>
+            <remarks>Creates new instance of the ManagedOperation class in the context of XafApplication</remarks>
+            <param name="app">XafApplication instance in which the operation is performed.</param>
+            <param name="useSeparateThread">Start operation in separate thread. 'True' by default. Set 'false' if you need to run operation in current thread.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.Start">
+            <summary>
+            Starts managed operation.
+            </summary>
+            <remarks>Initially, this will check whether the process is unique.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.Start(System.Boolean)">
+            <summary>
+            Start managed operation. Use this overload for unique operations.
+            </summary>
+            <param name="generateDuplicateManagedOperationIdException">True - detail information with callstack will be shown. 
+            False - simple message box with short information</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperation.RunSupportThread">
+            <summary>
+            Это сделано для предотвращения ситуации, когда у процесса очень длительное время выполнения шага или вдруг шаг не может завершиться, 
+            и тогда работающий процесс висит в памяти.
+            ПИР 102.120325.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperation.ZoneType">
+            <summary>
+            Gets ZoneType value.
+            </summary>
+            <remarks>ZoneType: Global, Local.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperation.LocalData">
+            <summary>
+            Get data about operation.
+            </summary>
+            <remarks>Obtains information about managed operation in DataSet format.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperation.TracingStrategy">
+            <summary>
+            Gets logging strategy.
+            </summary>
+            <remarks>TracingStrategy: OwnLevel, CopyToParent, RootLevel.</remarks>
+        </member>
+        <member name="T:Xafari.ManagedOperations.TracingStrategy">
+            <summary>
+            Logging strategy determines possible methods of tracing.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TracingStrategy.OwnLevel">
+            <summary>
+            Logging on each level without copying on root level.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TracingStrategy.CopyToParent">
+            <summary>
+            Logging on each level with copying on root level.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TracingStrategy.RootLevel">
+            <summary>
+            Logging on root level only. 
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationWindowController.Application_CustomProcessShortcut(System.Object,DevExpress.ExpressApp.CustomProcessShortcutEventArgs)">
+            <summary>
+            Создает View из панели навигации с учетом зоны выполнения. Параметр ZoneType задается в ManageOperationViewController.View_CustomizeViewShortcut
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManagedOperationZoneTypes">
+            <summary>
+            List of managed operation's zone types.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationZoneTypes.Global">
+            <summary>
+            Global
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationZoneTypes.Local">
+            <summary>
+            Local
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManagedOperationStatus">
+            <summary>
+            List of managed operation's statuses.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Created">
+            <summary>
+            Indicates that the managed opertaion was created.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Suspended">
+            <summary>
+            Indicates that the managed opertaion was suspended.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Running">
+            <summary>
+            Indicates that the managed opertaion is running.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Cancelled">
+            <summary>
+            Indicates that the managed opertaion was stopped.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Completed">
+            <summary>
+            Indicates that the managed opertaion was completed.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.TimeExpired">
+            <summary>
+            Time expired.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Errors">
+            <summary>
+            Indicates that the managed opertaion has errors.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Warnings">
+            <summary>
+            Indicates that the managed opertaion has warnings.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.CompletedWithErrors">
+            <summary>
+            Indicates that the managed opertaion was completed with errors.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.CompletedWithWarnings">
+            <summary>
+            Indicates that the managed opertaion was completed with warnings.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.CompletedWithErrorsAndWarnings">
+            <summary>
+            Indicates that the managed opertaion was completed with errors and warnings.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManagedOperationStatus.Active">
+            <summary>
+            Indicates that the managed opertaion is running but suspended.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.InternalManagedOperationStatus">
+            <summary>
+            Managed operation internal status.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManagedOperationRuntimeStatus">
+            <summary>
+            Managed operation runtime status.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManagedOperationStorage">
+            <summary>
+            Storage in which managed operation are stored.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationStorage.#ctor(DevExpress.Xpo.Session)">
+            <summary>
+            Initializes a new instance of the ManagedOperationStorage class with default settings.
+            </summary>
+            <param name="session">Session in which ManagedOperationStorage created.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationStorage.AfterConstruction">
+            <summary>
+            Invoked when the current object is about to be initialized after its creation.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManagedOperationStorage.GetRootStorage">
+            <summary>
+            Managed operation root storage.
+            </summary>
+            <returns>Storage for root operation.</returns>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.UpdateTime">
+            <summary>
+            Managed operation update time.
+            </summary>
+            <remarks>Indicates, when managed operation's status was last time updated.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.StartTime">
+            <summary>
+            Managed operation start time.
+            </summary>
+            <remarks>Indicates, when managed operation was started.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.EndTime">
+            <summary>
+            Managed operation end time.
+            </summary>
+            <remarks>Indicates, when managed operation was stopped, cancelled, suspended or completed.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.CurrentStep">
+            <summary>
+            Managed operation current step.
+            </summary>
+            <remarks>Shows, on which step is operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.TotalStep">
+            <summary>
+            Managed operation total steps count.
+            </summary>
+            <remarks>Displays the total number of steps of the managed operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.NameProcess">
+            <summary>
+            Managed operation name.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.GuidProcess">
+            <summary>
+            Managed operation Id.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.Progress">
+            <summary>
+            Managed operation progress.
+            </summary>
+            <remarks>Displays managed operation percent complete.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.Status">
+            <summary>
+            Shows managed operation status.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.RuntimeStatus">
+            <summary>
+            Runtime status of managed operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.Message">
+            <summary>
+            Some message during processing operations.
+            </summary>
+            <remarks>If you want to inform user about anything during processing operations, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.IsSaveLog">
+            <summary>
+            Save or not save the log.
+            </summary>
+            <remarks>If necessary save information to log, use this property.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.Description">
+            <summary>
+            Additional information about process.
+            </summary>
+            <remarks>Managed operation description.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.LogStorage">
+            <summary>
+            Contains log information about managed operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.ParentProcess">
+            <summary>
+            Parent process for this operation.
+            </summary>
+            <remarks>If operation is a subprocess, this property returns parent operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.ChildProcess">
+            <summary>
+            Subprocesses for this operation.
+            </summary>
+            <remarks>If operation has subrocesses, they will be stored in this collection.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.UserName">
+            <summary>
+            Gets user name.
+            </summary>
+            <remarks>Name of user which started this operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.HostName">
+            <summary>
+            Gets or sets host name.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManagedOperationStorage.Index">
+            <summary>
+            Gets or sets storage index.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.XafariManagedOperationsModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.XafariManagedOperationsModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.XafariManagedOperationsModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.OperationManager">
+            <summary>
+            Represents an auxiliary class used to initializes value managers.
+            </summary>
+            <remarks>A value manager is an object which implements the IOperationManager and IObjectSpaceHolder interfaces.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.#ctor(DevExpress.ExpressApp.IObjectSpace,System.Object)">
+            <summary>
+            Initializes a new instance of the OperationManager class with specific OperationStorage Id.
+            </summary>
+            <param name="objectSpace">ObjectSpace in which will be created OperationManager.</param>
+            <param name="oid">OperationStorage Id.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.AddChildProcess(System.Object,System.Nullable{System.Int32})">
+            <summary>
+            Add subprocess to ManagedOperation's storage.
+            </summary>
+            <param name="childId">Child operation's Id.</param>
+            <param name="index">Index of subprocess.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Start">
+            <summary>
+            Start managed operation.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Resume">
+            <summary>
+            Resume managed operation.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Suspend">
+            <summary>
+            Suspend managed operation.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Cancel">
+            <summary>
+            Cancel managed operation.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Cancel(Xafari.ManagedOperations.ManagedOperationStatus)">
+            <summary>
+            Cancel managed operation.
+            </summary>
+            <param name="status">Set this status.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Cancel(System.String,Xafari.ManagedOperations.ManagedOperationStatus)">
+            <summary>
+            Cancel managed operation.
+            </summary>
+            <param name="message">Show this message.</param>
+            <param name="status">Set this status.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Complete(System.Boolean,System.Boolean)">
+            <summary>
+            Set managed operation completed.
+            </summary>
+            <param name="isErrorExists">True if operation has errors.</param>
+            <param name="isWarningExists">True if operation has warnings.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.GetConversionMessage(Xafari.ManagedOperations.ManagedOperationStatus,Xafari.ManagedOperations.ManagedOperationStatus,System.String,Xafari.ManagedOperations.ManagedOperationItem)">
+            <summary>
+            Get localized message about managed operation's status.
+            </summary>
+            <param name="oldStatus">Old status of managed operation.</param>
+            <param name="newStatus">New status of managed operation.</param>
+            <param name="operation">Contains link to <see cref="T:Xafari.ManagedOperations.ManagedOperationItem"/> to allow to customize start and complete messages.</param>
+            <param name="operationName">Operation name.</param>
+            <returns>Localized string.</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.CalculateProgress(Xafari.ManagedOperations.ManagedOperationItem,Xafari.ManagedOperations.ManagedOperationStatus)">
+            <summary>
+            Calculate progress of managed operation.
+            </summary>
+            <param name="operation">Managed operation.</param>
+            <param name="status">Managed operation's status.</param>
+            <returns>The percentage of process completion.</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.SetManagedOperationsTimeExpired(DevExpress.ExpressApp.IObjectSpace,System.Int32)">
+            <summary>
+            Stop time expired opearations
+            and return their count.
+            </summary>
+            <param name="os">ObjectSpace in which status changing.</param>
+            <param name="dateTimeExpiredSec">Time after which operation is expired. </param>
+            <returns>Expired operations count</returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationManager.LogInfo(System.Int32,System.Boolean)">
+            <summary>
+            Write information about managed operation processing into log storage.
+            </summary>
+            <param name="count"></param>
+            <param name="split"></param>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationManager.ObjectSpace">
+            <summary>
+            OperationManager's objectspace.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationManager.CurrentStep">
+            <summary>
+            ManagedOperation's current step.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationManager.TotalStep">
+            <summary>
+            Number of managed operation's steps.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationManager.IsDisposed">
+            <summary>
+            Gets a value indicating whether the OperationManager has been disposed of.
+            </summary>
+            <remarks>When this property returns true, the ManagedOperation is disposed.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationManager.UserFullName">
+            <summary>
+            Gets or sets user's full name.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationManager.OperationStatus">
+            <summary>
+            Storage status.
+            </summary>
+            <returns>Status of managed operation storage.</returns>
+        </member>
+        <member name="T:Xafari.ManagedOperations.OperationTraceItem">
+            <summary>
+            Class for tracing managed operations
+            </summary>
+            <remarks>Contains data about managed operations.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.OperationTraceItem.#ctor(DevExpress.Xpo.Session)">
+            <summary>
+            Initializes a new instance of the OperationTraceItem class.
+            </summary>
+            <param name="session"></param>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationTraceItem.Log">
+            <summary>
+            Contains information about operation progress.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationTraceItem.RecordsCount">
+            <summary>
+            Records limit. If 'Split' property of managed operation set to 'true',
+            RecordsCount property indicates how many records can contains OperationTraceItem instance
+            before splitting.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationTraceItem.LogStorage">
+            <summary>
+            Log storage serves for containing information about managed operation processing.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationTraceItem.Created">
+            <summary>
+            Created
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.OperationTraceItem.ExceptionsCount">
+            <summary>
+            If during the operation were errors or warnings, 
+            their number will be displayed in ExceptionsCount property.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.TraceMessageTypes">
+            <summary>
+            Type of message about operation.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TraceMessageTypes.Info">
+            <summary>
+            Some information.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TraceMessageTypes.Error">
+            <summary>
+            Information about error.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TraceMessageTypes.Warning">
+            <summary>
+            Information about warning.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.TraceMessageTypes.ErrorAndWarning">
+            <summary>
+            Errors and warnings.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ProcessSelectedOperationTraceItemListLogicController">
+            <summary>
+            Controller for processing selected OperationTraceItem's.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ManageOperationsViewController">
+            <summary>
+            Controller for managed operations.
+            </summary>
+            <remarks>Add Run, Suspend, Stop, CheckTimeExpired buttons.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManageOperationsViewController.#ctor">
+            <summary>
+            Initializes a new instance of the ManageOperationsViewController class.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ManageOperationsViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManageOperationsViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ManageOperationsViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.ManageOperationsViewController.CurrentZone">
+            <summary>
+            Gets or sets current zone value.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.MOGetRootStorageStatusFunctionDescription">
+            <summary>
+              Looks up a localized string similar to Return Status root operation..
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.MOGetRootStorageStatusFunctionErrorMessage">
+            <summary>
+              Looks up a localized string similar to The number of arguments to {0} when invoking {1} is invalid. 1 argument is possible..
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.OverdueNoOperation">
+            <summary>
+              Looks up a localized string similar to Overdue no operation.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.OverdueOperations">
+            <summary>
+              Looks up a localized string similar to Overdue operations.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.Properties.Resources.StoppedOperations">
+            <summary>
+              Looks up a localized string similar to {0} operation stopped operations.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.RuntimeOperationManager">
+            <summary>
+            Represents an auxiliary class used to initializes RuntimeOperationManager.
+            </summary>
+            <remarks>This class is using for operation's managing in runtime.</remarks>
+        </member>
+        <member name="M:Xafari.ManagedOperations.RuntimeOperationManager.#ctor(DevExpress.ExpressApp.IObjectSpace,Xafari.ManagedOperations.IManagedOperation)">
+            <summary>
+            Initializes a new instance of the RuntimeOperationManager class.
+            </summary>
+            <param name="objectSpace">ObjectSpace in which works manager.</param>
+            <param name="operation">Operation for which will be created the storage.</param>
+        </member>
+        <member name="T:Xafari.ManagedOperations.ShowLogViewController">
+            <summary>
+            Contains ShowLog action which is located on ManagedOperationStorage's detail view.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ShowLogViewController.#ctor">
+            <summary>
+            Initializes a new instance of ShowLogViewController class.
+            </summary>
+        </member>
+        <member name="F:Xafari.ManagedOperations.ShowLogViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ShowLogViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.ShowLogViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:Xafari.ManagedOperations.SyncManagedOperationHelper">
+            <summary>
+            Helper for sync managed operations.
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.#ctor(DevExpress.ExpressApp.XafApplication,System.Object,Xafari.ManagedOperations.ManagedOperationZoneTypes)">
+            <summary>
+            To create instances should use factory methods CreateHelper
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.#ctor(Xafari.ManagedOperations.ManagedOperation)">
+            <summary>
+            To create instances should use factory methods CreateHelper
+            </summary>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.CreateHelper(DevExpress.ExpressApp.XafApplication,System.Object,Xafari.ManagedOperations.ManagedOperationZoneTypes)">
+            <summary>
+            Creates new instance of SyncManagedOperationHelper class.
+            </summary>
+            <param name="application">Xaf application.</param>
+            <param name="operationStorageId">Id of operation storage.</param>
+            <param name="zone">Helper zone type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.CreateHelper(Xafari.ManagedOperations.ManagedOperation)">
+            <summary>
+            Creates new instance of SyncManagedOperationHelper class.
+            </summary>
+            <param name="operation">Operation which uses ManagedOperationHelper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.InitShowViewParameters(DevExpress.ExpressApp.ShowViewParameters,System.String,System.Boolean)">
+            <summary>
+            Initializes detail view parameters.
+            </summary>
+            <param name="parameters">ShowViewParameters.</param>
+            <param name="detailViewId">Id of detail view.</param>
+            <param name="autoCloseWindow">Sets a value indicating whether to autoclose the window.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.InitShowViewParameters(DevExpress.ExpressApp.ShowViewParameters,System.Boolean)">
+            <summary>
+            Initializes view parameters.
+            </summary>
+            <param name="parameters">ShowViewParameters.</param>
+            <param name="autoCloseWindow">Sets a value indicating whether to autoclose the window.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.InitShowViewParametersProgress(DevExpress.ExpressApp.ShowViewParameters,System.Boolean)">
+            <summary>
+            Initializes view parameters for operation with progressbar visualizing.
+            </summary>
+            <param name="parameters">ShowViewParameters.</param>
+            <param name="autoCloseWindow">Sets a value indicating whether to autoclose the window.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.InitShowViewParametersMarquee(DevExpress.ExpressApp.ShowViewParameters,System.Boolean)">
+            <summary>
+            Initializes view parameters for operation with marquee visualizing.
+            </summary>
+            <param name="parameters">ShowViewParameters.</param>
+            <param name="autoCloseWindow">Sets a value indicating whether to autoclose the window.</param>
+        </member>
+        <member name="M:Xafari.ManagedOperations.SyncManagedOperationHelper.InitShowViewParametersSubprocess(DevExpress.ExpressApp.ShowViewParameters,System.Boolean)">
+            <summary>
+            Initializes view parameters for operation with subprocesses.
+            </summary>
+            <param name="parameters">ShowViewParameters.</param>
+            <param name="autoCloseWindow">Sets a value indicating whether to autoclose the window.</param>
+        </member>
+        <member name="T:Xafari.ManagedOperations.TraceItem">
+            <summary>
+            To display information about the progress of managed operations.
+            </summary>
+            <remarks>Provides properties to display information about the progress of managed operations.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.TraceItem.UserName">
+            <summary>
+            Shows user name.
+            </summary>
+            <remarks>Name of user which started the operation.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.TraceItem.Time">
+            <summary>
+            Shows event time.
+            </summary>
+            <remarks>Time the event occurred.</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.TraceItem.Message">
+            <summary>
+            Shows message text.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.TraceItem.MessageType">
+            <summary>
+            Shows message type.
+            </summary>
+            <remarks>Message types: Info, Error, Warning</remarks>
+        </member>
+        <member name="P:Xafari.ManagedOperations.TraceItem.Details">
+            <summary>
+            Shows detailed info.
+            </summary>
+            <remarks>Additional information about ocurred event.</remarks>
+        </member>
+        <member name="T:Xafari.ManagedOperations.SyncManagedOperationDialogController">
+            <summary>
+            Base controller for sync operations managing.
+            </summary>
+        </member>
+        <member name="P:Xafari.ManagedOperations.SyncManagedOperationDialogController.IsOperationFinalized">
+            <summary>
+            Gets a value indicating whether the ManagedOperation has been finalized of.
+            </summary>
+        </member>
+    </members>
+</doc>

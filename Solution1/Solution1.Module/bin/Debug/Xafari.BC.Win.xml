@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Xafari.BC.Win</name>
+    </assembly>
+    <members>
+        <member name="F:ProductInfo.IdentityVersion">
+            <summary>
+            This version used in code to identity product
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Win.Controllers.XasStarterWindowController">
+            <summary>
+            Intended to provide "Edit Configuration" action in the "Tools" menu.
+            </summary>
+            <remarks>
+            The action runs the XAS application if available.
+            The XAS application must exist by the <see cref="P:Xafari.BC.Win.Controllers.XasStarterWindowController.XasToolPath"/> path
+            and the current user must have administrator's rights (in case when security system is used).
+            </remarks>
+        </member>
+        <member name="M:Xafari.BC.Win.Controllers.XasStarterWindowController.IsAppConfiguratorUser">
+            <summary>
+            Indicating whether the current user to run the XAS application.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Win.Controllers.XasStarterWindowController.EditConfigurationAction">
+            <summary>
+            Provides access to the <see cref="T:Xafari.BC.Win.Controllers.XasStarterWindowController"/>'s Edit Configuration Action.
+            </summary>
+        </member>
+        <member name="P:Xafari.BC.Win.Controllers.XasStarterWindowController.XasToolPath">
+            <summary>
+            Path to the XAS application (including executable name).
+            </summary>
+        </member>
+        <member name="T:Xafari.BC.Win.Editors.ModelNodesLookupPropertyEditor">
+            <summary>
+            Property editor is intended for reference properties of classes that implement <see cref="T:Xafari.BC.Model.IModelNodeWrapper"/> interface.
+            This is mainly classes inherited from ServiceCfgObject{T, TModel} class (so calles ModelNodeWrappers).
+            </summary>
+            <remarks>
+            Property name of ModelNodeWrapper class has to be the same as appropriate model node name
+            (each property of ModelNodeWrapper is mapped to appropriate property of the model).
+            The property editor uses attributes (<see cref="T:DevExpress.Persistent.Base.DataSourcePropertyAttribute"/>, <see cref="T:DevExpress.Persistent.Base.DataSourceCriteriaAttribute"/>) of matched model node to fill lookup collection.
+            </remarks>
+        </member>
+        <member name="F:Xafari.BC.Win.Editors.WinExplorerListEditorControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Win.Editors.WinExplorerListEditorControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.BC.Win.Editors.WinExplorerListEditorControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Win.XafariBCWinModule.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Win.XafariBCWinModule.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.BC.Win.XafariBCWinModule.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Xafari.BC.Win.Controllers.WinCustomAppearanceViewController.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Xafari.BC.Win.Controllers.WinCustomAppearanceViewController.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Xafari.BC.Win.Controllers.WinCustomAppearanceViewController.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>
