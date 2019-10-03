@@ -116,7 +116,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.MES.Core.dll</HintPath>
     </Reference>
-    <Reference Include="Galaktika.MES.Module, Version=2.0.1.370, Culture=neutral, PublicKeyToken=2bb59fc849e933b9, processorArchitecture=MSIL">
+    <Reference Include="Galaktika.MES.Module, Version=2.0.1.380, Culture=neutral, PublicKeyToken=2bb59fc849e933b9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\MES\Galaktika.MES\Galaktika.MES.Win\bin\Debug\Galaktika.MES.Module.dll</HintPath>
     </Reference>

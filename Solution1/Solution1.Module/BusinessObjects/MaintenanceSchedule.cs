@@ -11,8 +11,8 @@ namespace Galaktika.Module.BusinessObjects
 {
 	[XafDisplayName("График ТОиР")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout = "Code;Name;WorkPlace;MaintenanceKind;WorkPlace1;ScheduleDate;MaintenanceRouting")]
-	[CreateDetailView(Layout = "Code;Name;WorkPlace;MaintenanceKind;WorkPlace1;ScheduleDate;MaintenanceRouting")]
+	[CreateListView(Layout = "Code;Name;WorkPlace;MaintenanceKind;ScheduleDate;MaintenanceRouting")]
+	[CreateDetailView(Layout = "Code;Name;WorkPlace;MaintenanceKind;ScheduleDate;MaintenanceRouting")]
 	[DefaultClassOptions]
 	public class MaintenanceSchedule : CatalogObjectBase<MaintenanceSchedule>
 	{
@@ -42,12 +42,6 @@ namespace Galaktika.Module.BusinessObjects
 		{
 			get => workPlace;
 			set => SetPropertyValue(nameof(WorkPlace), ref workPlace, value);
-		}
-
-		[XafDisplayName("Рабочее место")]
-		public WorkPlace WorkPlace1
-		{
-			get => MaintenanceRouting.WorkPlace;
 		}
 
 		[XafDisplayName("Вид обслуживания/ремонта")]

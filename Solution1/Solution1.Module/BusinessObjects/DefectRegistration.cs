@@ -31,7 +31,7 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
-		DateTime plannedCloseDate;
+		private DateTime plannedCloseDate;
 		private TimeSpan processingStatusDuration;
 		private TimeSpan openedStatusDuration;
 		private DateTime processingDate;
