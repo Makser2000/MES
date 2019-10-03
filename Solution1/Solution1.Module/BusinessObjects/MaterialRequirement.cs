@@ -10,8 +10,8 @@ namespace Galaktika.Module.BusinessObjects
 {
 	[XafDisplayName("Потребность в материале")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout = "Material;Amount;Cost")]
-	[CreateDetailView(Layout ="Material;Amount;Cost")]
+	[CreateListView(Layout = "Operation;Material;Amount;Cost")]
+	[CreateDetailView(Layout ="Operation;Material;Amount;Cost")]
 	[DefaultClassOptions]
 	public class MaterialRequirement : BusinessObjectBase<MaterialRequirement>
 	{
@@ -24,13 +24,16 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
-		private Material material = null;
+		private MaintenanceOperation operation;
+		private Material material;
 		private decimal amount;
+		private decimal cost;
 
 		[XafDisplayName("Стоимость")]
 		public decimal Cost
 		{
-			get => Material.Cost;
+			get => cost;
+			set => SetPropertyValue(nameof(Cost), ref cost, value);
 		}
 
 		[XafDisplayName("Количество")]
@@ -43,31 +46,17 @@ namespace Galaktika.Module.BusinessObjects
 		[XafDisplayName("Материал")]
 		public Material Material
 		{
-			get { return material;}
-			set
-			{
-				if (material == value)
-					return;
-
-				Material prevMaterial = material;
-				material = value;
-
-				if (IsLoading) return;
-
-
-				if (prevMaterial != null && prevMaterial.MaterialRequirement == this)
-					prevMaterial.MaterialRequirement = null;
-
-				if (material != null)
-					material.MaterialRequirement = this;
-				OnChanged("Material");
-			}
+			get => material;
+			set => SetPropertyValue(nameof(Material), ref material, value);
 		}
 		
-		[Association]
-		public XPCollection<MaintenanceOperation> Operations
+		[XafDisplayName("Операция")]
+		[Association("MaintenanceOperation-Materials")]
+		public MaintenanceOperation Operation
 		{
-			get => GetCollection<MaintenanceOperation>(nameof(Operations));
+			get => operation;
+			set => SetPropertyValue(nameof(Operation), ref operation, value);
 		}
+
 	}
 }

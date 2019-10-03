@@ -4,20 +4,22 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using Galaktika.Common.Module.BusinessObjects;
+using Galaktika.MES.Core.ModelExtension;
 using Galaktika.MES.Module.BusinessObjects.MainResourceManagement.Personnel;
 using Galaktika.MES.Module.BusinessObjects.MainResourceManagement.WorkPlace;
+using Solution1.Module.BusinessObjects;
 using System;
-using System.Linq;
 using Xafari.SmartDesign;
 
 namespace Galaktika.Module.BusinessObjects
 {
 	[XafDisplayName("Регистрация дефекта")]
-	[Appearance("Red", Criteria = "[Status]='Обрабатывается' && DateTime.Now>[CloseDate]", BackColor = "Red", TargetItems = "DefectRegistration", Context = "ListView")]
+	[Appearance("Red", Criteria = "[PlannedCloseDate] < Now()", BackColor = "Red", TargetItems = "*", Context = "ListView")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout = "Number;WorkPlace;DefectKind;Author;Personnel")]
-	[CreateDetailView(Layout = "Number;WorkPlace;DefectKind;Author;Personnel")]
+	[CreateListView(Layout = "Number;WorkPlace;DefectKind;Author;OpenDate;Personnel;Status;ProcessingDate;CloseDate;OpenedStatusDuration;ProcessingStatusDuration")]
+	[CreateDetailView(Layout = "Number;WorkPlace;DefectKind;Author;OpenDate;Personnel;Status;ProcessingDate;CloseDate;OpenedStatusDuration;ProcessingStatusDuration")]
 	[DefaultClassOptions]
+	[FilterPanel(typeof(Filter))]
 	public class DefectRegistration : BusinessObjectBase<DefectRegistration>
 	{
 		public DefectRegistration(Session session)
@@ -29,15 +31,18 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
+		private TimeSpan processingStatusDuration;
+		private TimeSpan openedStatusDuration;
+		private DateTime processingDate;
 		private DateTime openDate;
 		private DateTime closeDate;
 		private WorkPlace workPlace;
-		private MaintenanceOrder maintenanceOrder = null;
 		private Personnel personnel;
 		private Personnel author;
 		private DefectRegistrationStatus status;
 		private string number;
 		private DefectKind defectKind;
+
 		[XafDisplayName("Вид дефекта")]
 		[RuleRequiredField]
 		[ValueConverter(typeof(EnumStringValueConverter<DefectKind>)), Size(1)]
@@ -65,6 +70,7 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("Рабочее место")]
+		[RuleRequiredField]
 		public WorkPlace WorkPlace
 		{
 			get => workPlace;
@@ -79,6 +85,7 @@ namespace Galaktika.Module.BusinessObjects
 			set => SetPropertyValue(nameof(Author), ref author, value);
 		}
 
+		[RuleRequiredField]
 		[XafDisplayName("Ответственный")]
 		public Personnel Personnel
 		{
@@ -86,35 +93,19 @@ namespace Galaktika.Module.BusinessObjects
 			set => SetPropertyValue(nameof(Personnel), ref personnel, value);
 		}
 
-		public MaintenanceOrder MaintenanceOrder
-		{
-			get => maintenanceOrder;
-			set
-			{
-				if (maintenanceOrder == value)
-					return;
-
-				MaintenanceOrder prevmaintenanceOrder = maintenanceOrder;
-				maintenanceOrder = value;
-
-				if (IsLoading) return;
-
-				if (prevmaintenanceOrder != null && prevmaintenanceOrder.DefectRegistration == this)
-					prevmaintenanceOrder.DefectRegistration = null;
-
-				if (maintenanceOrder != null)
-					maintenanceOrder.DefectRegistration = this;
-
-				OnChanged("M" +
-					"aintenanceOrder");
-			}
-		}
-		
-		[XafDisplayName("Дата открытия")]
+		[XafDisplayName("Дата регистрации")]
+		[RuleRequiredField]
 		public DateTime OpenDate
 		{
 			get => openDate;
 			set => SetPropertyValue(nameof(OpenDate), ref openDate, value);
+		}
+
+		[XafDisplayName("Дата начала работ")]
+		public DateTime ProcessingDate
+		{
+			get => processingDate;
+			set => SetPropertyValue(nameof(ProcessingDate), ref processingDate, value);
 		}
 
 		[XafDisplayName("Дата закрытия")]
@@ -123,5 +114,20 @@ namespace Galaktika.Module.BusinessObjects
 			get => closeDate;
 			set => SetPropertyValue(nameof(CloseDate), ref closeDate, value);
 		}
+
+		[XafDisplayName("Открыта в течение")]
+		public TimeSpan OpenedStatusDuration
+		{
+			get => openedStatusDuration;
+			set => SetPropertyValue(nameof(OpenedStatusDuration), ref openedStatusDuration, value);
+		}
+
+		[XafDisplayName("В работе в течение")]
+		public TimeSpan ProcessingStatusDuration
+		{
+			get => processingStatusDuration;
+			set => SetPropertyValue(nameof(ProcessingStatusDuration), ref processingStatusDuration, value);
+		}
+
 	}
 }

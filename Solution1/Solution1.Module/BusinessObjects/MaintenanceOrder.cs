@@ -1,4 +1,6 @@
-﻿using DevExpress.ExpressApp.DC;
+﻿using DevExpress.ExpressApp.ConditionalAppearance;
+using DevExpress.ExpressApp.DC;
+using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using Galaktika.Common.Module.BusinessObjects;
@@ -12,8 +14,8 @@ namespace Galaktika.Module.BusinessObjects
 {
 	[XafDisplayName("Наряд на ТОиР")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout = "Number;DefectRegistration;MaintenanceSchedule;MaintenanceOrderStatus;Routing")]
-	[CreateDetailView(Layout = "Number;DefectRegistration;MaintenanceSchedule;MaintenanceOrderStatus;Routing;Operations;Executors")]
+	[CreateListView(Layout = "Number;DefectRegistration;MaintenanceSchedule;MaintenanceOrderStatus;Routing;StartDate;PlanCompleteDate;CompleteDate")]
+	[CreateDetailView(Layout = "Number;DefectRegistration;MaintenanceSchedule;MaintenanceOrderStatus;Routing;StartDate;PlanCompleteDate;CompleteDate;Operations;Executors")]
 	[DefaultClassOptions]
 	public class MaintenanceOrder : BusinessObjectBase<MaintenanceOrder>
 	{
@@ -26,10 +28,13 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
-		MaintenanceOrderStatus maintenanceOrderStatus;
-		private MaintenanceRouting routing = null;
-		private MaintenanceSchedule maintenanceSchedule = null;
-		private DefectRegistration defectRegistration = null;
+		private DateTime completeDate;
+		private DateTime planCompleteDate;
+		private DateTime startDate;
+		private DefectRegistration defectRegistration;
+		private MaintenanceSchedule maintenanceSchedule;
+		private MaintenanceOrderStatus maintenanceOrderStatus;
+		private MaintenanceRouting maintenanceRouting;
 		private string number;
 
 		[XafDisplayName("Номер")]
@@ -40,53 +45,23 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("Регистрация дефекта")]
+		[ImmediatePostData]
+		[Appearance("DefectVisible",Criteria ="[MaintenanceSchedule]!=NULL",Visibility =ViewItemVisibility.Hide)]
 		public DefectRegistration DefectRegistration
 		{
 			get => defectRegistration;
-			set
-			{
-				if (defectRegistration == value)
-					return;
-
-				DefectRegistration prevdefectRegistration = defectRegistration;
-				defectRegistration = value;
-
-				if (IsLoading) return;
-
-				if (prevdefectRegistration != null && prevdefectRegistration.MaintenanceOrder == this)
-					prevdefectRegistration.MaintenanceOrder = null;
-
-				if (defectRegistration != null)
-					defectRegistration.MaintenanceOrder = this;
-
-				OnChanged("DefectRegistration");
-			}
+			set => SetPropertyValue(nameof(DefectRegistration), ref defectRegistration, value);
 		}
 
 		[XafDisplayName("График ТОиР")]
+		[ImmediatePostData]
+		[Appearance("ScheduleVisible", Criteria = "[DefectRegistration]!=NULL", Visibility = ViewItemVisibility.Hide)]
 		public MaintenanceSchedule MaintenanceSchedule
 		{
 			get => maintenanceSchedule;
-			set
-			{
-				if (maintenanceSchedule == value)
-					return;
-
-				MaintenanceSchedule prevmaintenanceSchedule = maintenanceSchedule;
-				maintenanceSchedule = value;
-
-				if (IsLoading) return;
-
-				if (prevmaintenanceSchedule != null && prevmaintenanceSchedule.MaintenanceOrder == this)
-					prevmaintenanceSchedule.MaintenanceOrder = null;
-				prevmaintenanceSchedule.MaintenanceOrder = null;
-
-				if (maintenanceSchedule != null)
-					maintenanceSchedule.MaintenanceOrder = this;
-
-				OnChanged("MaintenanceSchedule");
-			}
+			set => SetPropertyValue(nameof(MaintenanceSchedule), ref maintenanceSchedule, value);
 		}
+
 
 		[XafDisplayName("Состояние")]
 		[ValueConverter(typeof(EnumStringValueConverter<MaintenanceOrderStatus>)), Size(1)]
@@ -97,39 +72,44 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("ТК")]
+		[Appearance("RoutingVisible", Criteria = "[Schedule] != NULL", Visibility = ViewItemVisibility.Hide)]
 		public MaintenanceRouting Routing
 		{
-			get => routing;
-			set
-			{
-				if (routing == value)
-					return;
+			get => maintenanceRouting;
+			set => SetPropertyValue(nameof(Routing), ref maintenanceRouting, value);
+		}
 
-				MaintenanceRouting prevrouting = routing;
-				routing = value;
+		[XafDisplayName("Дата начала")]
+		public DateTime StartDate
+		{
+			get => startDate;
+			set => SetPropertyValue(nameof(StartDate), ref startDate, value);
+		}
 
-				if (IsLoading) return;
+		[XafDisplayName("Плановая дата завершения")]
+		public DateTime PlanCompleteDate
+		{
+			get => planCompleteDate;
+			set => SetPropertyValue(nameof(PlanCompleteDate), ref planCompleteDate, value);
+		}
 
-				if (prevrouting != null && prevrouting.MaintenanceOrder == this)
-					prevrouting.MaintenanceOrder = null;
-				prevrouting.MaintenanceOrder = null;
-
-				if (routing != null)
-					routing.MaintenanceOrder = this;
-
-				OnChanged("Routing");
-			}
+		[XafDisplayName("Дата завершения")]
+		public DateTime CompleteDate
+		{
+			get => completeDate;
+			set => SetPropertyValue(nameof(CompleteDate), ref completeDate, value);
 		}
 
 		[XafDisplayName("Операции")]
-		[Association]
+		[Association("MaintenanceOperations-MaintenanceOrders")]
+		[Appearance("OperationsVisible", Criteria = "[Routing] != NULL", Enabled = false)]
 		public XPCollection<MaintenanceOperation> Operations
 		{
 			get => GetCollection<MaintenanceOperation>(nameof(Operations));
 		}
 		
 		[XafDisplayName("Исполнители")]
-		[Association]
+		[Association("MaintenanceOrder-Executors")]
 		public XPCollection<MaintenanceOrderExecutor> Executors
 		{
 			get => GetCollection<MaintenanceOrderExecutor>(nameof(Executors));

@@ -26,15 +26,20 @@
 			// 
 			// Solution1Module
 			// 
+			this.AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.BaseObject));
+			this.AdditionalExportedTypes.Add(typeof(DevExpress.Persistent.BaseImpl.HCategory));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
-			this.RequiredModuleTypes.Add(typeof(Xafari.BC.Numerators.Xpo.XafariBCNumeratorsXpoModule));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Objects.BusinessClassLibraryCustomizationModule));
-			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Reports.ReportsModule));
+			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule));
+			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ReportsV2.ReportsModuleV2));
 			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.TreeListEditors.TreeListEditorsModuleBase));
-			this.RequiredModuleTypes.Add(typeof(Xafari.BC.Numerators.XafariBCNumeratorsModule));
+			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ViewVariantsModule.ViewVariantsModule));
 			this.RequiredModuleTypes.Add(typeof(Xafari.SmartDesign.XafariSmartDesignModule));
 			this.RequiredModuleTypes.Add(typeof(Xafari.Filters.XafariFiltersModule));
-			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.ConditionalAppearance.ConditionalAppearanceModule));
+			this.RequiredModuleTypes.Add(typeof(Xafari.BC.BusinessOperations.XafariBusinessOperationsModule));
+			this.RequiredModuleTypes.Add(typeof(Xafari.BC.Numerators.XafariBCNumeratorsModule));
+			this.RequiredModuleTypes.Add(typeof(Xafari.BC.Numerators.Xpo.XafariBCNumeratorsXpoModule));
+			this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Validation.ValidationModule));
 
 		}
 

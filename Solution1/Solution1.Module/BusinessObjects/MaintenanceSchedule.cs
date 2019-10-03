@@ -25,9 +25,8 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
-		private MaintenanceOrder maintenanceOrder=null;
+		private MaintenanceRouting maintenanceRouting;
 		private WorkPlace workPlace;
-		private MaintenanceRouting maintenanceRouting = null;
 		private DateTime scheduleDate;
 		private MaintenanceKind maintenanceKind;
 
@@ -63,47 +62,7 @@ namespace Galaktika.Module.BusinessObjects
 		public MaintenanceRouting MaintenanceRouting
 		{
 			get => maintenanceRouting;
-			set
-			{
-				if (maintenanceRouting == value)
-					return;
-
-				MaintenanceRouting prevmaintenanceRouting = maintenanceRouting;
-				maintenanceRouting = value;
-
-				if (IsLoading) return;
-
-				if (prevmaintenanceRouting != null && prevmaintenanceRouting.MaintenanceSchedule == this)
-					prevmaintenanceRouting.MaintenanceSchedule = null;
-
-				if (maintenanceRouting != null)
-					maintenanceRouting.MaintenanceSchedule = this;
-
-				OnChanged("MaintenanceRouting");
-			}
-		}
-		
-		public MaintenanceOrder MaintenanceOrder
-		{
-			get => maintenanceOrder;
-			set
-			{
-				if (maintenanceOrder == value)
-					return;
-
-				MaintenanceOrder prevmaintenanceOrder = maintenanceOrder;
-				maintenanceOrder= value;
-
-				if (IsLoading) return;
-
-				if (prevmaintenanceOrder != null && prevmaintenanceOrder.MaintenanceSchedule == this)
-					prevmaintenanceOrder.MaintenanceSchedule = null;
-
-				if (maintenanceOrder != null)
-					maintenanceOrder.MaintenanceSchedule = this;
-
-				OnChanged("MaintenanceOrder");
-			}
+			set => SetPropertyValue(nameof(MaintenanceRouting), ref maintenanceRouting, value);
 		}
 	}
 }

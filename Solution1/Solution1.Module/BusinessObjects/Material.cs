@@ -25,7 +25,6 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
-		private MaterialRequirement materialRequirement=null;
 		private Unit unit;
 		private decimal cost;
 
@@ -42,28 +41,6 @@ namespace Galaktika.Module.BusinessObjects
 			get => cost;
 			set => SetPropertyValue(nameof(Cost), ref cost, value);
 		}
-		
-		public MaterialRequirement MaterialRequirement
-		{
-			get { return materialRequirement; }
-			set
-			{
-				if (materialRequirement == value)
-					return;
 
-				MaterialRequirement prevmaterialRequirement =materialRequirement;
-				materialRequirement = value;
-
-				if (IsLoading) return;
-
-				if (prevmaterialRequirement != null && prevmaterialRequirement.Material == this)
-					prevmaterialRequirement.Material = null;
-
-				if (materialRequirement != null)
-					materialRequirement.Material = this;
-
-				OnChanged("MaterialRequirement");
-			}
-		}
 	}
 }

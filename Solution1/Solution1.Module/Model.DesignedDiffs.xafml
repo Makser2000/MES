@@ -1,5 +1,22 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Solution1">
-  <Views>
-  </Views>
+  <SchemaModules>
+    <SchemaModule Name="SystemModule" Version="17.2.6.0" IsNewNode="True" />
+  </SchemaModules>
+  <Xafari>
+    <Services>
+      <Numerators>
+        <Numerator Id="DefectRegisrationNumerator" Template="РД- {0:&lt;INDEX&gt;}" StartValue="10" Step="10" IsNewNode="True">
+          <Links IsNewNode="True">
+            <Link Id="@59ebc08c-f2ea-43a1-84bc-10e7c179c246" ModelClass="Galaktika.Module.BusinessObjects.DefectRegistration" PropertyName="Number" IsNewNode="True" />
+          </Links>
+        </Numerator>
+        <Numerator Id="MaintenanceOrderNumerator" StartValue="10" Step="5" Template="Н- {0:&lt;INDEX&gt;}" IsNewNode="True">
+          <Links IsNewNode="True">
+            <Link Id="@4e66e3a6-a4b5-422f-a1e6-87f675047f38" ModelClass="Galaktika.Module.BusinessObjects.MaintenanceOrder" PropertyName="Number" IsNewNode="True" />
+          </Links>
+        </Numerator>
+      </Numerators>
+    </Services>
+  </Xafari>
 </Application>

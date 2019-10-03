@@ -28,7 +28,7 @@ namespace Galaktika.Module.BusinessObjects
 		private MaintenanceOrder order;
 
 		[RuleRequiredField]
-		[Association]
+		[Association("MaintenanceOrder-Executors")]
 		[XafDisplayName("Наряд")]
 		public MaintenanceOrder Order
 		{

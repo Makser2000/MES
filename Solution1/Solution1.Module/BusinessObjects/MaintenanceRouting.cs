@@ -12,8 +12,8 @@ namespace Galaktika.Module.BusinessObjects
 {
 	[XafDisplayName("Технологическая карта ТОиР ")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout = "Сode;Name;MaintenanceKind;WorkPlace")]
-	[CreateDetailView(Layout = "Сode;Name;MaintenanceKind;WorkPlace;Operations")]
+	[CreateListView(Layout = "Code;Name;MaintenanceKind;WorkPlace")]
+	[CreateDetailView(Layout = "Code;Name;MaintenanceKind;WorkPlace;Operations")]
 	[DefaultClassOptions]
 	public class MaintenanceRouting : CatalogObjectBase<MaintenanceRouting>
 	{
@@ -26,8 +26,6 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
-		private MaintenanceOrder maintenanceOrder =null;
-		private MaintenanceSchedule maintenanceSchedule = null;
 		private WorkPlace workPlace;
 		private MaintenanceKind maintenanceKind;
 
@@ -47,57 +45,10 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("Операции")]
-		[Association]
+		[Association("MaintenanceRoutings-MaintenanceOperations")]
 		public XPCollection<MaintenanceOperation> Operations
 		{
 			get => GetCollection<MaintenanceOperation>(nameof(Operations));
-		}
-
-		public MaintenanceSchedule MaintenanceSchedule
-		{
-			get => maintenanceSchedule;
-			set
-			{
-				if (maintenanceSchedule == value)
-					return;
-
-				MaintenanceSchedule prevmaintenanceSchedule = maintenanceSchedule;
-				maintenanceSchedule = value;
-
-				if (IsLoading) return;
-
-				if (prevmaintenanceSchedule != null && prevmaintenanceSchedule.MaintenanceRouting == this)
-					prevmaintenanceSchedule.MaintenanceRouting = null;
-
-				if (maintenanceSchedule != null)
-					maintenanceSchedule.MaintenanceRouting = this;
-
-				OnChanged("MaintenanceSchedule");
-			}
-		}
-
-		public MaintenanceOrder MaintenanceOrder
-		{
-			get => maintenanceOrder;
-			set
-			{
-				if (maintenanceOrder == value)
-					return;
-
-				MaintenanceOrder prevmaintenanceOrder = maintenanceOrder;
-				maintenanceOrder = value;
-
-				if (IsLoading) return;
-
-				if (prevmaintenanceOrder != null && prevmaintenanceOrder.Routing== this)
-					prevmaintenanceOrder.Routing = null;
-				prevmaintenanceOrder.Routing= null;
-
-				if (maintenanceOrder != null)
-					maintenanceOrder.Routing = this;
-
-				OnChanged("MaintenanceOrder");
-			}
 		}
 
 	}
@@ -106,7 +57,7 @@ namespace Galaktika.Module.BusinessObjects
 	{
 		[XafDisplayName("Обслуживание"), StringValue("M")]
 		Maintenance = 0,
-		[XafDisplayName("Средний ремонт"), StringValue("MR")]
+		[XafDisplayName("Средний ремонт"), StringValue("R")]
 		MediumRepair = 1,
 		[XafDisplayName("Капитальный ремонт"), StringValue("B")]
 		BigRepair = 2

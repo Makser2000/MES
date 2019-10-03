@@ -14,6 +14,7 @@ using DevExpress.Persistent.Validation;
 using Galaktika.Common.Module.BusinessObjects;
 using Xafari.SmartDesign;
 using Galaktika.Common.Resolver;
+using Galaktika.MES.Core.Common;
 
 namespace Galaktika.Module.BusinessObjects
 {
@@ -44,14 +45,14 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		private TimeSpan duration;
+		private decimal totalCost;
 		private MaintenanceOperation parent;
 		private decimal workCost;
-		private decimal summaOperations;
-		private decimal summaMaterials;
 
 		[XafDisplayName("Длительность операции")]
 		[Persistent]
 		[PersistentCalculated(nameof(CalculateDuration))]
+		[ImmediatePostData]
 		public TimeSpan Duration
 		{
 			get => duration;
@@ -59,23 +60,8 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 
-		[Persistent]
-		[PersistentCalculated(nameof(CalculateSummaOperations))]
-		public decimal SummaOperations
-		{
-			get { return summaOperations; }
-			set { SetPropertyValue(nameof(SummaOperations), ref summaOperations, value); }
-		}
-
-		[Persistent]
-		[PersistentCalculated(nameof(CalculateSummaMaterials))]
-		public decimal SummaMaterials
-		{
-			get { return summaMaterials; }
-			set { SetPropertyValue(nameof(SummaMaterials), ref summaMaterials, value); }
-		}
-
 		[XafDisplayName("Стоимость работ")]
+		[ImmediatePostData]
 		public decimal WorkCost
 		{
 			get => workCost;
@@ -83,9 +69,13 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("Общая стоимость")]
+		[Persistent]
+		[PersistentCalculated(nameof(CalculateCost))]
+		[ImmediatePostData]
 		public decimal TotalCost
 		{
-			get => WorkCost + SummaOperations + SummaMaterials;
+			get => totalCost;
+			set => SetPropertyValue(nameof(TotalCost), ref totalCost, value);
 		}
 
 		[XafDisplayName("Главная операция")]
@@ -104,49 +94,38 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("Потребности в материалах")]
-		[Association]
+		[Association("MaintenanceOperation-Materials")]
 		public XPCollection<MaterialRequirement> Materials
 		{
 			get => GetCollection<MaterialRequirement>(nameof(Materials));
 		}
 
-		[Association]
-		public XPCollection<MaintenanceRouting> Maps
+		[Association("MaintenanceRoutings-MaintenanceOperations")]
+		public XPCollection<MaintenanceRouting> Routings
 		{
-			get => GetCollection<MaintenanceRouting>(nameof(Maps));
+			get => GetCollection<MaintenanceRouting>(nameof(Routings));
 		}
 
-		[Association]
-		public XPCollection<MaintenanceOrder> MaintenanceOrder
+		[Association("MaintenanceOperations-MaintenanceOrders")]
+		public XPCollection<MaintenanceOrder> Orders
 		{
-			get => GetCollection<MaintenanceOrder>(nameof(MaintenanceOrder));
+			get => GetCollection<MaintenanceOrder>(nameof(Orders));
 		}
 
-		public void CalculateSummaOperations()
+		public void CalculateCost()
 		{
-			decimal summa = 0m;
-			foreach (MaintenanceOperation child in Children)
-				summa += child.TotalCost;
-			this.SummaOperations = summa;
-		}
-
-		public void CalculateSummaMaterials()
-		{
-			decimal summa = 0m;
-			foreach (MaterialRequirement material in Materials)
-				summa += material.Cost;
-			this.SummaMaterials = summa;
+			var totalCost = WorkCost + Materials.SumOrDefault(material => material.Cost) + Children.SumOrDefault(child => child.TotalCost);
+			TotalCost = totalCost;
+			Parent?.CalculateCost();
 		}
 
 		public void CalculateDuration()
 		{
-			TimeSpan summa = TimeSpan.Zero;
-			foreach (MaintenanceOperation child in Children)
-				summa += child.Duration;
-			this.Duration = summa;
+			if (Children.Any())
+			{
+				var totalDuration = Children.Aggregate(TimeSpan.Zero, (current, operation) => current + operation.Duration);
+				Duration = totalDuration;
+			}
 		}
-
-
-
 	}
 }

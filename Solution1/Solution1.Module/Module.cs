@@ -15,12 +15,15 @@ using DevExpress.ExpressApp.Model.Core;
 using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using DevExpress.ExpressApp.Xpo;
-using Galaktika.Common.Module.BusinessObjects;
-using Galaktika.Module.BusinessObjects;
+using Xafari.BC.BusinessOperations;
+using Xafari;
+using Xafari.BC.LogicControllers;
+using Galaktika.MES.Maintenance.Module.LogicControllers;
 
 namespace Solution1.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
-    public sealed partial class Solution1Module : ModuleBase {
+    public sealed partial class Solution1Module : ModuleBase,ITypesProvider<IBusinessOperation>, ITypesProvider<IOperationService>, ITypesProvider<LogicControllerBase>
+	{
         public Solution1Module() {
             InitializeComponent();
 			BaseObject.OidInitializationMode = OidInitializationMode.AfterConstruction;
@@ -36,7 +39,32 @@ namespace Solution1.Module {
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
-			PersistentCalculatedTool.Initialize<MaintenanceOperation>();
         }
-    }
+
+		IEnumerable<Type> ITypesProvider<IBusinessOperation>.GetTypes()
+		{
+			return new[]
+			{
+				typeof(StartMaintenanceOrder),
+				typeof(CompleteMaintenanceOrder)
+			};
+		}
+
+		IEnumerable<Type> ITypesProvider<LogicControllerBase>.GetTypes()
+		{
+			return new[]
+			{
+				typeof(MaintenanceOperationLogicController)
+			};
+		}
+
+		IEnumerable<Type> ITypesProvider<IOperationService>.GetTypes()
+		{
+			return new[]
+			{
+				typeof(StartMaintenanceOrderService),
+				typeof(CompleteMaintenanceOrderService)
+			};
+		}
+	}
 }
