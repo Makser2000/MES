@@ -19,6 +19,8 @@ using Xafari.BC.BusinessOperations;
 using Xafari;
 using Xafari.BC.LogicControllers;
 using Galaktika.MES.Maintenance.Module.LogicControllers;
+using Galaktika.Module.BusinessObjects;
+using Galaktika.Common.Module.BusinessObjects;
 
 namespace Solution1.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
@@ -39,6 +41,7 @@ namespace Solution1.Module {
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
+			PersistentCalculatedTool.Initialize<MaintenanceOperation>();
         }
 
 		IEnumerable<Type> ITypesProvider<IBusinessOperation>.GetTypes()

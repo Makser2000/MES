@@ -16,8 +16,8 @@ namespace Galaktika.Module.BusinessObjects
 	[XafDisplayName("Регистрация дефекта")]
 	[Appearance("Red", Criteria = "[PlannedCloseDate] < Now()", BackColor = "Red", TargetItems = "*", Context = "ListView")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout = "Number;WorkPlace;DefectKind;Author;OpenDate;Personnel;Status;ProcessingDate;CloseDate;OpenedStatusDuration;ProcessingStatusDuration")]
-	[CreateDetailView(Layout = "Number;WorkPlace;DefectKind;Author;OpenDate;Personnel;Status;ProcessingDate;CloseDate;OpenedStatusDuration;ProcessingStatusDuration")]
+	[CreateListView(Layout = "Number;WorkPlace;DefectKind;Author;OpenDate;Personnel;Status;ProcessingDate;PlannedCloseDate;CloseDate;OpenedStatusDuration;ProcessingStatusDuration")]
+	[CreateDetailView(Layout = "Number;WorkPlace;DefectKind;Author;OpenDate;Personnel;Status;ProcessingDate;PlannedCloseDate;CloseDate;OpenedStatusDuration;ProcessingStatusDuration")]
 	[DefaultClassOptions]
 	[FilterPanel(typeof(Filter))]
 	public class DefectRegistration : BusinessObjectBase<DefectRegistration>
@@ -31,6 +31,7 @@ namespace Galaktika.Module.BusinessObjects
 			base.AfterConstruction();
 		}
 
+		DateTime plannedCloseDate;
 		private TimeSpan processingStatusDuration;
 		private TimeSpan openedStatusDuration;
 		private DateTime processingDate;
@@ -127,6 +128,13 @@ namespace Galaktika.Module.BusinessObjects
 		{
 			get => processingStatusDuration;
 			set => SetPropertyValue(nameof(ProcessingStatusDuration), ref processingStatusDuration, value);
+		}
+		
+		[XafDisplayName("Плановая дата закрытия")]
+		public DateTime PlannedCloseDate 
+		{
+			get => plannedCloseDate;
+			set => SetPropertyValue(nameof(PlannedCloseDate), ref plannedCloseDate, value);
 		}
 
 	}
