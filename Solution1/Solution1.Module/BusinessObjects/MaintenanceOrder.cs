@@ -72,7 +72,7 @@ namespace Galaktika.Module.BusinessObjects
 		}
 
 		[XafDisplayName("ТК")]
-		[Appearance("RoutingVisible", Criteria = "[Schedule] != NULL", Visibility = ViewItemVisibility.Hide)]
+		[Appearance("RoutingVisible", Criteria = "[MaintenanceSchedule] != NULL", Visibility = ViewItemVisibility.Hide)]
 		public MaintenanceRouting Routing
 		{
 			get => maintenanceRouting;
