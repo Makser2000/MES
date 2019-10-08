@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="MaintenanceOrder_ListView">
+      <Variants Id="Variants">
+        <Variant Id="@48a6a653-cebf-4dba-a95e-764db6b5ab8d" Caption="Список" ViewID="MaintenanceOrder_List" />
+      </Variants>
+    </ListView>
+  </Views>
+</Application>

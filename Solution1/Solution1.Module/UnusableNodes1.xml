@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <ListView Id="MaintenanceOperation_ListView">
+      <Variants Id="Variants">
+        <Variant Id="@e5f6dc0b-3b52-492f-a09c-a6b2f3046b09" ViewID="MaintenanceOperation_Hierarchy" />
+        <Variant Id="@4d9a7b1d-a0d4-4785-aef8-b64b1bd8e30c" ViewID="MaintenanceOperation_List" Caption="Cписок" />
+      </Variants>
+    </ListView>
+  </Views>
+</Application>

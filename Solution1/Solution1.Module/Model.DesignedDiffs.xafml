@@ -3,6 +3,14 @@
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="17.2.6.0" IsNewNode="True" />
   </SchemaModules>
+  <Views>
+    <ListView Id="MaintenanceOperation_ListView">
+      <Variants>
+        <Variant Id="@4d940b95-582a-438a-a9da-fb6dbadd2e09" ViewID="ListView" Caption="Список" IsNewNode="True" />
+        <Variant Id="@b2bc33ef-ce9f-4c4c-92b6-828509cf9aa8" ViewID="TreeView" Caption="Иерархия" IsNewNode="True" />
+      </Variants>
+    </ListView>
+  </Views>
   <Xafari>
     <Services>
       <Numerators>

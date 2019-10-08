@@ -89,7 +89,7 @@ namespace Galaktika.Module.BusinessObjects
 		Created = 0,
 		[XafDisplayName("Выполняется"), StringValue("P")]
 		Performed = 1,
-		[XafDisplayName("Завершен"), StringValue("C")]
+		[XafDisplayName("Завершен"), StringValue("F")]
 		Completed = 2
 	}
 

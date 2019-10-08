@@ -15,12 +15,14 @@ using Galaktika.Common.Module.BusinessObjects;
 using Xafari.SmartDesign;
 using Galaktika.Common.Resolver;
 using Galaktika.MES.Core.Common;
+using DevExpress.ExpressApp.Editors;
 
 namespace Galaktika.Module.BusinessObjects
 {
 	[XafDisplayName("Операция")]
 	[SmartDesignStrategy(typeof(XafariSmartDesignStrategy))]
-	[CreateListView(Layout ="Code;Name;WorkCost;TotalCost;Duration;Parent")]
+	[CreateListView(Id = "ListView", Layout = "Code;Name;WorkCost;TotalCost;Duration;Parent", IsDefaultGridListView = true, EditorAlias = EditorAliases.GridListEditor)]
+	[CreateListView(Id = "TreeView", Layout = "Code;Name;WorkCost;TotalCost;Duration;Parent", IsDefaultTreeListView = true, EditorAlias = EditorAliases.TreeListEditor)]
 	[CreateDetailView(Layout ="Code;Name;WorkCost;TotalCost;Duration;Children;Materials")]
 	[DefaultClassOptions]
 	public class MaintenanceOperation : TreeCatalogObjectBase<MaintenanceOperation>
